@@ -1,0 +1,48 @@
+default_language_version:
+  node: system
+
+repos:
+  - repo: https://github.com/awebdeveloper/pre-commit-stylelint
+    rev: 0.0.2
+    hooks:
+      - id: stylelint
+        args: [--config, .stylelintrc.yml, --ignore-path, .stylelintignore]
+        additional_dependencies:
+          - stylelint@14.16.1
+          - stylelint-config-standard@29.0.0
+          - stylelint-config-idiomatic-order@8.1.0
+          - stylelint-config-css-modules@2.3.0
+          - stylelint-config-prettier@9.0.4
+          - stylelint-prettier@2.0.0
+          - postcss-less@6.0.0
+        files: \.(css|less)$
+        types: [file]
+
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: 'v2.7.1'
+    hooks:
+      - id: prettier
+        args: [--config, .prettierrc.yml, --ignore-path, .prettierignore]
+        additional_dependencies:
+          - prettier@2.7.1
+          - '@trivago/prettier-plugin-sort-imports@4.1.0'
+        exclude: '(html)|(md)|(txt)$'
+
+  - repo: https://github.com/pre-commit/mirrors-eslint
+    rev: 'v8.34.0'
+    hooks:
+      - id: eslint
+        args: [--config, .eslintrc.yml, --max-warnings=0]
+        additional_dependencies:
+          - eslint@8.31.0
+          - eslint-config-airbnb@19.0.4
+          - eslint-config-prettier@8.6.0
+          - eslint-config-react-app@7.0.1
+          - eslint-plugin-disable@2.0.3
+          - eslint-plugin-flowtype@8.0.3
+          - eslint-plugin-import@2.26.0
+          - eslint-plugin-jsx-a11y@6.6.1
+          - eslint-plugin-react@7.31.11
+          - eslint-plugin-react-hooks@4.6.0
+        files: \.(js|jsx|ts|tsx)$
+        types: [file]

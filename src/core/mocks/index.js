@@ -1,0 +1,1 @@
+export { mockedCurrentUser } from './currentUser';
