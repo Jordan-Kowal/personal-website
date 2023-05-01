@@ -9,7 +9,7 @@ const { Text } = Typography;
 
 const Footer = () => (
   <Layout.Footer className={styles.footer}>
-    <Space className={styles.footerContent} block centered>
+    <Space block centered>
       <Image preview={false} src={jkdevLogoUrl} alt="JKDev logo" width={20} />
       <Text type="secondary" italic className={styles.footerText}>
         Copyright © 2022-{now().year()} JKDev. All Rights Reserved.

@@ -1,9 +1,9 @@
 import React, { memo } from 'react';
-import { Space } from '@/components';
+import { Space, WelcomeBanner } from '@/components';
 
 const Homepage = () => (
   <Space block vertical size={20}>
-    Homepage
+    <WelcomeBanner />
   </Space>
 );
 
