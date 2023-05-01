@@ -9,7 +9,7 @@ import styles from './WelcomeBanner.module.less';
 export const { Text } = Typography;
 
 const WelcomeBanner = () => (
-  <Space className={styles.welcomeBanner} block vertical>
+  <Space className={styles.welcomeBanner} block vertical size={20}>
     <Logo height={40} />
     <PresentationText />
     <Socials />

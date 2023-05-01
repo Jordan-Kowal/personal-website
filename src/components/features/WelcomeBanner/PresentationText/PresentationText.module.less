@@ -1,7 +1,14 @@
 @import url('src/styles/variables.less');
 
 .presentationText {
+  @fontsize: calc(2vw + 20px);
+
+  .text {
+    font-size: @fontsize !important;
+  }
+
   .name {
     color: @color-primary !important;
+    font-size: @fontsize !important;
   }
 }
