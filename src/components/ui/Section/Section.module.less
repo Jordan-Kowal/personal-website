@@ -1,0 +1,23 @@
+@import url('src/styles/variables.less');
+
+@side-padding: calc((100% - @layout-max-width) / 2);
+
+.section {
+  width: 100%;
+  padding: @layout-padding @side-padding;
+  text-align: center;
+
+  .title {
+    margin: 0;
+    font-size: calc(2vw + 20px);
+  }
+
+  .subtitle {
+    color: @color-primary;
+    font-size: calc(1vw + 5px);
+  }
+
+  &.darker {
+    background-color: @color-bg-layout-darker;
+  }
+}

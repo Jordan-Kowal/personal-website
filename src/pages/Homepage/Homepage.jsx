@@ -1,9 +1,20 @@
 import React, { memo } from 'react';
-import { Space, WelcomeBanner } from '@/components';
+import {
+  Career,
+  Contact,
+  Projects,
+  Skills,
+  Space,
+  WelcomeBanner,
+} from '@/components';
 
 const Homepage = () => (
-  <Space block vertical size={20}>
+  <Space block vertical size={0}>
     <WelcomeBanner />
+    <Skills />
+    <Projects />
+    <Career />
+    <Contact />
   </Space>
 );
 

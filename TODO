@@ -1,11 +1,32 @@
 # TODO
 
 - Welcome
-  - [ ] Logo on square like elevated
   - [ ] Phrase list
   - [ ] CV + link
   - [ ] Black and white animated GIF of me doing stuff
 - Skills
+  - Design
+  - Content:
+    - Languages:
+      - Python + Django + DRF
+      - JavaScript + React + VueJS
+      - HTML + CSS + LESS/SASS
+      - Erlang
+      - Scala
+    - Database: PostgreSQL, MySQL, Redis
+    - Tools: Git, Docker, Linux, CICD pipelines
+    - Other: Video Editing (Davinci Resolve), Design (Figma, Affinity Designer), Game Design (Godot)
 - Projects
+  - Design
+  - Content
 - Career
+  - Design
+  - Content
 - Contact
+  - Design
+  - Content
+
+
+https://www.behance.net/gallery/144641409/Personal-Portfolio-Web-Design?tracking_source=search_projects%7Cdeveloper+portfolio
+https://www.behance.net/gallery/97205839/Developer-Portfolio-Design?tracking_source=search_projects%7Cdeveloper+portfolio
+https://www.behance.net/gallery/141518055/Portfolio-Website-Design?tracking_source=search_projects%7Cdeveloper+portfolio
