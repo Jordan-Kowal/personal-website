@@ -1,14 +1,103 @@
-const projects = [
-  {
+const Project = Object.freeze({
+  JKLIB: {
     id: 1,
     name: 'jklib',
     description:
       'Package with useful snippets for Django and general Python development.',
     githubUrl: 'https://github.com/Jordan-Kowal/jklib',
+    websiteUrl: 'https://pypi.org/project/jklib/',
+    images: [],
+    deprecated: false,
+  },
+  JKSCRIPT: {
+    id: 2,
+    name: 'jkscript',
+    description: 'Personal library with ES6 JavaScript utilities.',
+    githubUrl: 'https://github.com/Jordan-Kowal/jkscript',
+    websiteUrl: 'https://www.npmjs.com/package/jcscript',
+    images: [],
+    deprecated: false,
+  },
+  DJANGO_REACT_STARTER: {
+    id: 3,
+    name: 'django-react-starter',
+    description:
+      'Django-React starter with Docker support for fast and easy web development.',
+    githubUrl: 'https://github.com/Jordan-Kowal/django-react-starter',
     websiteUrl: undefined,
     images: [],
     deprecated: false,
   },
+  ENSEIRB_SCHEDULE_NOTIFIER: {
+    id: 4,
+    name: 'enseirb-schedule-notifier',
+    description:
+      'School schedule with improved UI and automatic notification on schedule changes.',
+    githubUrl: undefined,
+    websiteUrl: 'https://enseirb-schedule-notifier.jkdev.app/',
+    images: [],
+    deprecated: false,
+  },
+  PERSONAL_WEBSITE: {
+    id: 5,
+    name: 'personal-website',
+    description:
+      'You are viewing it right now. My personal static website made with Vite, React, and Antd.',
+    githubUrl: undefined,
+    websiteUrl: 'https://jordan-kowal.github.io/portfolio/',
+  },
+  CHALLENGES: {
+    id: 6,
+    name: 'challenges',
+    description:
+      'Snippets from various challenges, hackathons, and competitions.',
+    githubUrl: 'https://github.com/Jordan-Kowal/challenges',
+    websiteUrl: undefined,
+    images: [],
+    deprecated: false,
+  },
+  DISCORD_DICE_ROLLER: {
+    id: 7,
+    name: 'discord-dice-roller',
+    description:
+      'An open-source, lightweight, and easy-to-use dice roller bot for discord.',
+    githubUrl: 'https://github.com/Jordan-Kowal/discord-dice-roller',
+    websiteUrl: 'https://jordan-kowal.github.io/discord-dice-roller/',
+    images: [],
+    deprecated: true,
+  },
+  DJANGO_DATABASE_TRANSLATION: {
+    id: 8,
+    name: 'django-database-translation',
+    description:
+      'Package for handling database translation in a website with multiple languages.',
+    githubUrl: 'https://github.com/Jordan-Kowal/django-database-translation',
+    websiteUrl: undefined,
+    images: [],
+    deprecated: true,
+  },
+  SUDOKU_MANAGER: {
+    id: 9,
+    name: 'sudoku-manager',
+    description:
+      'My first project. Sudoku solver (and generator) using brute force algorithm.',
+    githubUrl: 'https://github.com/Jordan-Kowal/sudoku-manager',
+    websiteUrl: undefined,
+    images: [],
+    deprecated: true,
+  },
+});
+
+const projects = [
+  Project.JKLIB,
+  Project.JKSCRIPT,
+  Project.DJANGO_REACT_STARTER,
+  Project.ENSEIRB_SCHEDULE_NOTIFIER,
+  Project.PERSONAL_WEBSITE,
+  Project.CHALLENGES,
+  Project.DISCORD_DICE_ROLLER,
+  Project.DJANGO_DATABASE_TRANSLATION,
+  Project.SUDOKU_MANAGER,
 ];
 
 export default projects;

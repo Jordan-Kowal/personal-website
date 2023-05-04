@@ -12,11 +12,11 @@ const Projects = () => (
     subtitle="Look mom, I made these!"
   >
     <Row gutter={[20, 20]}>
-      <Col xs={24} sm={12} md={12} lg={8} xl={6}>
-        {projects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
-        ))}
-      </Col>
+      {projects.map((project) => (
+        <Col xs={24} sm={12} md={12} lg={8} xl={6} key={project.id}>
+          <ProjectCard project={project} />
+        </Col>
+      ))}
     </Row>
   </Section>
 );
