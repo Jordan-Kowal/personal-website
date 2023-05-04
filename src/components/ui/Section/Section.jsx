@@ -24,7 +24,7 @@ const Section = ({ children, className, isDark, subtitle, title }) => (
         {subtitle}
       </Text>
     </Space>
-    <div>{children}</div>
+    <div className={styles.sectionContent}>{children}</div>
   </Space>
 );
 

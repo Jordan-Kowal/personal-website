@@ -6,6 +6,7 @@ extends:
   - stylelint-config-prettier
 customSyntax: postcss-less
 rules:
+  function-no-unknown: null
   function-name-case: null
   value-keyword-case: null
   declaration-colon-newline-after: null

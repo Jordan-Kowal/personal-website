@@ -1,0 +1,36 @@
+@import url('src/styles/variables.less');
+
+.projectCard {
+  z-index: 1;
+  overflow: hidden;
+  min-height: 250px;
+  padding-top: 50px;
+  line-height: 0 !important;
+  text-align: left;
+
+  .projectNameContainer {
+    position: relative;
+
+    .projectName {
+      margin: 0;
+      color: @color-primary;
+      font-size: 30px;
+    }
+
+    .projectNameBackground {
+      position: absolute;
+      z-index: -1;
+      top: -50px;
+      left: -18px;
+      margin: 0;
+      color: fade(@color-text-base, 3%);
+      font-size: 60px;
+      user-select: none;
+      word-break: keep-all;
+    }
+  }
+
+  .projectDescription {
+    font-size: 12px;
+  }
+}
