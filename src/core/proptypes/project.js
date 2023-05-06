@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { SkillPropType } from './skill';
 
 export const ProjectPropType = PropTypes.shape({
   id: PropTypes.number.isRequired,
@@ -8,4 +9,5 @@ export const ProjectPropType = PropTypes.shape({
   websiteUrl: PropTypes.string,
   screenshots: PropTypes.arrayOf(PropTypes.string),
   deprecated: PropTypes.bool.isRequired,
+  skills: PropTypes.arrayOf(SkillPropType).isRequired,
 });

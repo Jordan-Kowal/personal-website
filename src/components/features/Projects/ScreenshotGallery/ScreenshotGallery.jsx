@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Carousel, Image, Modal } from 'antd';
 import PropTypes from 'prop-types';
 import styles from './ScreenshotGallery.module.less';
@@ -31,4 +31,4 @@ ScreenshotGallery.propTypes = {
   screenshots: PropTypes.arrayOf(PropTypes.string),
 };
 
-export default ScreenshotGallery;
+export default memo(ScreenshotGallery);

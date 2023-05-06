@@ -6,17 +6,18 @@ import {
 } from '@ant-design/icons';
 import { Card, Typography } from 'antd';
 import PropTypes from 'prop-types';
-import { Ribbon } from '@/components/ui';
+import { Ribbon, Space } from '@/components/ui';
 import IconButton from '@/components/ui/IconButton';
 import { ProjectPropType } from '@/core/proptypes';
 import LinkCardAction from '../LinkCardAction';
+import ProjectSkill from '../ProjectSkill';
 import styles from './ProjectCard.module.less';
 
 const { Text } = Typography;
 
 const cardBodyStyle = {
-  paddingTop: 100,
-  minHeight: 250,
+  paddingTop: 80,
+  minHeight: 280,
 };
 
 const ProjectCard = ({ onPictureClick, project }) => {
@@ -56,17 +57,23 @@ const ProjectCard = ({ onPictureClick, project }) => {
           />,
         ]}
         bodyStyle={cardBodyStyle}
-        bordered={false}
       >
-        <div className={styles.projectNameContainer}>
-          <Text strong className={styles.projectNameBackground}>
-            {project.name}
+        <Space vertical block size={8}>
+          <div className={styles.projectNameContainer}>
+            <Text strong className={styles.projectNameBackground}>
+              {project.name}
+            </Text>
+            <Text className={styles.projectName}>{project.name}</Text>
+          </div>
+          <Space className={styles.projectSkills}>
+            {project.skills.map((skill) => (
+              <ProjectSkill skill={skill} key={skill.id} />
+            ))}
+          </Space>
+          <Text className={styles.projectDescription} italic type="secondary">
+            {project.description}
           </Text>
-          <Text className={styles.projectName}>{project.name}</Text>
-        </div>
-        <Text className={styles.projectDescription} italic type="secondary">
-          {project.description}
-        </Text>
+        </Space>
       </Card>
     </Ribbon>
   );

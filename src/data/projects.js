@@ -1,3 +1,5 @@
+import SkillDB from './skills';
+
 const ProjectDB = Object.freeze({
   JKLIB: {
     id: 1,
@@ -8,6 +10,7 @@ const ProjectDB = Object.freeze({
     websiteUrl: 'https://pypi.org/project/jklib/',
     screenshots: [],
     deprecated: false,
+    skills: [SkillDB.PYTHON, SkillDB.DJANGO],
   },
   JKSCRIPT: {
     id: 2,
@@ -17,6 +20,7 @@ const ProjectDB = Object.freeze({
     websiteUrl: 'https://www.npmjs.com/package/jcscript',
     screenshots: [],
     deprecated: false,
+    skills: [SkillDB.JAVASCRIPT],
   },
   DJANGO_REACT_STARTER: {
     id: 3,
@@ -27,6 +31,13 @@ const ProjectDB = Object.freeze({
     websiteUrl: undefined,
     screenshots: [],
     deprecated: false,
+    skills: [
+      SkillDB.PYTHON,
+      SkillDB.DJANGO,
+      SkillDB.JAVASCRIPT,
+      SkillDB.REACT,
+      SkillDB.DOCKER,
+    ],
   },
   ENSEIRB_SCHEDULE_NOTIFIER: {
     id: 4,
@@ -41,6 +52,13 @@ const ProjectDB = Object.freeze({
       'screenshots/enseirb-schedule-notifier-3.png',
     ],
     deprecated: false,
+    skills: [
+      SkillDB.PYTHON,
+      SkillDB.DJANGO,
+      SkillDB.JAVASCRIPT,
+      SkillDB.REACT,
+      SkillDB.DOCKER,
+    ],
   },
   PERSONAL_WEBSITE: {
     id: 5,
@@ -51,6 +69,7 @@ const ProjectDB = Object.freeze({
     websiteUrl: 'https://jordan-kowal.github.io/portfolio/',
     screenshots: [],
     deprecated: false,
+    skills: [SkillDB.JAVASCRIPT, SkillDB.REACT],
   },
   CHALLENGES: {
     id: 6,
@@ -61,6 +80,7 @@ const ProjectDB = Object.freeze({
     websiteUrl: undefined,
     screenshots: [],
     deprecated: false,
+    skills: [SkillDB.PYTHON],
   },
   DISCORD_DICE_ROLLER: {
     id: 7,
@@ -71,6 +91,7 @@ const ProjectDB = Object.freeze({
     websiteUrl: 'https://jordan-kowal.github.io/discord-dice-roller/',
     screenshots: ['screenshots/discord-dice-roller-1.png'],
     deprecated: true,
+    skills: [SkillDB.PYTHON, SkillDB.DISCORD],
   },
   DJANGO_DATABASE_TRANSLATION: {
     id: 8,
@@ -81,6 +102,7 @@ const ProjectDB = Object.freeze({
     websiteUrl: undefined,
     screenshots: [],
     deprecated: true,
+    skills: [SkillDB.PYTHON, SkillDB.DJANGO],
   },
   SUDOKU_MANAGER: {
     id: 9,
@@ -91,6 +113,7 @@ const ProjectDB = Object.freeze({
     websiteUrl: undefined,
     screenshots: [],
     deprecated: true,
+    skills: [SkillDB.PYTHON],
   },
 });
 
