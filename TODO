@@ -8,17 +8,14 @@
   - Design
   - Content:
     - Languages:
-      - Python + Django + DRF
-      - JavaScript + React + VueJS
-      - HTML + CSS + LESS/SASS
+      - Python + Django
       - Erlang
+      - JavaScript + React + VueJS
       - Scala
-    - Database: PostgreSQL, MySQL, Redis
+      - HTML + CSS + LESS/SASS
+    - Database: PostgreSQL, Redis, MinIO
     - Tools: Git, Docker, Linux, CICD pipelines
     - Other: Video Editing (Davinci Resolve), Design (Figma, Affinity Designer), Game Design (Godot)
-- Projects
-  - Design
-  - Content
 - Career
   - Design
   - Content

@@ -56,6 +56,7 @@ const ProjectCard = ({ onPictureClick, project }) => {
           />,
         ]}
         bodyStyle={cardBodyStyle}
+        bordered={false}
       >
         <div className={styles.projectNameContainer}>
           <Text strong className={styles.projectNameBackground}>

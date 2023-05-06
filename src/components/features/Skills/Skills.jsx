@@ -6,7 +6,7 @@ const Skills = () => (
   <Section
     className={styles.skills}
     title="My Skills"
-    subtitle="What I'm supposedly good at..."
+    subtitle="I'm supposed to be good at these"
     isDark
   >
     <div>Python</div>

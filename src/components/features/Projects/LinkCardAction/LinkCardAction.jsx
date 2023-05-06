@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom';
 import { IconButton } from '@/components';
 
 const LinkCardAction = ({ icon, tooltip, url }) => {
-  if (!url) return <IconButton size="large" isText icon={icon} disabled />;
+  if (!url) {
+    return (
+      <IconButton size="large" isText icon={icon} disabled tooltip={tooltip} />
+    );
+  }
 
   return (
     <Link to={url} target="_blank">

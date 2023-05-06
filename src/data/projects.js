@@ -1,4 +1,4 @@
-const Project = Object.freeze({
+const ProjectDB = Object.freeze({
   JKLIB: {
     id: 1,
     name: 'jklib',
@@ -94,16 +94,4 @@ const Project = Object.freeze({
   },
 });
 
-const projects = [
-  Project.JKLIB,
-  Project.JKSCRIPT,
-  Project.DJANGO_REACT_STARTER,
-  Project.ENSEIRB_SCHEDULE_NOTIFIER,
-  Project.PERSONAL_WEBSITE,
-  Project.CHALLENGES,
-  Project.DISCORD_DICE_ROLLER,
-  Project.DJANGO_DATABASE_TRANSLATION,
-  Project.SUDOKU_MANAGER,
-];
-
-export default projects;
+export default ProjectDB;

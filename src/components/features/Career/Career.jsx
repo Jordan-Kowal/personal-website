@@ -6,7 +6,7 @@ const Career = () => (
   <Section
     className={styles.career}
     title="Career"
-    subtitle="Where I crashed the production server."
+    subtitle="Where I crashed the production servers"
     isDark
   >
     <div>TBD</div>
