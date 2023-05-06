@@ -10,6 +10,7 @@ const Space = ({
   block,
   centered,
   className,
+  id,
   size = 8,
   split,
   vertical,
@@ -26,6 +27,7 @@ const Space = ({
     size={size}
     split={split}
     wrap={wrap}
+    id={id}
     {...restProps}
   />
 );
@@ -35,6 +37,7 @@ Space.propTypes = {
   block: PropTypes.bool,
   centered: PropTypes.bool,
   className: PropTypes.string,
+  id: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   split: PropTypes.node,
   vertical: PropTypes.bool,

@@ -1,6 +1,5 @@
 import React, { memo, useCallback, useState } from 'react';
 import { Col, Row } from 'antd';
-import { Section } from '@/components/ui';
 import { ProjectDB } from '@/data';
 import ProjectCard from './ProjectCard';
 import ScreenshotGallery from './ScreenshotGallery';
@@ -29,19 +28,14 @@ const Projects = () => {
   };
 
   return (
-    <Section title="Projects" subtitle="For when I have too much free time">
-      <Row gutter={[20, 20]}>
-        {projects.map((project) => (
-          <Col xs={24} sm={12} md={12} lg={8} xl={6} key={project.id}>
-            <ProjectCard
-              project={project}
-              onPictureClick={onScreenshotsClick}
-            />
-          </Col>
-        ))}
-      </Row>
+    <Row gutter={[20, 20]}>
+      {projects.map((project) => (
+        <Col xs={24} sm={12} md={12} lg={8} xl={6} key={project.id}>
+          <ProjectCard project={project} onPictureClick={onScreenshotsClick} />
+        </Col>
+      ))}
       <ScreenshotGallery screenshots={images} onClose={onModalClose} />
-    </Section>
+    </Row>
   );
 };
 

@@ -6,8 +6,7 @@ import {
 } from '@ant-design/icons';
 import { Card, Typography } from 'antd';
 import PropTypes from 'prop-types';
-import { Ribbon, Space } from '@/components/ui';
-import IconButton from '@/components/ui/IconButton';
+import { IconButton, Ribbon, Space } from '@/components/ui';
 import { ProjectPropType } from '@/core/proptypes';
 import LinkCardAction from '../LinkCardAction';
 import ProjectSkill from '../ProjectSkill';

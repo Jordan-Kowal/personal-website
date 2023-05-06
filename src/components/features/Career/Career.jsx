@@ -1,17 +1,7 @@
 import React, { memo } from 'react';
-import { Section } from '@/components/ui';
 import styles from './Career.module.less';
 
-const Career = () => (
-  <Section
-    className={styles.career}
-    title="Career"
-    subtitle="Where I crashed the production servers"
-    isDark
-  >
-    <div>TBD</div>
-  </Section>
-);
+const Career = () => <div className={styles.career}>TBD</div>;
 
 Career.propTypes = {};
 
