@@ -6,6 +6,6 @@ export const ProjectPropType = PropTypes.shape({
   description: PropTypes.string.isRequired,
   githubUrl: PropTypes.string,
   websiteUrl: PropTypes.string,
-  images: PropTypes.arrayOf(PropTypes.string),
+  screenshots: PropTypes.arrayOf(PropTypes.string),
   deprecated: PropTypes.bool.isRequired,
 });

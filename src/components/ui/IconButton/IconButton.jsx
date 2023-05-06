@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import styles from './IconButton.module.less';
 
 const IconButton = ({
+  disabled,
   icon,
   isActive,
   isText,
@@ -18,6 +19,7 @@ const IconButton = ({
       className={classNames(styles.iconButton, {
         [styles.isActiveIcon]: isActive,
       })}
+      disabled={disabled}
       shape="circle"
       type={isText ? 'text' : 'default'}
       icon={icon}
@@ -29,6 +31,7 @@ const IconButton = ({
 );
 
 IconButton.propTypes = {
+  disabled: PropTypes.bool,
   icon: PropTypes.node.isRequired,
   isActive: PropTypes.bool,
   isText: PropTypes.bool,
