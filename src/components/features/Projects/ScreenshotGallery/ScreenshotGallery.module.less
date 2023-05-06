@@ -3,9 +3,17 @@
   :global(.slick-dots) {
     bottom: -20px;
 
-    > li > button {
-      height: 5px !important;
-      background-color: white !important;
+    > li {
+      width: 20px !important;
+
+      &:global(.slick-active) {
+        width: 40px !important;
+      }
+
+      > button {
+        height: 5px !important;
+        background-color: white !important;
+      }
     }
   }
 }
