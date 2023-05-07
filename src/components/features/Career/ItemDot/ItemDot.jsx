@@ -1,10 +1,25 @@
 import React, { memo } from 'react';
-import { CareerItemPropType } from '@/core/proptypes';
+import { Tooltip } from 'antd';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import styles from './ItemDot.module.less';
 
-const ItemDot = ({ careerItem }) => <div />;
+const ItemDot = ({ onGoing }) => {
+  const text = onGoing ? 'On-going' : '';
+
+  return (
+    <Tooltip title={text}>
+      <div
+        className={classNames(styles.itemDot, {
+          [styles.active]: onGoing,
+        })}
+      />
+    </Tooltip>
+  );
+};
 
 ItemDot.propTypes = {
-  careerItem: CareerItemPropType,
+  onGoing: PropTypes.bool,
 };
 
 export default memo(ItemDot);

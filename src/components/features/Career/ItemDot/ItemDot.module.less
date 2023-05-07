@@ -1,0 +1,14 @@
+@import url('src/styles/variables.less');
+
+.itemDot {
+  width: 12px;
+  height: 12px;
+  background-color: @color-primary;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 2px @color-primary;
+
+  &.active {
+    background-color: @color-info;
+    box-shadow: 0 0 10px 2px @color-info;
+  }
+}

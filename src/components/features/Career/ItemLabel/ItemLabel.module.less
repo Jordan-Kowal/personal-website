@@ -2,6 +2,16 @@
 
 .itemLabel {
   @bg-color: lighten(@color-bg-layout, 5%);
+  @offset: 100px;
+
+  position: absolute;
+  top: -3px;
+  left: -@offset;
+
+  &.reversed {
+    right: -@offset + 8px;
+    flex-direction: row-reverse;
+  }
 
   .year {
     padding: 6px;
@@ -18,5 +28,11 @@
     border-top: @border transparent;
     border-bottom: @border transparent;
     border-left: @border @bg-color;
+
+    &.reversed {
+      left: 8px;
+      border-right: @border @bg-color;
+      border-left-width: 0;
+    }
   }
 }
