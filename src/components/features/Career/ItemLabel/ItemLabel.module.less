@@ -1,0 +1,22 @@
+@import url('src/styles/variables.less');
+
+.itemLabel {
+  @bg-color: lighten(@color-bg-layout, 5%);
+
+  .year {
+    padding: 6px;
+    background-color: @bg-color;
+  }
+
+  .arrow {
+    @border: 15px solid;
+
+    position: relative;
+    left: -8px;
+    width: 0;
+    height: 0;
+    border-top: @border transparent;
+    border-bottom: @border transparent;
+    border-left: @border @bg-color;
+  }
+}

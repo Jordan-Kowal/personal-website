@@ -2,6 +2,7 @@ import SkillDB from './skills';
 
 export const WorkExperienceDB = Object.freeze({
   OPENCLASSROOMS_MENTOR: {
+    id: 1,
     title: 'Mentor',
     entity: 'OpenClassrooms',
     location: 'Remote',
@@ -19,6 +20,7 @@ export const WorkExperienceDB = Object.freeze({
     ],
   },
   FIELDBOX_LEAD: {
+    id: 2,
     title: 'Lead Software Developer',
     entity: 'FieldBox.ai',
     location: 'Bordeaux, France',
@@ -40,6 +42,7 @@ export const WorkExperienceDB = Object.freeze({
     ],
   },
   FIELDBOX_SOFTWARE: {
+    id: 3,
     title: 'Fullstack Software Engineer',
     entity: 'FieldBox.ai',
     location: 'Bordeaux, France',
@@ -62,6 +65,7 @@ export const WorkExperienceDB = Object.freeze({
     ],
   },
   GARANTIE_PRIVEE_PO: {
+    id: 4,
     title: 'IT Project Manager',
     entity: 'Garantie Privée',
     location: 'Bordeaux, France',
@@ -79,6 +83,7 @@ export const WorkExperienceDB = Object.freeze({
 
 export const EducationDB = Object.freeze({
   SELF_TRAINING: {
+    id: 1,
     title: 'Self-training in web development',
     entity: 'Online courses',
     location: 'Remote',
@@ -98,6 +103,7 @@ export const EducationDB = Object.freeze({
     ],
   },
   MASTER: {
+    id: 2,
     title: 'Master of Business Administration',
     entity: 'Kedge Business School',
     location: 'Bordeaux, France',
