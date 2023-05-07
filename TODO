@@ -1,32 +1,33 @@
 # TODO
 
-- Welcome
-  - [ ] Phrase list
-  - [ ] CV + link
-  - [ ] Black and white animated GIF of me doing stuff
-- Skills
-  - Design
-  - Content:
-    - Languages:
-      - Python + Django
-      - Erlang
-      - JavaScript + React + VueJS
-      - Scala
-      - HTML + CSS + LESS/SASS
-    - Database: PostgreSQL, Redis, MinIO
-    - Tools: Git, Docker, Linux, CICD pipelines
-    - Other: Video Editing (Davinci Resolve), Design (Figma, Affinity Designer), Game Design (Godot)
-- Career
-  - Design
-  - Content
-- Contact
-  - Design
-  - Content
+**Welcome**
 
-Finishing touch:
-  - Border animation
-  - Blur images
-  - Website URL and screenshot in project list
+- Phrase list
+- CV + link
+- Black and white animated GIF of me doing stuff
+
+**Skills**
+
+- Design
+- Content
+
+**Career**
+
+- Design
+- Content
+
+**Contact**
+
+- Design
+- Content
+
+**Finishing touch**
+
+- Change colors #ffc86b #fe4956
+- Update CV
+- Border animation
+- Blur images
+- Website URL and screenshot in project list
 
 https://www.behance.net/gallery/144641409/Personal-Portfolio-Web-Design?tracking_source=search_projects%7Cdeveloper+portfolio
 https://www.behance.net/gallery/97205839/Developer-Portfolio-Design?tracking_source=search_projects%7Cdeveloper+portfolio

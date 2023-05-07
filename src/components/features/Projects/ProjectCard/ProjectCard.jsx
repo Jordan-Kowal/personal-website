@@ -56,6 +56,7 @@ const ProjectCard = ({ onPictureClick, project }) => {
           />,
         ]}
         bodyStyle={cardBodyStyle}
+        bordered={false}
       >
         <Space vertical block size={8}>
           <div className={styles.projectNameContainer}>
