@@ -6,10 +6,9 @@ import {
 } from '@ant-design/icons';
 import { Card, Typography } from 'antd';
 import PropTypes from 'prop-types';
-import { IconButton, Ribbon, Space } from '@/components/ui';
+import { IconButton, Ribbon, SkillIcon, Space } from '@/components/ui';
 import { ProjectPropType } from '@/core/proptypes';
 import LinkCardAction from '../LinkCardAction';
-import ProjectSkill from '../ProjectSkill';
 import styles from './ProjectCard.module.less';
 
 const { Text } = Typography;
@@ -67,7 +66,7 @@ const ProjectCard = ({ onPictureClick, project }) => {
           </div>
           <Space className={styles.projectSkills}>
             {project.skills.map((skill) => (
-              <ProjectSkill skill={skill} key={skill.id} />
+              <SkillIcon skill={skill} key={skill.id} />
             ))}
           </Space>
           <Text className={styles.projectDescription} italic type="secondary">

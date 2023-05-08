@@ -59,11 +59,6 @@ const SkillDB = Object.freeze({
     name: 'JavaScript',
     icon: 'icons/javascript.png',
   },
-  MINIO: {
-    id: 13,
-    name: 'MinIO',
-    icon: 'icons/minio.png',
-  },
   POSTGRESQL: {
     id: 14,
     name: 'PostgreSQL',

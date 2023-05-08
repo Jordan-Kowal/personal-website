@@ -1,10 +1,23 @@
+@import url('src/styles/variables.less');
+
 .item {
   position: relative;
-  top: 2px;
-  text-align: left;
+  top: -12px;
+  width: 100%;
+  max-width: 450px;
 
-  &.reversed {
-    padding-right: 8px;
-    text-align: right;
+  :global(.ant-card-body) {
+    padding: 10px 20px;
+  }
+
+  .title {
+    color: @color-primary;
+    font-size: 18px;
+  }
+
+  &.active {
+    .title {
+      color: @color-info;
+    }
   }
 }

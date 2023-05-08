@@ -38,7 +38,6 @@ export const WorkExperienceDB = Object.freeze({
       SkillDB.GIT,
       SkillDB.POSTGRESQL,
       SkillDB.DOCKER,
-      SkillDB.MINIO,
     ],
   },
   FIELDBOX_SOFTWARE: {
@@ -61,7 +60,6 @@ export const WorkExperienceDB = Object.freeze({
       SkillDB.GIT,
       SkillDB.POSTGRESQL,
       SkillDB.DOCKER,
-      SkillDB.MINIO,
     ],
   },
   GARANTIE_PRIVEE_PO: {
@@ -69,15 +67,27 @@ export const WorkExperienceDB = Object.freeze({
     title: 'IT Project Manager',
     entity: 'Garantie Privée',
     location: 'Bordeaux, France',
-    startDate: '2011-01-01',
+    startDate: '2013-01-01',
     endDate: '2019-06-30',
     description:
-      'In charge of all software and application developments with both internal and external partners. Applications include: ' +
+      'In charge of software and application developments such as: ' +
       'Insurance subscription platform with SEPA payments and electronic signatures, ' +
       'Fully customized e-commerce websites, ' +
       'Point-of-sales software, ' +
-      'Dashboard and KPI interface.',
+      'Dashboard and reporting tools.',
     skills: [SkillDB.POSTGRESQL, SkillDB.JAVASCRIPT],
+  },
+  GARANTIE_PRIVEE_INTERNSHIP: {
+    id: 5,
+    title: 'Assistant IT Project Manager',
+    entity: 'Garantie Privée',
+    location: 'Bordeaux, France',
+    startDate: '2011-07-01',
+    endDate: '2012-07-01',
+    description:
+      'Assisted the IT Project Manager with on-going projects (wireframing, specs, tests, etc.) ' +
+      'and tech support for users/clients.',
+    skills: [],
   },
 });
 
@@ -108,7 +118,7 @@ export const EducationDB = Object.freeze({
     entity: 'Kedge Business School',
     location: 'Bordeaux, France',
     startDate: '2019-01-01',
-    endDate: '2013-01-01',
+    endDate: '2023-01-01',
     description: 'Specialization in Information Systems Management.',
     skills: [],
   },

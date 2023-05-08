@@ -2,37 +2,30 @@
 
 .itemLabel {
   @bg-color: lighten(@color-bg-layout, 5%);
-  @offset: 100px;
 
-  position: absolute;
-  top: -3px;
-  left: -@offset;
-
-  &.reversed {
-    right: -@offset + 8px;
-    flex-direction: row-reverse;
-  }
-
-  .year {
-    padding: 6px;
-    background-color: @bg-color;
-  }
-
-  .arrow {
-    @border: 15px solid;
-
-    position: relative;
-    left: -8px;
-    width: 0;
-    height: 0;
-    border-top: @border transparent;
-    border-bottom: @border transparent;
-    border-left: @border @bg-color;
-
-    &.reversed {
-      left: 8px;
-      border-right: @border @bg-color;
-      border-left-width: 0;
-    }
-  }
+  //position: relative;
+  //top: -3px;
+  //
+  //.year {
+  //  padding: 6px;
+  //  background-color: @bg-color;
+  //}
+  //
+  //.arrow {
+  //  @border: 15px solid;
+  //
+  //  position: relative;
+  //  left: -8px;
+  //  width: 0;
+  //  height: 0;
+  //  border-top: @border transparent;
+  //  border-bottom: @border transparent;
+  //  border-left: @border @bg-color;
+  //
+  //  &.reversed {
+  //    left: 8px;
+  //    border-right: @border @bg-color;
+  //    border-left-width: 0;
+  //  }
+  //}
 }
