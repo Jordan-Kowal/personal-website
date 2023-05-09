@@ -37,7 +37,7 @@ const Item = ({ careerItem }) => {
         <Text type="secondary" italic>
           {careerItem.description}
         </Text>
-        <Space>
+        <Space wrap>
           {careerItem.skills.map((skill) => (
             <SkillIcon skill={skill} key={skill.id} />
           ))}

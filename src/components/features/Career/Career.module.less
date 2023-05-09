@@ -1,5 +1,78 @@
+@import url('src/styles/variables.less');
+
 .career {
+  width: 100%;
+  max-width: 900px;
+
+  @bg-color: lighten(@color-bg-layout, 5%);
+  @arrow-border: 15px solid;
+
+  // ----------------------------------------
+  // Label
+  // ----------------------------------------
+  .itemLabel {
+    position: relative;
+    top: -4px;
+  }
+
+  .year {
+    padding: 6px;
+    background-color: lighten(@color-bg-layout, 5%);
+  }
+
+  .arrow {
+    position: relative;
+    left: -8px;
+    width: 0;
+    height: 0;
+    border-top: @arrow-border transparent;
+    border-bottom: @arrow-border transparent;
+    border-left: @arrow-border @bg-color;
+  }
+
+  :global(.ant-timeline-item-right) {
+    .itemLabel {
+      left: 24px;
+    }
+
+    .arrow {
+      left: -68px !important;
+      border-right: @arrow-border @bg-color !important;
+      border-left-width: 0 !important;
+    }
+  }
+
+  // ----------------------------------------
+  // Radio
+  // ----------------------------------------
   :global(.ant-radio-button-wrapper) {
     min-width: 170px !important;
+  }
+
+  // ----------------------------------------
+  // Timeline
+  // ----------------------------------------
+  :global(.ant-timeline-item-content) {
+    position: relative;
+    top: -20px;
+    padding-right: 10px !important;
+  }
+
+  &.small {
+    @width: 80px;
+
+    :global(.ant-timeline-item-label) {
+      width: @width;
+    }
+
+    :global(.ant-timeline-item-tail),
+    :global(.ant-timeline-item-head) {
+      inset-inline-start: calc(@width + 10px);
+    }
+
+    :global(.ant-timeline-item-content) {
+      width: calc(100% - @width - 30px) !important;
+      inset-inline-start: calc(@width + 10px) !important;
+    }
   }
 }

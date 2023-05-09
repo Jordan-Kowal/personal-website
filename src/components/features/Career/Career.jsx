@@ -1,12 +1,14 @@
 import React, { memo, useCallback } from 'react';
-import { Col, Grid, Radio, Row, Timeline } from 'antd';
-import ItemLabel from '@/components/features/Career/ItemLabel';
+import { Col, Grid, Radio, Row, Timeline, Typography } from 'antd';
+import classNames from 'classnames';
 import { Space } from '@/components/ui';
 import { EducationDB, WorkExperienceDB } from '@/data';
+import { dateFormatter } from '@/services/dates';
 import styles from './Career.module.less';
 import Item from './Item';
 import ItemDot from './ItemDot';
 
+const { Text } = Typography;
 const { useBreakpoint } = Grid;
 
 const experiences = [
@@ -38,11 +40,23 @@ const Career = () => {
   const timelineItems = items.map((experience) => ({
     dot: <ItemDot onGoing={!experience.endDate} />,
     children: <Item careerItem={experience} />,
-    label: <ItemLabel careerItem={experience} />,
+    label: (
+      <Space className={styles.itemLabel}>
+        <Text strong className={styles.year}>
+          {dateFormatter.asYear(experience.startDate)}
+        </Text>
+        <div className={styles.arrow} />
+      </Space>
+    ),
   }));
 
   return (
-    <Space className={styles.career} block vertical size={40}>
+    <Space
+      className={classNames(styles.career, { [styles.small]: !md })}
+      block
+      vertical
+      size={40}
+    >
       <Radio.Group
         options={options}
         onChange={onTabChange}
