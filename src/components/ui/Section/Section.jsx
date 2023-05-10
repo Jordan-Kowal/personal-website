@@ -7,27 +7,33 @@ import styles from './Section.module.less';
 
 const { Text, Title } = Typography;
 
-const Section = ({ children, className, id, isDark, subtitle, title }) => (
-  <Space
-    block
-    className={classNames(styles.section, className, {
-      [styles.darker]: isDark,
-    })}
-    id={id}
-    size={20}
-    vertical
-  >
-    <Space block vertical size={0}>
-      <Title className={styles.title} level={1}>
-        {title}
-      </Title>
-      <Text italic className={styles.subtitle}>
-        {subtitle}
-      </Text>
+const Section = ({ children, className, id, isDark, subtitle, title }) => {
+  const empty = !title && !subtitle;
+
+  return (
+    <Space
+      block
+      className={classNames(styles.section, className, {
+        [styles.darker]: isDark,
+      })}
+      id={id}
+      size={20}
+      vertical
+    >
+      {!empty && (
+        <Space block vertical size={0}>
+          <Title className={styles.title} level={1}>
+            {title}
+          </Title>
+          <Text italic className={styles.subtitle}>
+            {subtitle}
+          </Text>
+        </Space>
+      )}
+      <div className={styles.sectionContent}>{children}</div>
     </Space>
-    <div className={styles.sectionContent}>{children}</div>
-  </Space>
-);
+  );
+};
 
 Section.propTypes = {
   children: PropTypes.node,

@@ -31,8 +31,6 @@ const sections = [
   },
   {
     key: 'contact',
-    title: 'Contact',
-    subtitle: 'Beam me up, Scotty!',
     component: Contact,
   },
 ];

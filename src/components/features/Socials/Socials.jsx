@@ -7,12 +7,13 @@ import {
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { IconButton, Space } from '@/components/ui';
+import { GITHUB_URL, LINKEDIN_URL, YOUTUBE_URL } from '@/core/constants';
 import styles from './Socials.module.less';
 
 // TODO: Download Resume
 const Socials = () => (
   <Space className={styles.socials} size={20}>
-    <Link to="https://github.com/Jordan-Kowal" target="_blank">
+    <Link to={GITHUB_URL} target="_blank">
       <IconButton
         size="large"
         isText
@@ -20,7 +21,7 @@ const Socials = () => (
         tooltip="GitHub"
       />
     </Link>
-    <Link to="https://www.linkedin.com/in/jordan-kowal/" target="_blank">
+    <Link to={LINKEDIN_URL} target="_blank">
       <IconButton
         size="large"
         isText
@@ -28,10 +29,7 @@ const Socials = () => (
         tooltip="LinkedIn"
       />
     </Link>
-    <Link
-      to="https://www.youtube.com/channel/UC8aLJUnA2x5HgjvirPL1yTw"
-      target="_blank"
-    >
+    <Link to={YOUTUBE_URL} target="_blank">
       <IconButton
         size="large"
         isText
