@@ -31,7 +31,9 @@ const sections = [
   },
   {
     key: 'contact',
+    title: 'Contact',
     component: Contact,
+    headless: true,
   },
 ];
 
@@ -50,17 +52,20 @@ const Homepage = () => (
       offsetTop={0}
       targetOffset={30}
     />
-    {sections.map(({ key, component: Component, title, subtitle }, index) => (
-      <Section
-        key={key}
-        id={key}
-        title={title}
-        subtitle={subtitle}
-        isDark={!(index % 2)}
-      >
-        <Component />
-      </Section>
-    ))}
+    {sections.map(
+      ({ key, component: Component, title, subtitle, headless }, index) => (
+        <Section
+          key={key}
+          id={key}
+          title={title}
+          subtitle={subtitle}
+          isDark={!(index % 2)}
+          headless={headless}
+        >
+          <Component />
+        </Section>
+      )
+    )}
   </Space>
 );
 

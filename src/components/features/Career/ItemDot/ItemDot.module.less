@@ -1,14 +1,28 @@
 @import url('src/styles/variables.less');
 
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 fade(@color-info, 75%);
+  }
+
+  80% {
+    box-shadow: 0 0 0 10px fade(@color-info, 0%);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 fade(@color-info, 0%);
+  }
+}
+
 .itemDot {
   width: 12px;
   height: 12px;
   background-color: @color-primary;
   border-radius: 50%;
-  box-shadow: 0 0 10px 2px @color-primary;
 
   &.active {
+    animation: pulse 2s infinite;
     background-color: @color-info;
-    box-shadow: 0 0 10px 2px @color-info;
+    box-shadow: 0 0 0 0 @color-info;
   }
 }
