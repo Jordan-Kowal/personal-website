@@ -34,14 +34,14 @@ export const typingStyle = {
 const PresentationText = () => (
   <Space className={styles.presentationText} block vertical>
     <Text className={styles.text}>
-      Hi there, my name is a{' '}
+      Hi there, my name is{' '}
       <Text className={styles.name} strong>
         Jordan Kowal
       </Text>
       ,
     </Text>
     <Text className={styles.text}>
-      and I am{' '}
+      and I am a{' '}
       <TypeAnimation
         cursor
         repeat={Infinity}

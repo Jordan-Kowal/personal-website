@@ -91,7 +91,7 @@ const ProjectDB = Object.freeze({
     websiteUrl: 'https://jordan-kowal.github.io/discord-dice-roller/',
     screenshots: ['screenshots/discord-dice-roller-1.png'],
     deprecated: true,
-    skills: [SkillDB.PYTHON, SkillDB.DISCORD],
+    skills: [SkillDB.PYTHON],
   },
   DJANGO_DATABASE_TRANSLATION: {
     id: 8,
