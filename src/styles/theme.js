@@ -1,11 +1,11 @@
 /** Try it out at https://ant.design/theme-editor */
 
 const theme = {
-  colorPrimary: '#e01272',
-  colorInfo: '#1fb393',
-  colorSuccess: '#52c41a',
-  colorWarning: '#faad14',
-  colorError: '#ff4d4f',
+  colorPrimary: '#ce53a0',
+  colorInfo: '#d4a14a',
+  colorSuccess: '#49aa19', // Dark mode
+  colorWarning: '#d89614', // Dark mode
+  colorError: '#a61d24', // Dark mode
   colorTextBase: '#ffffffdd',
   colorBgBase: '#000000',
   colorBgLayout: '#222222',

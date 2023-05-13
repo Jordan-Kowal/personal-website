@@ -8,6 +8,7 @@ import { Card, Typography } from 'antd';
 import PropTypes from 'prop-types';
 import { IconButton, Ribbon, SkillIcon, Space } from '@/components/ui';
 import { ProjectPropType } from '@/core/proptypes';
+import { theme } from '@/styles';
 import LinkCardAction from '../LinkCardAction';
 import styles from './ProjectCard.module.less';
 
@@ -29,7 +30,7 @@ const ProjectCard = ({ onPictureClick, project }) => {
   }, [hasScreenshots, onPictureClick, project.screenshots]);
 
   return (
-    <Ribbon text={ribbonText} color="red">
+    <Ribbon text={ribbonText} color={theme.colorError}>
       <Card
         className={styles.projectCard}
         actions={[
