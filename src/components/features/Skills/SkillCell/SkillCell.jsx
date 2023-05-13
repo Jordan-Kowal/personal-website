@@ -1,15 +1,16 @@
 import React from 'react';
-import { Tooltip } from 'antd';
+import { Card, Tooltip } from 'antd';
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { SkillPropType } from '@/core/proptypes';
 import styles from './SkillCell.module.less';
 
-const DELTA = 3;
+const DELTA = 5;
 
-const SkillCell = ({ skill, size, top, left }) => (
+const SkillCell = ({ isActive, skill, size, top, left }) => (
   <Tooltip title={skill.name} placement="top">
-    <div
-      className={styles.skillCell}
+    <Card
+      className={classNames(styles.skillCell, { [styles.inactive]: !isActive })}
       style={{
         top: `${top}px`,
         left: `${left}px`,
@@ -27,11 +28,12 @@ const SkillCell = ({ skill, size, top, left }) => (
           backgroundImage: `url(${skill.icon})`,
         }}
       />
-    </div>
+    </Card>
   </Tooltip>
 );
 
 SkillCell.propTypes = {
+  isActive: PropTypes.bool,
   skill: SkillPropType,
   size: PropTypes.number,
   top: PropTypes.number,

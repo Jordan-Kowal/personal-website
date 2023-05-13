@@ -4,6 +4,15 @@
   position: absolute;
   transition: @base-transition;
 
+  &.inactive {
+    background-color: #000;
+    filter: grayscale(100%);
+  }
+
+  :global(.ant-card-body) {
+    padding: 0 !important;
+  }
+
   .icon {
     position: relative;
     background-position: center;
