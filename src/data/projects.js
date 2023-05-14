@@ -43,7 +43,7 @@ const ProjectDB = Object.freeze({
     id: 4,
     name: 'enseirb-schedule-notifier',
     description:
-      'School schedule with improved UI and automatic notification on schedule changes.',
+      'School schedule with improved UI and automatic notifications on schedule changes.',
     githubUrl: undefined,
     websiteUrl: 'https://enseirb-schedule-notifier.jkdev.app/',
     screenshots: [
@@ -86,7 +86,7 @@ const ProjectDB = Object.freeze({
     id: 7,
     name: 'discord-dice-roller',
     description:
-      'An open-source, lightweight, and easy-to-use dice roller bot for discord.',
+      'An open-source, lightweight, and easy-to-use dice-roller bot for discord.',
     githubUrl: 'https://github.com/Jordan-Kowal/discord-dice-roller',
     websiteUrl: 'https://jordan-kowal.github.io/discord-dice-roller/',
     screenshots: ['screenshots/discord-dice-roller-1.png'],

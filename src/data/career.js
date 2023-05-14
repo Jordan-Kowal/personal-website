@@ -8,9 +8,7 @@ export const WorkExperienceDB = Object.freeze({
     location: 'Remote',
     startDate: '2022-02-01',
     endDate: null,
-    description:
-      'Mentor at OpenClassrooms for the "Python Developer" program. ' +
-      'Weekly meets and one-on-one with students to help them go through their training.',
+    description: 'Mentor at OpenClassrooms for the "Python Developer" program.',
     skills: [
       SkillDB.PYTHON,
       SkillDB.DJANGO,
@@ -71,10 +69,9 @@ export const WorkExperienceDB = Object.freeze({
     endDate: '2019-06-30',
     description:
       'In charge of software and application developments such as: ' +
-      'Insurance subscription platform with SEPA payments and electronic signatures, ' +
-      'Fully customized e-commerce websites, ' +
-      'Point-of-sales software, ' +
-      'Dashboard and reporting tools.',
+      'insurance subscription platform, ' +
+      'fully customized e-commerce websites, ' +
+      'and point-of-sales software.',
     skills: [SkillDB.POSTGRESQL, SkillDB.JAVASCRIPT],
   },
   GARANTIE_PRIVEE_INTERNSHIP: {
@@ -85,8 +82,7 @@ export const WorkExperienceDB = Object.freeze({
     startDate: '2011-07-01',
     endDate: '2012-07-01',
     description:
-      'Assisted the IT Project Manager with on-going projects (wireframing, specs, tests, etc.) ' +
-      'and tech support for users/clients.',
+      'Assisted the IT Project Manager with on-going projects (wire-framing, specs, tests, etc.).',
     skills: [],
   },
 });
