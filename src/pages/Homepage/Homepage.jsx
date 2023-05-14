@@ -14,19 +14,16 @@ const sections = [
   {
     key: 'skills',
     title: 'Skills',
-    subtitle: "I'm supposed to be good at these",
     component: Skills,
   },
   {
     key: 'projects',
     title: 'Projects',
-    subtitle: 'For when I have too much free time',
     component: Projects,
   },
   {
     key: 'career',
     title: 'Career',
-    subtitle: 'Where I crashed production servers',
     component: Career,
   },
   {
@@ -58,7 +55,6 @@ const Homepage = () => (
           key={key}
           id={key}
           title={title}
-          subtitle={subtitle}
           isDark={!(index % 2)}
           headless={headless}
         >

@@ -1,8 +1,8 @@
 /** Try it out at https://ant.design/theme-editor */
 
 const theme = {
-  colorPrimary: '#ce53a0',
-  colorInfo: '#d4a14a',
+  colorPrimary: '#edb048',
+  colorInfo: '#e75393',
   colorSuccess: '#49aa19', // Dark mode
   colorWarning: '#d89614', // Dark mode
   colorError: '#a61d24', // Dark mode

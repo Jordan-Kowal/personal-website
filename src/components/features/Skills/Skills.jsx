@@ -123,7 +123,6 @@ const Skills = () => {
             ))}
         </div>
       </Col>
-      s
     </Row>
   );
 };

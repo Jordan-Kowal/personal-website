@@ -5,17 +5,9 @@ import PropTypes from 'prop-types';
 import { Space } from '@/components/ui';
 import styles from './Section.module.less';
 
-const { Text, Title } = Typography;
+const { Title } = Typography;
 
-const Section = ({
-  children,
-  className,
-  headless,
-  id,
-  isDark,
-  subtitle,
-  title,
-}) => (
+const Section = ({ children, className, headless, id, isDark, title }) => (
   <Space
     block
     className={classNames(styles.section, className, {
@@ -26,14 +18,9 @@ const Section = ({
     vertical
   >
     {!headless && (
-      <Space block vertical size={0}>
-        <Title className={styles.title} level={1}>
-          {title}
-        </Title>
-        <Text italic className={styles.subtitle}>
-          {subtitle}
-        </Text>
-      </Space>
+      <Title className={styles.title} level={1}>
+        {title}
+      </Title>
     )}
     <div className={styles.sectionContent}>{children}</div>
   </Space>
@@ -45,7 +32,6 @@ Section.propTypes = {
   headless: PropTypes.bool,
   id: PropTypes.string,
   isDark: PropTypes.bool,
-  subtitle: PropTypes.string,
   title: PropTypes.string,
 };
 

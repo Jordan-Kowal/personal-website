@@ -66,7 +66,7 @@ const ProjectDB = Object.freeze({
     description:
       'You are viewing it right now. My personal static website made with Vite, React, and Antd.',
     githubUrl: undefined,
-    websiteUrl: 'https://jordan-kowal.github.io/portfolio/',
+    websiteUrl: 'https://jordan-kowal.github.io/profile/',
     screenshots: [],
     deprecated: false,
     skills: [SkillDB.JAVASCRIPT, SkillDB.REACT],
@@ -99,7 +99,7 @@ const ProjectDB = Object.freeze({
     description:
       'Package for handling database translation in a website with multiple languages.',
     githubUrl: 'https://github.com/Jordan-Kowal/django-database-translation',
-    websiteUrl: undefined,
+    websiteUrl: 'https://pypi.org/project/django-database-translation/',
     screenshots: [],
     deprecated: true,
     skills: [SkillDB.PYTHON, SkillDB.DJANGO],
@@ -110,7 +110,7 @@ const ProjectDB = Object.freeze({
     description:
       'My first project. Sudoku solver (and generator) using brute force algorithm.',
     githubUrl: 'https://github.com/Jordan-Kowal/sudoku-manager',
-    websiteUrl: undefined,
+    websiteUrl: 'https://pypi.org/project/sudoku-manager/',
     screenshots: [],
     deprecated: true,
     skills: [SkillDB.PYTHON],
