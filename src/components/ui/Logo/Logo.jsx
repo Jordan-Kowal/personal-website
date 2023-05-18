@@ -15,6 +15,7 @@ const Logo = ({ elevated, height }) => (
         src={jkdevLogoUrl}
         alt="Logo"
         height={height}
+        width={height}
       />
     </Link>
   </div>
