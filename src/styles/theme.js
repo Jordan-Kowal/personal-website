@@ -2,7 +2,7 @@
 
 const theme = {
   colorPrimary: '#edb048',
-  colorInfo: '#e75393',
+  colorInfo: '#ff5d5f',
   colorSuccess: '#49aa19', // Dark mode
   colorWarning: '#d89614', // Dark mode
   colorError: '#a61d24', // Dark mode

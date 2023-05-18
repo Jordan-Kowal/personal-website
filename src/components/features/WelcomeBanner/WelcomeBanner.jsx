@@ -10,7 +10,7 @@ export const { Text } = Typography;
 
 const WelcomeBanner = () => (
   <Space className={styles.welcomeBanner} block vertical size={20}>
-    <Logo height={60} />
+    <Logo height={80} />
     <PresentationText />
     <Socials />
   </Space>

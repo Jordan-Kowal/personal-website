@@ -7,8 +7,26 @@ import styles from './PresentationText.module.less';
 
 const { Text } = Typography;
 
-// TODO: Update phrase list
-const phrases = [];
+const phrases = [
+  'a fullstack developer',
+  'a sports addict',
+  'hyperactive',
+  'a self-taught programmer',
+  'owned by a cat',
+  'an OpenClassrooms mentor',
+  'a rock climber',
+  'a former product owner',
+  'fun to be around',
+  'always eating',
+  'a fast-learner',
+  'resourceful',
+  'a bike commuter',
+  'a technology enthusiast',
+  'a decent cook',
+  'an okay-ish designer',
+  'a plaid hoarder',
+  '..',
+];
 
 export const typingSequence = phrases.reduce((acc, phrase) => {
   acc.push(`${phrase}.`);
@@ -24,14 +42,14 @@ export const typingStyle = {
 const PresentationText = () => (
   <Space className={styles.presentationText} block vertical>
     <Text className={styles.text}>
-      Hi there, my name is{' '}
+      Hey there, my name is{' '}
       <Text className={styles.name} strong>
         Jordan Kowal
       </Text>
       ,
     </Text>
     <Text className={styles.text}>
-      and I am a{' '}
+      and I am{' '}
       <TypeAnimation
         cursor
         repeat={Infinity}
