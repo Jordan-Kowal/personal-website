@@ -35,7 +35,7 @@ pre-commit install
 We use GitHub actions to build and deploy the application. We currently have 2 main pipelines:
 
 - [QA](.github/workflows/qa.yml): Checks linters/formatters and run tests
-- [deploy](.github/workflows/deploy.yml): Builds the application and deploys it to the production server
+- [deploy](.github/workflows/deploy.yml): Builds the application and deploys it to GitHub Pages
 
 ## Made by JKDev
 

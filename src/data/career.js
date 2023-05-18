@@ -25,7 +25,7 @@ export const WorkExperienceDB = Object.freeze({
     startDate: '2022-02-01',
     endDate: null,
     description:
-      'Same as before except I crash the production server less frequently.',
+      'Same as before except I crash the production servers less frequently.',
     skills: [
       SkillDB.PYTHON,
       SkillDB.DJANGO,

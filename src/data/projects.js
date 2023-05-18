@@ -65,7 +65,7 @@ const ProjectDB = Object.freeze({
     name: 'personal-website',
     description:
       'You are viewing it right now. My personal static website made with Vite, React, and Antd.',
-    githubUrl: undefined,
+    githubUrl: 'https://github.com/Jordan-Kowal/personal-website',
     websiteUrl: 'https://jordan-kowal.github.io/personal-website/',
     screenshots: [],
     deprecated: false,
