@@ -79,4 +79,20 @@
       inset-inline-start: calc(@width + 10px) !important;
     }
   }
+
+  &.xs {
+    :global(.ant-timeline-item-label) {
+      display: none;
+    }
+
+    :global(.ant-timeline-item-tail),
+    :global(.ant-timeline-item-head) {
+      inset-inline-start: 10px;
+    }
+
+    :global(.ant-timeline-item-content) {
+      width: calc(100% - 30px) !important;
+      inset-inline-start: 10px !important;
+    }
+  }
 }

@@ -28,7 +28,7 @@ const options = [
 
 const Career = () => {
   const [activeTab, setActiveTab] = React.useState('work');
-  const { md } = useBreakpoint();
+  const { md, xs } = useBreakpoint();
 
   const items = activeTab === 'work' ? experiences : degrees;
   const mode = md ? 'alternate' : 'left';
@@ -52,7 +52,10 @@ const Career = () => {
 
   return (
     <Space
-      className={classNames(styles.career, { [styles.small]: !md })}
+      className={classNames(styles.career, {
+        [styles.small]: !md,
+        [styles.xs]: xs,
+      })}
       block
       vertical
       size={40}
