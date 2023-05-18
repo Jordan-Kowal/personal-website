@@ -71,15 +71,6 @@ const SkillDB = Object.freeze({
     isFrontend: true,
     isOther: false,
   },
-  GODOT: {
-    id: 10,
-    name: 'Godot',
-    icon: 'icons/godot.png',
-    isCore: false,
-    isBackend: false,
-    isFrontend: false,
-    isOther: true,
-  },
   HTML5: {
     id: 11,
     name: 'HTML5',

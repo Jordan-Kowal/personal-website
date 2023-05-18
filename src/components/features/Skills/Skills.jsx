@@ -35,7 +35,6 @@ const skillList = [
   SkillDB.FIGMA,
   SkillDB.AFFINITY_DESIGNER,
   SkillDB.DAVINCI_RESOLVE,
-  SkillDB.GODOT,
 ];
 
 const Skills = () => {

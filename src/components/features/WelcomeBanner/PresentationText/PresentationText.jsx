@@ -8,17 +8,7 @@ import styles from './PresentationText.module.less';
 const { Text } = Typography;
 
 // TODO: Update phrase list
-const phrases = [
-  'full stack developer',
-  'software engineer',
-  'self-taught programmer',
-  'former product owner',
-  'OpenClassrooms mentor',
-  'fast-learner',
-  'rock-climber',
-  'pretty decent cook',
-  'cat owner',
-];
+const phrases = [];
 
 export const typingSequence = phrases.reduce((acc, phrase) => {
   acc.push(`${phrase}.`);
