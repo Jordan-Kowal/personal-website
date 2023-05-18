@@ -7,16 +7,15 @@ import styles from './SkillCell.module.less';
 
 const DELTA = 5;
 
-const SkillCell = ({ isActive, skill, size, top, left }) => (
+const SkillCell = ({ isActive, skill, size }) => (
   <Tooltip title={skill.name} placement="top">
     <Card
       className={classNames(styles.skillCell, { [styles.inactive]: !isActive })}
       style={{
-        top: `${top}px`,
-        left: `${left}px`,
         width: `${size}px`,
         height: `${size}px`,
       }}
+      bordered={false}
     >
       <div
         className={styles.icon}
@@ -36,8 +35,6 @@ SkillCell.propTypes = {
   isActive: PropTypes.bool,
   skill: SkillPropType,
   size: PropTypes.number,
-  top: PropTypes.number,
-  left: PropTypes.number,
 };
 
 export default SkillCell;

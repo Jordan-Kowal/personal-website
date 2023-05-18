@@ -1,14 +1,15 @@
 @import url('src/styles/variables.less');
 
 .skillCell {
-  position: absolute;
-  background-image: none;
+  background-color: transparent !important;
+  background-image: none !important;
   transition: @base-transition;
 
   &.inactive {
     border-color: transparent;
     background-color: #0000;
     filter: grayscale(100%);
+    opacity: 0.2;
   }
 
   :global(.ant-card-body) {

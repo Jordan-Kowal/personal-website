@@ -1,13 +1,12 @@
-import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import { Col, Radio, Row } from 'antd';
-import { useDebounce, useWindowSize } from 'react-use';
+import { Space } from '@/components/ui';
 import { skillFilter } from '@/core/skills';
 import { SkillDB } from '@/data';
 import SkillCell from './SkillCell';
 import styles from './Skills.module.less';
 
 const SKILL_SIZE = 80;
-const SKILL_GAP = 15;
 
 const options = [
   { label: 'All', value: 'all' },
@@ -38,14 +37,7 @@ const skillList = [
 ];
 
 const Skills = () => {
-  const [container, setContainer] = useState(null);
-  const [boundingRect, setBoundingRect] = useState(null);
-  const [skillCoordinates, setSkillCoordinates] = useState([]);
-  const [containerHeight, setContainerHeight] = useState(100);
   const [isActiveList, setIsActiveList] = useState(skillList.map(() => true));
-
-  const containerRef = useRef(null);
-  const { width: windowWidth } = useWindowSize();
 
   const onFilterChange = useCallback((e) => {
     const { value } = e.target;
@@ -64,33 +56,6 @@ const Skills = () => {
     }
   }, []);
 
-  useEffect(() => {
-    setContainer(containerRef.current);
-  }, [containerRef.current]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  useDebounce(
-    () => {
-      setBoundingRect(container?.getBoundingClientRect());
-    },
-    50,
-    [windowWidth, container]
-  );
-
-  useEffect(() => {
-    if (!container || !boundingRect) return;
-    const { width } = boundingRect;
-    const itemPerRow = Math.floor(width / SKILL_SIZE) - 1;
-    const rowCount = Math.ceil(skillList.length / itemPerRow);
-    const totalSize = SKILL_SIZE + SKILL_GAP;
-    const coordinates = skillList.map((skill, index) => {
-      const x = index % itemPerRow;
-      const y = Math.floor(index / itemPerRow);
-      return { top: y * totalSize, left: totalSize * 0.2 + x * totalSize };
-    });
-    setSkillCoordinates(coordinates);
-    setContainerHeight(rowCount * totalSize);
-  }, [container, boundingRect]);
-
   return (
     <Row className={styles.skills} gutter={[20, 20]}>
       <Col span={24} className={styles.col}>
@@ -103,24 +68,16 @@ const Skills = () => {
         />
       </Col>
       <Col span={24} className={styles.col}>
-        <div
-          className={styles.container}
-          ref={containerRef}
-          style={{ height: containerHeight }}
-        >
-          {boundingRect &&
-            skillCoordinates.length &&
-            skillList.map((skill, index) => (
-              <SkillCell
-                top={skillCoordinates[index].top}
-                left={skillCoordinates[index].left}
-                size={SKILL_SIZE}
-                skill={skill}
-                key={skill.id}
-                isActive={isActiveList[index]}
-              />
-            ))}
-        </div>
+        <Space className={styles.container} block size={8} wrap>
+          {skillList.map((skill, index) => (
+            <SkillCell
+              size={SKILL_SIZE}
+              skill={skill}
+              key={skill.id}
+              isActive={isActiveList[index]}
+            />
+          ))}
+        </Space>
       </Col>
     </Row>
   );
