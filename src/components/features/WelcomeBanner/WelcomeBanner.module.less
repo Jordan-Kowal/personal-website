@@ -1,9 +1,22 @@
 @import url('src/styles/variables.less');
 
 .welcomeBanner {
+  position: relative;
   width: 100%;
-  height: calc(100vh - @header-height);
+  height: 100vh;
   align-items: center;
   justify-content: space-between;
   padding: @layout-padding;
+
+  .video {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: -7vw;
+    overflow: hidden;
+    width: 114vw;
+    height: 100vh;
+    filter: grayscale(100%);
+    opacity: 0.3;
+  }
 }
