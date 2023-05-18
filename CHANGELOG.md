@@ -1,8 +1,5 @@
 # Changelog
 
-## [v1.0.0] - YYYY-MM-DD
+## [v1.0.0] - 2023-05-19
 
-**Bugfixes**
-**Improvements**
-**Features**
-**Technical**
+Deploying the first version of the website.
