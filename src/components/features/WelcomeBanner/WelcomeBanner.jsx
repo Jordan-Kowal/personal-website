@@ -6,14 +6,16 @@ import PresentationText from './PresentationText';
 import styles from './WelcomeBanner.module.less';
 
 const WelcomeBanner = () => (
-  <Space className={styles.welcomeBanner} block vertical size={20}>
+  <div className={styles.welcomeBanner}>
     <video autoPlay muted loop className={styles.video}>
       <source src="videos/background-presentation.mp4" type="video/mp4" />
     </video>
-    <Logo height={80} />
-    <PresentationText />
-    <Socials />
-  </Space>
+    <Space className={styles.content} block vertical size={20}>
+      <Logo height={80} />
+      <PresentationText />
+      <Socials />
+    </Space>
+  </div>
 );
 
 WelcomeBanner.propTypes = {};

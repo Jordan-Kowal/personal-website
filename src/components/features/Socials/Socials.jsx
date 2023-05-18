@@ -37,7 +37,7 @@ const Socials = () => (
         tooltip="Youtube"
       />
     </Link>
-    <Link to="/" target="_blank">
+    <Link to="files/resume.pdf" target="_blank">
       <IconButton
         size="large"
         isText
