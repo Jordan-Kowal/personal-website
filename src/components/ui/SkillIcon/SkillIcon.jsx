@@ -1,15 +1,29 @@
 import React, { memo } from 'react';
 import { Image, Tooltip } from 'antd';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import { SkillPropType } from '@/core/proptypes';
+import styles from './SkillIcon.module.less';
 
-const SkillIcon = ({ skill }) => (
+const SkillIcon = ({ skill, className, size = 20 }) => (
   <Tooltip title={skill.name}>
-    <Image src={skill.icon} alt={skill.name} preview={false} height={20} />
+    <Image
+      className={classNames(styles.icon, className)}
+      src={skill.icon}
+      alt={skill.name}
+      preview={false}
+      style={{
+        maxWidth: `${size}px`,
+        maxHeight: `${size}px`,
+      }}
+    />
   </Tooltip>
 );
 
 SkillIcon.propTypes = {
+  className: PropTypes.string,
   skill: SkillPropType.isRequired,
+  size: PropTypes.number,
 };
 
 export default memo(SkillIcon);

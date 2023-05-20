@@ -1,12 +1,10 @@
 import React, { memo, useCallback, useState } from 'react';
 import { Col, Radio, Row } from 'antd';
-import { Space } from '@/components/ui';
+import classNames from 'classnames';
+import { SkillIcon, Space } from '@/components/ui';
 import { skillFilter } from '@/core/skills';
 import { SkillDB } from '@/data';
-import SkillCell from './SkillCell';
 import styles from './Skills.module.less';
-
-const SKILL_SIZE = 80;
 
 const options = [
   { label: 'All', value: 'all' },
@@ -68,13 +66,15 @@ const Skills = () => {
         />
       </Col>
       <Col span={24} className={styles.col}>
-        <Space className={styles.container} block size={8} wrap>
+        <Space className={styles.container} block size={20} wrap>
           {skillList.map((skill, index) => (
-            <SkillCell
-              size={SKILL_SIZE}
+            <SkillIcon
+              size={80}
               skill={skill}
               key={skill.id}
-              isActive={isActiveList[index]}
+              className={classNames({
+                [styles.inactiveSkill]: !isActiveList[index],
+              })}
             />
           ))}
         </Space>
