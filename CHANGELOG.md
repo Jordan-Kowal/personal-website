@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.0.2] - 2023-06-08
+
+- Website now takes up entire screen during the initial loading.
+
 ## [v1.0.1] - 2023-05-20
 
 - Fixed skill icons not rendering correctly on some browsers.
