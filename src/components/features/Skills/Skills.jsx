@@ -18,6 +18,7 @@ const skillList = [
   SkillDB.PYTHON,
   SkillDB.DJANGO,
   SkillDB.ERLANG,
+  SkillDB.ELIXIR,
   SkillDB.SCALA,
   SkillDB.JAVASCRIPT,
   SkillDB.REACT,

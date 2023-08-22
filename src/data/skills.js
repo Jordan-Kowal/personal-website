@@ -152,6 +152,15 @@ const SkillDB = Object.freeze({
     isFrontend: true,
     isOther: false,
   },
+  ELIXIR: {
+    id: 21,
+    name: 'Elixir',
+    icon: 'icons/elixir.png',
+    isCore: false,
+    isBackend: true,
+    isFrontend: false,
+    isOther: false,
+  },
 });
 
 export default SkillDB;

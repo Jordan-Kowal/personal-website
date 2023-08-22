@@ -115,6 +115,23 @@ const ProjectDB = Object.freeze({
     deprecated: true,
     skills: [SkillDB.PYTHON],
   },
+  WORLD_MAP: {
+    id: 10,
+    name: 'world-map',
+    description:
+      'World map with locations markers of my travels and places I lived in.',
+    githubUrl: 'https://github.com/Jordan-Kowal/our-world-map',
+    websiteUrl: 'https://world-map.jkdev.app/',
+    screenshots: ['screenshots/world-map-1.png'],
+    deprecated: false,
+    skills: [
+      SkillDB.PYTHON,
+      SkillDB.DJANGO,
+      SkillDB.JAVASCRIPT,
+      SkillDB.REACT,
+      SkillDB.DOCKER,
+    ],
+  },
 });
 
 export default ProjectDB;

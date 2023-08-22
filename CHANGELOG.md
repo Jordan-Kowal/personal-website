@@ -1,5 +1,11 @@
 # Changelog
 
+## [v1.0.3] - 2023-08-22
+
+- Added **Elixir** skill
+- Added **World Map** project
+- Fixed screenshot gallery close button and width on big screens
+
 ## [v1.0.2] - 2023-06-08
 
 - Website now takes up entire screen during the initial loading.
