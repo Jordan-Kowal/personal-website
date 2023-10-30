@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.0.4] - 2023-10-31
+
+- Added **WTTJ** career and update previous jobs
+
 ## [v1.0.3] - 2023-08-22
 
 - Added **Elixir** skill

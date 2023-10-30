@@ -11,6 +11,7 @@ const computeDurationAsString = (startDate, endDate) => {
   if (remainingMonths > 0) {
     text += ` ${remainingMonths} month${remainingMonths > 1 ? 's' : ''}`;
   }
+  if (text === '') text = 'less than a month';
   return text.trim();
 };
 

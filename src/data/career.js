@@ -7,7 +7,7 @@ export const WorkExperienceDB = Object.freeze({
     entity: 'OpenClassrooms',
     location: 'Remote',
     startDate: '2022-02-01',
-    endDate: null,
+    endDate: '2023-03-01',
     description: 'Mentor at OpenClassrooms for the "Python Developer" program.',
     skills: [
       SkillDB.PYTHON,
@@ -23,7 +23,7 @@ export const WorkExperienceDB = Object.freeze({
     entity: 'FieldBox.ai',
     location: 'Bordeaux, France',
     startDate: '2022-02-01',
-    endDate: null,
+    endDate: '2023-10-01',
     description:
       'Same as before except I crash the production servers less frequently.',
     skills: [
@@ -84,6 +84,25 @@ export const WorkExperienceDB = Object.freeze({
     description:
       'Assisted the IT Project Manager with on-going projects (wire-framing, specs, tests, etc.).',
     skills: [],
+  },
+  WTTJ_BACKEND_DEVELOPER: {
+    id: 6,
+    title: 'Backend Developer',
+    entity: 'Welcome to the Jungle',
+    location: 'Paris, France',
+    startDate: '2023-10-01',
+    endDate: null,
+    description:
+      'Backend development using Elixir and Phoenix for the job board platform.',
+    skills: [
+      SkillDB.ELIXIR,
+      SkillDB.JAVASCRIPT,
+      SkillDB.REACT,
+      SkillDB.POSTGRESQL,
+      SkillDB.DOCKER,
+      SkillDB.REDIS,
+      SkillDB.GIT,
+    ],
   },
 });
 
