@@ -35,5 +35,5 @@ export default defineConfig({
   build: {
     assetsDir: 'static',
   },
-  base: '/personal-website/',
+  base: '/',
 });
