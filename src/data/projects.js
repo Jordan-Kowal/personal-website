@@ -45,13 +45,13 @@ const ProjectDB = Object.freeze({
     description:
       'School schedule with improved UI and automatic notifications on schedule changes.',
     githubUrl: undefined,
-    websiteUrl: 'https://enseirb-schedule-notifier.jkdev.app/',
+    websiteUrl: undefined,
     screenshots: [
       'screenshots/enseirb-schedule-notifier-1.png',
       'screenshots/enseirb-schedule-notifier-2.png',
       'screenshots/enseirb-schedule-notifier-3.png',
     ],
-    deprecated: false,
+    deprecated: true,
     skills: [
       SkillDB.PYTHON,
       SkillDB.DJANGO,
@@ -120,10 +120,10 @@ const ProjectDB = Object.freeze({
     name: 'world-map',
     description:
       'World map with locations markers of my travels and places I lived in.',
-    githubUrl: 'https://github.com/Jordan-Kowal/our-world-map',
-    websiteUrl: 'https://world-map.jkdev.app/',
+    githubUrl: undefined,
+    websiteUrl: undefined,
     screenshots: ['screenshots/world-map-1.png'],
-    deprecated: false,
+    deprecated: true,
     skills: [
       SkillDB.PYTHON,
       SkillDB.DJANGO,
