@@ -3,6 +3,7 @@
 ## [v1.0.5] - 2024-04-03
 
 - Deprecated some old projects and reordered them
+- Updated dependencies
 
 ## [v1.0.4] - 2023-10-31
 
