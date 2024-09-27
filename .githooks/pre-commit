@@ -1,0 +1,14 @@
+#!/bin/sh
+set -eu
+
+echo "---------- Git hook: pre-commit ----------"
+
+# Biome (lint and format)
+echo ">>> [1/4] Running Biome on frontend"
+yarn biome:check
+
+# Typescript (type checking)
+echo ">>> [2/4] Compiling Typescript"
+yarn tsc
+
+echo "------------------------------------------"
