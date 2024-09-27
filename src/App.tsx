@@ -1,9 +1,9 @@
+import "@/services/dates/config";
 import { ConfigProvider, theme as antdTheme } from "antd";
-import React, { memo } from "react";
 import "antd/dist/reset.css";
 import frFR from "antd/locale/fr_FR";
+import { memo } from "react";
 import { BrowserRouter } from "react-router-dom";
-import "@/services/dates/config";
 import { AppLayout } from "./components";
 import { Routes } from "./routes";
 import { theme } from "./styles";
@@ -15,7 +15,8 @@ const themeConfig = {
   token: theme,
 };
 
-const App = () => (
+export const App = memo(() => (
+  // @ts-ignore
   <BrowserRouter basename={import.meta.env.BASE_URL || ""}>
     <ConfigProvider locale={frFR} theme={themeConfig}>
       <AppLayout>
@@ -23,8 +24,4 @@ const App = () => (
       </AppLayout>
     </ConfigProvider>
   </BrowserRouter>
-);
-
-App.propTypes = {};
-
-export default memo(App);
+));

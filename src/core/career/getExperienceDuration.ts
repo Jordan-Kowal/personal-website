@@ -1,6 +1,15 @@
-import { date, dateFormatter, now } from "@/services/dates";
+import { date, dateFormatter, now } from "@/utils/dates";
+import type { Dayjs } from "dayjs";
 
-const computeDurationAsString = (startDate, endDate) => {
+type ComputeDurationAsString = (
+  startDate: string | Dayjs,
+  endDate?: string | Dayjs,
+) => string;
+
+const computeDurationAsString: ComputeDurationAsString = (
+  startDate,
+  endDate,
+) => {
   const start = date(startDate);
   const end = endDate ? date(endDate) : now();
   const months = end.diff(start, "month");
@@ -15,7 +24,16 @@ const computeDurationAsString = (startDate, endDate) => {
   return text.trim();
 };
 
-const getExperienceDuration = ({ startDate, endDate }) => {
+type GetExperienceDurationParams = {
+  startDate: string | Dayjs;
+  endDate?: string | Dayjs;
+};
+
+type GetExperienceDuration = (params: GetExperienceDurationParams) => string;
+export const getExperienceDuration: GetExperienceDuration = ({
+  startDate,
+  endDate,
+}) => {
   const text = !endDate
     ? `Since ${dateFormatter.asMonthAndYear(startDate)}`
     : `${dateFormatter.asMonthAndYear(
@@ -23,5 +41,3 @@ const getExperienceDuration = ({ startDate, endDate }) => {
       )} - ${dateFormatter.asMonthAndYear(endDate)}`;
   return `${text} (${computeDurationAsString(startDate, endDate)})`;
 };
-
-export default getExperienceDuration;

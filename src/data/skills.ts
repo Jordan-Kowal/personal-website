@@ -1,4 +1,14 @@
-const SkillDB = Object.freeze({
+export type Skill = {
+  id: number;
+  name: string;
+  icon: string;
+  isCore: boolean;
+  isBackend: boolean;
+  isFrontend: boolean;
+  isOther: boolean;
+};
+
+export const SkillDB: Record<string, Skill> = Object.freeze({
   AFFINITY_DESIGNER: {
     id: 1,
     name: "Affinity Designer",
@@ -162,5 +172,3 @@ const SkillDB = Object.freeze({
     isOther: false,
   },
 });
-
-export default SkillDB;

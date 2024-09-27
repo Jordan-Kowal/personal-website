@@ -1,6 +1,17 @@
-import SkillDB from "./skills";
+import { type Skill, SkillDB } from "./skills";
 
-const ProjectDB = Object.freeze({
+export type Project = {
+  id: number;
+  name: string;
+  description: string;
+  githubUrl: string | undefined;
+  websiteUrl: string | undefined;
+  screenshots: string[];
+  deprecated: boolean;
+  skills: Skill[];
+};
+
+export const ProjectDB: Record<string, Project> = Object.freeze({
   JKLIB: {
     id: 1,
     name: "jklib",
@@ -133,5 +144,3 @@ const ProjectDB = Object.freeze({
     ],
   },
 });
-
-export default ProjectDB;

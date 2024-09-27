@@ -1,0 +1,1 @@
+export { getExperienceDuration } from "./getExperienceDuration";

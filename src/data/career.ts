@@ -1,6 +1,17 @@
-import SkillDB from "./skills";
+import { type Skill, SkillDB } from "./skills";
 
-export const WorkExperienceDB = Object.freeze({
+export type WorkExperience = {
+  id: number;
+  title: string;
+  entity: string;
+  location: string;
+  startDate: string;
+  endDate: string | null;
+  description: string;
+  skills: Skill[];
+};
+
+export const WorkExperienceDB: Record<string, WorkExperience> = Object.freeze({
   OPENCLASSROOMS_MENTOR: {
     id: 1,
     title: "Mentor",
@@ -106,7 +117,18 @@ export const WorkExperienceDB = Object.freeze({
   },
 });
 
-export const EducationDB = Object.freeze({
+type Education = {
+  id: number;
+  title: string;
+  entity: string;
+  location: string;
+  startDate: string;
+  endDate: string | null;
+  description: string;
+  skills: Skill[];
+};
+
+export const EducationDB: Record<string, Education> = Object.freeze({
   SELF_TRAINING: {
     id: 1,
     title: "Self-training in web development",

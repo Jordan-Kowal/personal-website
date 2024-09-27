@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import getExperienceDuration from "./getExperienceDuration";
+import { getExperienceDuration } from "./getExperienceDuration";
 
 describe("core/career/getExperienceDuration", () => {
   it("should return range if end date is provided", () => {
