@@ -2,6 +2,9 @@
 
 ## [v2.0.0] - 2024-04-03
 
+- Migrated to **Typescript**
+- Added `dependabot`
+- Updated all deps
 - Replaced `eslint`, `prettier`, and `stylelint` with `biomejs`
 - Replaced `pre-commit` with `githooks`
 
