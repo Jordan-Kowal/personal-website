@@ -6,7 +6,7 @@ export type WorkExperience = {
   entity: string;
   location: string;
   startDate: string;
-  endDate: string | null;
+  endDate?: string;
   description: string;
   skills: Skill[];
 };
@@ -102,7 +102,7 @@ export const WorkExperienceDB: Record<string, WorkExperience> = Object.freeze({
     entity: "Welcome to the Jungle",
     location: "Paris, France",
     startDate: "2023-10-01",
-    endDate: null,
+    endDate: undefined,
     description:
       "Backend development using Elixir and Phoenix for the job board platform.",
     skills: [
@@ -117,13 +117,13 @@ export const WorkExperienceDB: Record<string, WorkExperience> = Object.freeze({
   },
 });
 
-type Education = {
+export type Education = {
   id: number;
   title: string;
   entity: string;
   location: string;
   startDate: string;
-  endDate: string | null;
+  endDate?: string;
   description: string;
   skills: Skill[];
 };

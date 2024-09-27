@@ -1,4 +1,5 @@
 import dayjs from "dayjs";
+import { describe, expect, it } from "vitest";
 import { getExperienceDuration } from "./getExperienceDuration";
 
 describe("core/career/getExperienceDuration", () => {
