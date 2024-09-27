@@ -1,11 +1,11 @@
-import React, { memo } from 'react';
-import { Spin as AntdSpin } from 'antd';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import styles from './Spin.module.less';
+import { Spin as AntdSpin } from "antd";
+import classNames from "classnames";
+import PropTypes from "prop-types";
+import React, { memo } from "react";
+import styles from "./Spin.module.less";
 
 const Spin = ({
-  text = 'Loading...',
+  text = "Loading...",
   className,
   children,
   spinning = true,

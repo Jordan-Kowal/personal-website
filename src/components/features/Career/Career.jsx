@@ -1,12 +1,12 @@
-import React, { memo, useCallback } from 'react';
-import { Col, Grid, Radio, Row, Timeline, Typography } from 'antd';
-import classNames from 'classnames';
-import { Space } from '@/components/ui';
-import { EducationDB, WorkExperienceDB } from '@/data';
-import { dateFormatter } from '@/services/dates';
-import styles from './Career.module.less';
-import Item from './Item';
-import ItemDot from './ItemDot';
+import { Space } from "@/components/ui";
+import { EducationDB, WorkExperienceDB } from "@/data";
+import { dateFormatter } from "@/services/dates";
+import { Col, Grid, Radio, Row, Timeline, Typography } from "antd";
+import classNames from "classnames";
+import React, { memo, useCallback } from "react";
+import styles from "./Career.module.less";
+import Item from "./Item";
+import ItemDot from "./ItemDot";
 
 const { Text } = Typography;
 const { useBreakpoint } = Grid;
@@ -23,16 +23,16 @@ const experiences = [
 const degrees = [EducationDB.SELF_TRAINING, EducationDB.MASTER];
 
 const options = [
-  { label: 'Work Experiences', value: 'work' },
-  { label: 'Education', value: 'education' },
+  { label: "Work Experiences", value: "work" },
+  { label: "Education", value: "education" },
 ];
 
 const Career = () => {
-  const [activeTab, setActiveTab] = React.useState('work');
+  const [activeTab, setActiveTab] = React.useState("work");
   const { md, xs } = useBreakpoint();
 
-  const items = activeTab === 'work' ? experiences : degrees;
-  const mode = md ? 'alternate' : 'left';
+  const items = activeTab === "work" ? experiences : degrees;
+  const mode = md ? "alternate" : "left";
 
   const onTabChange = useCallback((e) => {
     setActiveTab(e.target.value);

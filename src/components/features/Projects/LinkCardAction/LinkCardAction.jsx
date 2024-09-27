@@ -1,7 +1,7 @@
-import React, { memo } from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { IconButton } from '@/components';
+import { IconButton } from "@/components";
+import PropTypes from "prop-types";
+import React, { memo } from "react";
+import { Link } from "react-router-dom";
 
 const LinkCardAction = ({ icon, tooltip, url }) => {
   if (!url) {

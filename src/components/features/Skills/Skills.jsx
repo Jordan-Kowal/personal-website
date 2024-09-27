@@ -1,17 +1,17 @@
-import React, { memo, useCallback, useState } from 'react';
-import { Col, Radio, Row } from 'antd';
-import classNames from 'classnames';
-import { SkillIcon, Space } from '@/components/ui';
-import { skillFilter } from '@/core/skills';
-import { SkillDB } from '@/data';
-import styles from './Skills.module.less';
+import { SkillIcon, Space } from "@/components/ui";
+import { skillFilter } from "@/core/skills";
+import { SkillDB } from "@/data";
+import { Col, Radio, Row } from "antd";
+import classNames from "classnames";
+import React, { memo, useCallback, useState } from "react";
+import styles from "./Skills.module.less";
 
 const options = [
-  { label: 'All', value: 'all' },
-  { label: 'Core', value: 'core' },
-  { label: 'Backend', value: 'backend' },
-  { label: 'Frontend', value: 'frontend' },
-  { label: 'Other', value: 'other' },
+  { label: "All", value: "all" },
+  { label: "Core", value: "core" },
+  { label: "Backend", value: "backend" },
+  { label: "Frontend", value: "frontend" },
+  { label: "Other", value: "other" },
 ];
 
 const skillList = [
@@ -40,15 +40,15 @@ const Skills = () => {
 
   const onFilterChange = useCallback((e) => {
     const { value } = e.target;
-    if (value === 'all') {
+    if (value === "all") {
       setIsActiveList(skillList.map(() => true));
-    } else if (value === 'core') {
+    } else if (value === "core") {
       setIsActiveList(skillList.map(skillFilter.isCore));
-    } else if (value === 'backend') {
+    } else if (value === "backend") {
       setIsActiveList(skillList.map(skillFilter.isBackend));
-    } else if (value === 'frontend') {
+    } else if (value === "frontend") {
       setIsActiveList(skillList.map(skillFilter.isFrontend));
-    } else if (value === 'other') {
+    } else if (value === "other") {
       setIsActiveList(skillList.map(skillFilter.isOther));
     } else {
       setIsActiveList(skillList.map(() => false));

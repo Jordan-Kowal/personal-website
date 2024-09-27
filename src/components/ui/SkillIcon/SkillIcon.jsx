@@ -1,9 +1,9 @@
-import React, { memo } from 'react';
-import { Image, Tooltip } from 'antd';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import { SkillPropType } from '@/core/proptypes';
-import styles from './SkillIcon.module.less';
+import { SkillPropType } from "@/core/proptypes";
+import { Image, Tooltip } from "antd";
+import classNames from "classnames";
+import PropTypes from "prop-types";
+import React, { memo } from "react";
+import styles from "./SkillIcon.module.less";
 
 const SkillIcon = ({ skill, className, size = 20 }) => (
   <Tooltip title={skill.name}>

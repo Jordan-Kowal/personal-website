@@ -1,9 +1,9 @@
-import React, { memo } from 'react';
-import { Typography } from 'antd';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import { Space } from '@/components/ui';
-import styles from './Section.module.less';
+import { Space } from "@/components/ui";
+import { Typography } from "antd";
+import classNames from "classnames";
+import PropTypes from "prop-types";
+import React, { memo } from "react";
+import styles from "./Section.module.less";
 
 const { Title } = Typography;
 

@@ -1,8 +1,8 @@
-import React, { memo, useCallback, useState } from 'react';
-import { Col, Row } from 'antd';
-import { ProjectDB } from '@/data';
-import ProjectCard from './ProjectCard';
-import ScreenshotGallery from './ScreenshotGallery';
+import { ProjectDB } from "@/data";
+import { Col, Row } from "antd";
+import React, { memo, useCallback, useState } from "react";
+import ProjectCard from "./ProjectCard";
+import ScreenshotGallery from "./ScreenshotGallery";
 
 const projects = [
   ProjectDB.JKLIB,

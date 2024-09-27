@@ -1,16 +1,16 @@
-import React, { memo, useCallback } from 'react';
+import { IconButton, Ribbon, SkillIcon, Space } from "@/components/ui";
+import { ProjectPropType } from "@/core/proptypes";
+import { theme } from "@/styles";
 import {
   GithubOutlined,
   GlobalOutlined,
   PictureOutlined,
-} from '@ant-design/icons';
-import { Card, Typography } from 'antd';
-import PropTypes from 'prop-types';
-import { IconButton, Ribbon, SkillIcon, Space } from '@/components/ui';
-import { ProjectPropType } from '@/core/proptypes';
-import { theme } from '@/styles';
-import LinkCardAction from '../LinkCardAction';
-import styles from './ProjectCard.module.less';
+} from "@ant-design/icons";
+import { Card, Typography } from "antd";
+import PropTypes from "prop-types";
+import { memo, useCallback } from "react";
+import LinkCardAction from "../LinkCardAction";
+import styles from "./ProjectCard.module.less";
 
 const { Text } = Typography;
 
@@ -21,7 +21,7 @@ const cardBodyStyle = {
 
 const ProjectCard = ({ onPictureClick, project }) => {
   const hasScreenshots = project?.screenshots?.length > 0;
-  const ribbonText = project?.deprecated ? 'Deprecated' : null;
+  const ribbonText = project?.deprecated ? "Deprecated" : null;
 
   const handlePictureClick = useCallback(() => {
     if (hasScreenshots) {
@@ -47,6 +47,7 @@ const ProjectCard = ({ onPictureClick, project }) => {
             url={project.websiteUrl}
           />,
           <IconButton
+            key="screenshots"
             icon={<PictureOutlined />}
             tooltip="Screenshots"
             disabled={!hasScreenshots}

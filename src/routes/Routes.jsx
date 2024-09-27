@@ -1,8 +1,8 @@
-import React, { Suspense, memo } from 'react';
-import { Navigate, Route, Routes as RouterRoutes } from 'react-router-dom';
-import { Spin } from '@/components';
-import styles from './Routes.module.less';
-import routeConfig from './routeConfig';
+import { Spin } from "@/components";
+import React, { Suspense, memo } from "react";
+import { Navigate, Route, Routes as RouterRoutes } from "react-router-dom";
+import styles from "./Routes.module.less";
+import routeConfig from "./routeConfig";
 
 const Routes = () => (
   <RouterRoutes>

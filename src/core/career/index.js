@@ -1,1 +1,1 @@
-export { default as getExperienceDuration } from './getExperienceDuration';
+export { default as getExperienceDuration } from "./getExperienceDuration";
