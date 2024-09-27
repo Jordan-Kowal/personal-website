@@ -1,5 +1,10 @@
 # Changelog
 
+## [v2.0.0] - 2024-04-03
+
+- Replaced `eslint`, `prettier`, and `stylelint` with `biomejs`
+- Replaced `pre-commit` with `githooks`
+
 ## [v1.0.5] - 2024-04-03
 
 - Deprecated some old projects and reordered them
