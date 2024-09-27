@@ -1,1 +1,1 @@
-export { default } from './LinkCardAction';
+export { default } from "./LinkCardAction";

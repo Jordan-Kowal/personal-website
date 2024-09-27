@@ -1,9 +1,9 @@
-import React, { memo } from 'react';
-import Socials from '@/components/features/Socials';
-import Logo from '@/components/ui/Logo';
-import Space from '@/components/ui/Space';
-import PresentationText from './PresentationText';
-import styles from './WelcomeBanner.module.less';
+import Socials from "@/components/features/Socials";
+import Logo from "@/components/ui/Logo";
+import Space from "@/components/ui/Space";
+import React, { memo } from "react";
+import PresentationText from "./PresentationText";
+import styles from "./WelcomeBanner.module.less";
 
 const WelcomeBanner = () => (
   <div className={styles.welcomeBanner}>

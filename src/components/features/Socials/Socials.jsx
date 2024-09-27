@@ -1,14 +1,14 @@
-import React, { memo } from 'react';
+import { IconButton, Space } from "@/components/ui";
+import { GITHUB_URL, LINKEDIN_URL, YOUTUBE_URL } from "@/core/constants";
 import {
   FilePdfOutlined,
   GithubOutlined,
   LinkedinOutlined,
   YoutubeOutlined,
-} from '@ant-design/icons';
-import { Link } from 'react-router-dom';
-import { IconButton, Space } from '@/components/ui';
-import { GITHUB_URL, LINKEDIN_URL, YOUTUBE_URL } from '@/core/constants';
-import styles from './Socials.module.less';
+} from "@ant-design/icons";
+import React, { memo } from "react";
+import { Link } from "react-router-dom";
+import styles from "./Socials.module.less";
 
 // TODO: Download Resume
 const Socials = () => (

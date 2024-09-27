@@ -1,15 +1,15 @@
-import React, { memo } from 'react';
+import { SkillIcon, Space } from "@/components/ui";
+import { getExperienceDuration } from "@/core/career";
+import { CareerItemPropType } from "@/core/proptypes";
 import {
   ClockCircleOutlined,
   HomeOutlined,
   PushpinOutlined,
-} from '@ant-design/icons';
-import { Card, Typography } from 'antd';
-import classNames from 'classnames';
-import { SkillIcon, Space } from '@/components/ui';
-import { getExperienceDuration } from '@/core/career';
-import { CareerItemPropType } from '@/core/proptypes';
-import styles from './Item.module.less';
+} from "@ant-design/icons";
+import { Card, Typography } from "antd";
+import classNames from "classnames";
+import React, { memo } from "react";
+import styles from "./Item.module.less";
 
 const { Text } = Typography;
 

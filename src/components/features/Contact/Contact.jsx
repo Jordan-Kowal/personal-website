@@ -1,8 +1,8 @@
-import React, { memo } from 'react';
-import { Button } from 'antd';
-import { Link } from 'react-router-dom';
-import { LINKEDIN_URL } from '@/core/constants';
-import styles from './Contact.module.less';
+import { LINKEDIN_URL } from "@/core/constants";
+import { Button } from "antd";
+import React, { memo } from "react";
+import { Link } from "react-router-dom";
+import styles from "./Contact.module.less";
 
 const Contact = () => (
   <div className={styles.contact}>

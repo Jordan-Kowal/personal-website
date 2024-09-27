@@ -1,7 +1,7 @@
-import React, { memo } from 'react';
-import { Layout } from 'antd';
-import PropTypes from 'prop-types';
-import Footer from './Footer';
+import { Layout } from "antd";
+import PropTypes from "prop-types";
+import React, { memo } from "react";
+import Footer from "./Footer";
 
 const AppLayout = ({ children }) => (
   <Layout>

@@ -1,10 +1,10 @@
-import { lazy } from 'react';
+import { lazy } from "react";
 
 const routeConfig = {
   home: {
-    key: 'home',
-    component: lazy(() => import('../pages/Homepage')),
-    path: `/`,
+    key: "home",
+    component: lazy(() => import("../pages/Homepage")),
+    path: "/",
     exact: true,
   },
 };

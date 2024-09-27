@@ -1,5 +1,3 @@
-import React, { memo } from 'react';
-import { Anchor } from 'antd';
 import {
   Career,
   Contact,
@@ -8,27 +6,29 @@ import {
   Skills,
   Space,
   WelcomeBanner,
-} from '@/components';
+} from "@/components";
+import { Anchor } from "antd";
+import React, { memo } from "react";
 
 const sections = [
   {
-    key: 'skills',
-    title: 'Skills',
+    key: "skills",
+    title: "Skills",
     component: Skills,
   },
   {
-    key: 'projects',
-    title: 'Projects',
+    key: "projects",
+    title: "Projects",
     component: Projects,
   },
   {
-    key: 'career',
-    title: 'Career',
+    key: "career",
+    title: "Career",
     component: Career,
   },
   {
-    key: 'contact',
-    title: 'Contact',
+    key: "contact",
+    title: "Contact",
     component: Contact,
     headless: true,
   },
@@ -60,7 +60,7 @@ const Homepage = () => (
         >
           <Component />
         </Section>
-      )
+      ),
     )}
   </Space>
 );

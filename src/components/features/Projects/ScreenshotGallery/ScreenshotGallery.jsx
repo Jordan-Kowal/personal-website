@@ -1,7 +1,7 @@
-import React, { memo } from 'react';
-import { Carousel, Image, Modal } from 'antd';
-import PropTypes from 'prop-types';
-import styles from './ScreenshotGallery.module.less';
+import { Carousel, Image, Modal } from "antd";
+import PropTypes from "prop-types";
+import { memo } from "react";
+import styles from "./ScreenshotGallery.module.less";
 
 const ScreenshotGallery = ({ screenshots, onClose }) => {
   if (!screenshots || screenshots?.length === 0) return null;
@@ -18,8 +18,8 @@ const ScreenshotGallery = ({ screenshots, onClose }) => {
     >
       <Carousel autoplay dotPosition="bottom">
         {screenshots.map((screenshot) => (
-          <div className={styles.imageContainer}>
-            <Image src={screenshot} key={screenshot} preview={false} />
+          <div className={styles.imageContainer} key={screenshot}>
+            <Image src={screenshot} preview={false} />
           </div>
         ))}
       </Carousel>

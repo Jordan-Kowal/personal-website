@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import { SkillPropType } from './skill';
+import PropTypes from "prop-types";
+import { SkillPropType } from "./skill";
 
 export const ProjectPropType = PropTypes.shape({
   id: PropTypes.number.isRequired,

@@ -1,9 +1,9 @@
-import React, { memo } from 'react';
-import { Layout, Typography } from 'antd';
-import Socials from '@/components/features/Socials';
-import { Logo, Space } from '@/components/ui';
-import { now } from '@/services/dates';
-import styles from './Footer.module.less';
+import Socials from "@/components/features/Socials";
+import { Logo, Space } from "@/components/ui";
+import { now } from "@/services/dates";
+import { Layout, Typography } from "antd";
+import React, { memo } from "react";
+import styles from "./Footer.module.less";
 
 const { Text } = Typography;
 

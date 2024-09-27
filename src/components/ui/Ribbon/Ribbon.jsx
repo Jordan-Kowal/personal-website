@@ -1,6 +1,6 @@
-import React, { memo } from 'react';
-import { Badge } from 'antd';
-import PropTypes from 'prop-types';
+import { Badge } from "antd";
+import PropTypes from "prop-types";
+import React, { memo } from "react";
 
 export const Ribbon = ({ children, text, color }) => {
   if (!text) return children;
