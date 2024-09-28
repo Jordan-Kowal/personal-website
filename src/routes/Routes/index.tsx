@@ -1,8 +1,13 @@
 import { Spin } from "@/components/ui";
+import { theme } from "@/styles";
 import { Suspense, memo } from "react";
 import { Navigate, Route, Routes as RouterRoutes } from "react-router-dom";
 import { type RouteConfigProps, routeConfig } from "../routeConfig";
-import styles from "./Routes.module.less";
+
+const routeStyle = {
+  minHeight: `calc(100vh - ${theme.layout.footerHeight})`,
+  paddingTop: "45vh",
+};
 
 export const Routes: React.FC = memo(() => (
   <RouterRoutes>
@@ -15,9 +20,7 @@ export const Routes: React.FC = memo(() => (
           key={key}
           path={path}
           element={
-            <Suspense
-              fallback={<Spin tip="Loading..." className={styles.suspense} />}
-            >
+            <Suspense fallback={<Spin tip="Loading..." style={routeStyle} />}>
               <Component />
             </Suspense>
           }

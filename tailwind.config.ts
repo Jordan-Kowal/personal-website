@@ -15,6 +15,8 @@ module.exports = {
         text: theme.colors.text,
         bg: theme.colors.bg,
         "bg-dark": theme.colors.bgDark,
+        "bg-darker": theme.colors.bgDarker,
+        "bg-light": theme.colors.bgLight,
       },
       spacing: {
         default: theme.layout.layoutPadding,
@@ -32,6 +34,9 @@ module.exports = {
       },
       height: {
         header: theme.layout.headerHeight,
+      },
+      backgroundImage: {
+        "project-card": "url('/images/project-card-background.svg')",
       },
     },
   },

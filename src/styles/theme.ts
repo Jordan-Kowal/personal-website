@@ -14,6 +14,8 @@ export const theme = {
     text: "#ffffffdd",
     bg: "#222222",
     bgDark: "#181818",
+    bgDarker: "#141414",
+    bgLight: "#343434",
   },
   layout: {
     layoutMaxWidth: "1400px",

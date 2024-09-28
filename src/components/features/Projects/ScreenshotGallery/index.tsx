@@ -1,6 +1,5 @@
 import { Carousel, Image, Modal } from "antd";
 import { memo } from "react";
-import styles from "./ScreenshotGallery.module.less";
 
 type ScreenshotGalleryProps = {
   screenshots: string[];
@@ -19,11 +18,10 @@ export const ScreenshotGallery: React.FC<ScreenshotGalleryProps> = memo(
         closable
         footer={null}
         width="85%"
-        className={styles.screenshotGallery}
       >
         <Carousel autoplay dotPosition="bottom">
           {screenshots.map((screenshot) => (
-            <div className={styles.imageContainer} key={screenshot}>
+            <div className="px-5 text-center" key={screenshot}>
               <Image src={screenshot} preview={false} />
             </div>
           ))}

@@ -9,7 +9,6 @@ import {
 import { Card, Typography } from "antd";
 import classNames from "classnames";
 import { memo } from "react";
-import styles from "./Item.module.less";
 
 const { Text } = Typography;
 
@@ -18,12 +17,18 @@ type ItemProps = {
 };
 
 export const Item: React.FC<ItemProps> = memo(({ careerItem }) => {
-  const isActive = careerItem.endDate === null;
+  const isActive = careerItem.endDate === undefined;
 
   return (
-    <Card className={classNames(styles.item, { [styles.active]: isActive })}>
+    <Card className="w-full" classNames={{ body: "py-2 px-5 bg-bg-darker" }}>
       <Space vertical size={4}>
-        <Text className={styles.title} strong>
+        <Text
+          className={classNames("text-lg", {
+            "text-info": isActive,
+            "text-primary": !isActive,
+          })}
+          strong
+        >
           {careerItem.title}
         </Text>
         <Space>

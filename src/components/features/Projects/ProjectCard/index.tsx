@@ -9,13 +9,19 @@ import {
 import { Card, Typography } from "antd";
 import { memo, useCallback } from "react";
 import { LinkCardAction } from "../LinkCardAction";
-import styles from "./ProjectCard.module.less";
 
 const { Text } = Typography;
 
 const cardBodyStyle = {
   paddingTop: 80,
   minHeight: 280,
+  backgroundPositionX: "right -1px",
+  backgroundPositionY: "-1px",
+  lineHeight: "0 !important",
+};
+
+const backgroundTextStyle = {
+  color: `${theme.colors.primary}08`,
 };
 
 type ProjectCardProps = {
@@ -35,9 +41,13 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(
     }, [hasScreenshots, onPictureClick, project.screenshots]);
 
     return (
-      <Ribbon text={ribbonText} color={theme.colors.error}>
+      <Ribbon text={ribbonText} show color={theme.colors.error}>
         <Card
-          className={styles.projectCard}
+          className=""
+          classNames={{
+            actions: "bg-bg-darker",
+            body: "overflow-hidden text-left bg-bg-darker border-0 rounded-none bg-project-card bg-no-repeat",
+          }}
           actions={[
             <LinkCardAction
               key="github"
@@ -61,22 +71,26 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(
               size="large"
             />,
           ]}
-          bodyStyle={cardBodyStyle}
+          styles={{ body: cardBodyStyle, extra: backgroundTextStyle }}
           bordered={false}
         >
           <Space vertical block size={8}>
-            <div className={styles.projectNameContainer}>
-              <Text strong className={styles.projectNameBackground}>
+            <div className="relative z-10">
+              <Text
+                strong
+                className="absolute -z-10 m-0 -left-4 -top-8 text-5xl select-none break-keep"
+                style={backgroundTextStyle}
+              >
                 {project.name}
               </Text>
-              <Text className={styles.projectName}>{project.name}</Text>
+              <Text className="m-0 text-lg text-primary">{project.name}</Text>
             </div>
-            <Space className={styles.projectSkills}>
+            <Space className="relative z-10">
               {project.skills.map((skill) => (
                 <SkillIcon skill={skill} key={skill.id} />
               ))}
             </Space>
-            <Text className={styles.projectDescription} italic type="secondary">
+            <Text className="text-xs" italic type="secondary">
               {project.description}
             </Text>
           </Space>

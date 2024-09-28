@@ -5,7 +5,6 @@ import type { Skill } from "@/data/skills";
 import { Col, Radio, type RadioChangeEvent, Row } from "antd";
 import classNames from "classnames";
 import { memo, useCallback, useState } from "react";
-import styles from "./Skills.module.less";
 
 type Option = {
   label: string;
@@ -64,8 +63,8 @@ export const Skills: React.FC = memo(() => {
   }, []);
 
   return (
-    <Row className={styles.skills} gutter={[20, 20]}>
-      <Col span={24} className={styles.col}>
+    <Row className="flex justify-center" gutter={[20, 20]}>
+      <Col span={24} className="flex justify-center">
         <Radio.Group
           options={options}
           onChange={onFilterChange}
@@ -74,15 +73,20 @@ export const Skills: React.FC = memo(() => {
           defaultValue={options[0].value}
         />
       </Col>
-      <Col span={24} className={styles.col}>
-        <Space className={styles.container} block size={20} wrap>
+      <Col span={24} className="flex justify-center">
+        <Space
+          className="relative w-full max-w-xl justify-center mb-5"
+          block
+          size={20}
+          wrap
+        >
           {skillList.map((skill, index) => (
             <SkillIcon
               size={80}
               skill={skill}
               key={skill.id}
               className={classNames({
-                [styles.inactiveSkill]: !isActiveList[index],
+                "grayscale opacity-50": !isActiveList[index],
               })}
             />
           ))}

@@ -3,7 +3,6 @@ import { theme } from "@/styles";
 import { Typography } from "antd";
 import { memo } from "react";
 import { TypeAnimation } from "react-type-animation";
-import styles from "./PresentationText.module.less";
 
 const { Text } = Typography;
 
@@ -28,6 +27,11 @@ const phrases: string[] = [
   "..",
 ];
 
+const fontSize: string = "calc(2vw + 20px)";
+
+const textStyle = { fontSize };
+const nameStyle = { fontSize, color: theme.colors.primary };
+
 export const typingSequence: Array<number | string> = phrases.reduce(
   (acc: Array<number | string>, phrase) => {
     acc.push(`${phrase}.`);
@@ -43,15 +47,15 @@ export const typingStyle = {
 };
 
 export const PresentationText: React.FC = memo(() => (
-  <Space className={styles.presentationText} block vertical>
-    <Text className={styles.text}>
+  <Space className="relative z-10" block vertical>
+    <Text style={textStyle}>
       Hey there, my name is{" "}
-      <Text className={styles.name} strong>
+      <Text style={nameStyle} strong>
         Jordan Kowal
       </Text>
       ,
     </Text>
-    <Text className={styles.text}>
+    <Text style={textStyle}>
       and I am{" "}
       <TypeAnimation
         cursor

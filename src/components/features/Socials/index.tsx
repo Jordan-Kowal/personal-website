@@ -8,10 +8,9 @@ import {
 } from "@ant-design/icons";
 import { memo } from "react";
 import { Link } from "react-router-dom";
-import styles from "./Socials.module.less";
 
 export const Socials: React.FC = memo(() => (
-  <Space className={styles.socials} size={20}>
+  <Space size={20}>
     <Link to={GITHUB_URL} target="_blank">
       <IconButton
         size="large"
