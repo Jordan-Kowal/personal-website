@@ -4,6 +4,7 @@
 
 - Migrated to **Typescript**
 - Replaced almost all `.less` files with **Tailwind**
+- Replaced **Jest** with **Vitest**
 - Added `dependabot`
 - Updated all deps
 - Replaced `eslint`, `prettier`, and `stylelint` with `biomejs`
