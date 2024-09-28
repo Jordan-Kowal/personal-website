@@ -107,11 +107,12 @@ export const WorkExperienceDB: Record<string, WorkExperience> = Object.freeze({
       "Backend development using Elixir and Phoenix for the job board platform.",
     skills: [
       SkillDB.ELIXIR,
+      SkillDB.PHOENIX,
       SkillDB.TYPESCRIPT,
       SkillDB.REACT,
+      SkillDB.VITE,
       SkillDB.POSTGRESQL,
       SkillDB.DOCKER,
-      SkillDB.REDIS,
       SkillDB.GIT,
     ],
   },
