@@ -26,6 +26,7 @@ const skillList: Skill[] = [
   SkillDB.ELIXIR,
   SkillDB.SCALA,
   SkillDB.JAVASCRIPT,
+  SkillDB.TYPESCRIPT,
   SkillDB.REACT,
   SkillDB.VUEJS,
   SkillDB.VITE,

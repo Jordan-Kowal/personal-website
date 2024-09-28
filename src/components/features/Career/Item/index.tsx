@@ -12,6 +12,12 @@ import { memo } from "react";
 
 const { Text } = Typography;
 
+const cardBodyStyle = {
+  backgroundPositionX: "right -1px",
+  backgroundPositionY: "-1px",
+  lineHeight: "0 !important",
+};
+
 type ItemProps = {
   careerItem: WorkExperience | Education;
 };
@@ -20,7 +26,13 @@ export const Item: React.FC<ItemProps> = memo(({ careerItem }) => {
   const isActive = careerItem.endDate === undefined;
 
   return (
-    <Card className="w-full" classNames={{ body: "py-2 px-5 bg-bg-darker" }}>
+    <Card
+      className="w-full"
+      classNames={{
+        body: "py-2 px-5 bg-bg-darker bg-project-card bg-no-repeat",
+      }}
+      styles={{ body: cardBodyStyle }}
+    >
       <Space vertical size={4}>
         <Text
           className={classNames("text-lg", {

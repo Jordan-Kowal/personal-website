@@ -1,12 +1,16 @@
 # Changelog
 
-## [v2.0.0] - 2024-04-03
+## [v2.0.0] - 2024-09-28
 
 - Migrated to **Typescript**
+- Replaced almost all `.less` files with **Tailwind**
 - Added `dependabot`
 - Updated all deps
 - Replaced `eslint`, `prettier`, and `stylelint` with `biomejs`
 - Replaced `pre-commit` with `githooks`
+- Added **TypeScript** to skills
+- Updated core skills
+- Fixed image background for cards
 
 ## [v1.0.5] - 2024-04-03
 
