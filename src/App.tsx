@@ -3,6 +3,7 @@ import { Routes } from "@/routes";
 import { antdTheme } from "@/styles";
 import "@/styles/antd.less";
 import "@/styles/global.less";
+import "@/styles/tailwind.css";
 import "@/utils/dates/config";
 import { ConfigProvider, theme } from "antd";
 import "antd/dist/reset.css";

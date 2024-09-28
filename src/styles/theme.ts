@@ -12,9 +12,8 @@ export const theme = {
     warning: "#d89614",
     error: "#a61d24",
     text: "#ffffffdd",
-    // bg: "#000000",
     bg: "#222222",
-    // bg: "#181818",
+    bgDark: "#181818",
   },
   layout: {
     layoutMaxWidth: "1400px",
