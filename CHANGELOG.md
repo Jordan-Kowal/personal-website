@@ -9,7 +9,6 @@
 - Replaced `eslint`, `prettier`, and `stylelint` with `biomejs`
 - Replaced `pre-commit` with `githooks`
 - Added **TypeScript** to skills
-- Updated core skills
 - Fixed image background for cards
 
 ## [v1.0.5] - 2024-04-03

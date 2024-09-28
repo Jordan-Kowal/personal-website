@@ -31,7 +31,7 @@ export const ProjectDB: Record<string, Project> = Object.freeze({
     websiteUrl: "https://www.npmjs.com/package/jcscript",
     screenshots: [],
     deprecated: false,
-    skills: [SkillDB.JAVASCRIPT],
+    skills: [SkillDB.TYPESCRIPT],
   },
   DJANGO_REACT_STARTER: {
     id: 3,
@@ -45,7 +45,7 @@ export const ProjectDB: Record<string, Project> = Object.freeze({
     skills: [
       SkillDB.PYTHON,
       SkillDB.DJANGO,
-      SkillDB.JAVASCRIPT,
+      SkillDB.TYPESCRIPT,
       SkillDB.REACT,
       SkillDB.DOCKER,
     ],
@@ -80,7 +80,7 @@ export const ProjectDB: Record<string, Project> = Object.freeze({
     websiteUrl: "https://jordan-kowal.github.io/personal-website/",
     screenshots: [],
     deprecated: false,
-    skills: [SkillDB.JAVASCRIPT, SkillDB.REACT],
+    skills: [SkillDB.TYPESCRIPT, SkillDB.REACT],
   },
   CHALLENGES: {
     id: 6,
@@ -91,7 +91,7 @@ export const ProjectDB: Record<string, Project> = Object.freeze({
     websiteUrl: undefined,
     screenshots: [],
     deprecated: false,
-    skills: [SkillDB.PYTHON],
+    skills: [SkillDB.PYTHON, SkillDB.ELIXIR],
   },
   DISCORD_DICE_ROLLER: {
     id: 7,
