@@ -20,14 +20,13 @@ yarn start
 
 ## Setting up the pre-commits
 
-You'll simply need to install a virtual environment and pre-commit
-hooks. To do so, run the following commands:
+Git hooks are set in the [.githooks](.githooks) folder
+_(as `.git/hooks` is not tracked in `.git`)_
 
-```bash
-python3 -m venv venv
-source venv/bin/activate
-pip install pre-commit
-pre-commit install
+Run the following command to tell `git` to look for hooks in this folder:
+
+```shell
+git config core.hooksPath .githooks
 ```
 
 ## QA and CI/CD
