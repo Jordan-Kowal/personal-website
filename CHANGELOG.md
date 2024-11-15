@@ -1,5 +1,11 @@
 # Changelog
 
+## [v2.1.0] - 2024-11-15
+
+- Added new projects (`pipe-operator`, `django-utils-kit`, `django-meilisearch-indexer`)
+- Updated skills (changed tags and removed skills unrelated to programming)
+- Updated deps
+
 ## [v2.0.0] - 2024-09-28
 
 - Migrated to **Typescript**
