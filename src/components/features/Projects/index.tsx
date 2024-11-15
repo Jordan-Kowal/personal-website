@@ -5,11 +5,14 @@ import { ProjectCard } from "./ProjectCard";
 import { ScreenshotGallery } from "./ScreenshotGallery";
 
 const projects = [
-  ProjectDB.JKLIB,
-  ProjectDB.JKSCRIPT,
+  ProjectDB.PIPE_OPERATOR,
   ProjectDB.DJANGO_REACT_STARTER,
+  ProjectDB.DJANGO_UTILS_KIT,
+  ProjectDB.DJANGO_MEILISEARCH_INDEXER,
+  ProjectDB.JKSCRIPT,
   ProjectDB.PERSONAL_WEBSITE,
   ProjectDB.CHALLENGES,
+  ProjectDB.JKLIB,
   ProjectDB.ENSEIRB_SCHEDULE_NOTIFIER,
   ProjectDB.WORLD_MAP,
   ProjectDB.DISCORD_DICE_ROLLER,
