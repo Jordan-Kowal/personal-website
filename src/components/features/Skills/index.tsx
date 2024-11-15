@@ -36,9 +36,6 @@ const skillList: Skill[] = [
   SkillDB.GIT,
   SkillDB.POSTGRESQL,
   SkillDB.DOCKER,
-  SkillDB.FIGMA,
-  SkillDB.AFFINITY_DESIGNER,
-  SkillDB.DAVINCI_RESOLVE,
 ];
 
 export const Skills: React.FC = memo(() => {
