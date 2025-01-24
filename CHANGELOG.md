@@ -1,5 +1,12 @@
 # Changelog
 
+## [v2.2.0] - 2025-01-24
+
+- Removed unnecessary skills from database
+- Added `react-scan`
+- Upgraded to `vite 6` and `tailwind 4`
+- Upgraded multiple deps
+
 ## [v2.1.0] - 2024-11-15
 
 - Added new projects (`pipe-operator`, `django-utils-kit`, `django-meilisearch-indexer`)
