@@ -71,7 +71,7 @@ export const Skills: React.FC = memo(() => {
       </Col>
       <Col span={24} className="flex justify-center">
         <Space
-          className="relative w-full max-w-xl justify-center mb-5"
+          className="relative w-full max-w-xl !justify-center mb-5"
           block
           size={20}
           wrap

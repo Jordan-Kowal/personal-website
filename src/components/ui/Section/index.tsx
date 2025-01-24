@@ -30,7 +30,7 @@ export const Section: React.FC<SectionProps> = memo(
       vertical
     >
       {!headless && (
-        <Title className="m-0" level={1} style={titleStyle}>
+        <Title className="!m-0" level={1} style={titleStyle}>
           {title}
         </Title>
       )}

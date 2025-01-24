@@ -29,15 +29,15 @@ export const Item: React.FC<ItemProps> = memo(({ careerItem }) => {
     <Card
       className="w-full"
       classNames={{
-        body: "py-2 px-5 bg-bg-darker bg-project-card bg-no-repeat",
+        body: "!py-2 !px-5 bg-bg-darker bg-project-card bg-no-repeat",
       }}
       styles={{ body: cardBodyStyle }}
     >
       <Space vertical size={4}>
         <Text
-          className={classNames("text-lg", {
-            "text-info": isActive,
-            "text-primary": !isActive,
+          className={classNames("!text-lg", {
+            "!text-info": isActive,
+            "!text-primary": !isActive,
           })}
           strong
         >

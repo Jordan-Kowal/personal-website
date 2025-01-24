@@ -45,7 +45,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(
         <Card
           className=""
           classNames={{
-            actions: "bg-bg-darker",
+            actions: "!bg-bg-darker",
             body: "overflow-hidden text-left bg-bg-darker border-0 rounded-none bg-project-card bg-no-repeat",
           }}
           actions={[
@@ -78,19 +78,19 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(
             <div className="relative z-10">
               <Text
                 strong
-                className="absolute -z-10 m-0 -left-4 -top-8 text-5xl select-none break-keep"
+                className="absolute -z-10 m-0 -left-4 -top-8 !text-5xl select-none !break-keep"
                 style={backgroundTextStyle}
               >
                 {project.name}
               </Text>
-              <Text className="m-0 text-lg text-primary">{project.name}</Text>
+              <Text className="m-0 !text-lg !text-primary">{project.name}</Text>
             </div>
             <Space className="relative z-10">
               {project.skills.map((skill) => (
                 <SkillIcon skill={skill} key={skill.id} />
               ))}
             </Space>
-            <Text className="text-xs" italic type="secondary">
+            <Text className="!text-xs" italic type="secondary">
               {project.description}
             </Text>
           </Space>

@@ -14,7 +14,7 @@ export const WelcomeBanner: React.FC = memo(() => (
       <source src="videos/background-presentation.mp4" type="video/mp4" />
     </video>
     <Space
-      className="relative overflow-hidden w-full h-screen items-center justify-between p-default"
+      className="relative overflow-hidden w-full h-screen items-center !justify-between p-default"
       block
       vertical
       size={20}

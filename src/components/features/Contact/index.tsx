@@ -22,7 +22,7 @@ export const Contact: React.FC = memo(() => (
       <div className="w-52 h-52 relative">
         <div className="absolute w-32 h-32 left-10 top-10 rounded-full bg-primary animate-ping z-0" />
         <Button
-          className="w-52 h-52 rounded-full shadow-none shadow-primary text-xl font-bold"
+          className="!w-52 !h-52 !rounded-full shadow-none shadow-primary !text-xl !font-bold"
           type="primary"
         >
           <div className="z-10">Get in touch</div>
