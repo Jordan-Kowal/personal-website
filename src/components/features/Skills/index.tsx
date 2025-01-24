@@ -30,10 +30,8 @@ const skillList: Skill[] = [
   SkillDB.TYPESCRIPT,
   SkillDB.REACT,
   SkillDB.VUEJS,
-  SkillDB.VITE,
   SkillDB.HTML5,
   SkillDB.CSS3,
-  SkillDB.GIT,
   SkillDB.POSTGRESQL,
   SkillDB.DOCKER,
 ];

@@ -45,15 +45,6 @@ export const SkillDB: Record<string, Skill> = Object.freeze({
     isFrontend: false,
     isOther: false,
   },
-  GIT: {
-    id: 9,
-    name: "Git",
-    icon: "icons/git.png",
-    isCore: true,
-    isBackend: false,
-    isFrontend: false,
-    isOther: true,
-  },
   HTML5: {
     id: 11,
     name: "HTML5",
@@ -115,15 +106,6 @@ export const SkillDB: Record<string, Skill> = Object.freeze({
     isCore: false,
     isBackend: true,
     isFrontend: false,
-    isOther: false,
-  },
-  VITE: {
-    id: 19,
-    name: "Vite",
-    icon: "icons/vite.png",
-    isCore: true,
-    isBackend: false,
-    isFrontend: true,
     isOther: false,
   },
   VUEJS: {
