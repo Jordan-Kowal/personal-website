@@ -1,5 +1,10 @@
 # Changelog
 
+## [v2.3.0] - 2025-02-08
+
+- Updated resume and career
+- Upgraded multiple deps
+
 ## [v2.2.0] - 2025-01-24
 
 - Removed unnecessary skills from database
