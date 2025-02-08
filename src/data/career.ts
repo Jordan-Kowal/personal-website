@@ -95,13 +95,13 @@ export const WorkExperienceDB: Record<string, WorkExperience> = Object.freeze({
   },
   WTTJ_BACKEND_DEVELOPER: {
     id: 6,
-    title: "Backend Developer",
+    title: "Software Developer",
     entity: "Welcome to the Jungle",
     location: "Paris, France",
     startDate: "2023-10-01",
     endDate: undefined,
     description:
-      "Backend development using Elixir and Phoenix for the job board platform.",
+      "Fullstack development using Elixir/Phoenix and Typescript/React for the job board platform.",
     skills: [
       SkillDB.ELIXIR,
       SkillDB.PHOENIX,
