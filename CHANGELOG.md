@@ -1,9 +1,11 @@
 # Changelog
 
-## TBD
+## [v2.4.0] - 2025-07-19
 
 - Added `CODEOWNERS` file
 - Migrated `biome` to v2 and applied fixes
+- Added `Flask` skill
+- Added `Alan` career
 
 ## [v2.3.0] - 2025-02-08
 

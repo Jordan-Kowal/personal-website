@@ -20,10 +20,10 @@ const { Text } = Typography;
 const { useBreakpoint } = Grid;
 
 const experiences = [
-  WorkExperienceDB.WTTJ_BACKEND_DEVELOPER,
-  WorkExperienceDB.FIELDBOX_LEAD,
+  WorkExperienceDB.ALAN,
+  WorkExperienceDB.WTTJ,
   WorkExperienceDB.OPENCLASSROOMS_MENTOR,
-  WorkExperienceDB.FIELDBOX_SOFTWARE,
+  WorkExperienceDB.FIELDBOX,
   WorkExperienceDB.GARANTIE_PRIVEE_PO,
   WorkExperienceDB.GARANTIE_PRIVEE_INTERNSHIP,
 ];

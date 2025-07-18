@@ -22,6 +22,7 @@ const options: Option[] = [
 const skillList: Skill[] = [
   SkillDB.PYTHON,
   SkillDB.DJANGO,
+  SkillDB.FLASK,
   SkillDB.ERLANG,
   SkillDB.ELIXIR,
   SkillDB.PHOENIX,

@@ -135,4 +135,13 @@ export const SkillDB: Record<string, Skill> = Object.freeze({
     isFrontend: false,
     isOther: false,
   },
+  FLASK: {
+    id: 23,
+    name: "Flask",
+    icon: "icons/flask.png",
+    isCore: false,
+    isBackend: true,
+    isFrontend: false,
+    isOther: false,
+  },
 });

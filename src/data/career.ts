@@ -27,33 +27,13 @@ export const WorkExperienceDB: Record<string, WorkExperience> = Object.freeze({
       SkillDB.DOCKER,
     ],
   },
-  FIELDBOX_LEAD: {
-    id: 2,
-    title: "Lead Software Developer",
-    entity: "FieldBox.ai",
-    location: "Bordeaux, France",
-    startDate: "2022-02-01",
-    endDate: "2023-10-01",
-    description:
-      "Same as before except I crash the production servers less frequently.",
-    skills: [
-      SkillDB.PYTHON,
-      SkillDB.DJANGO,
-      SkillDB.JAVASCRIPT,
-      SkillDB.REACT,
-      SkillDB.ERLANG,
-      SkillDB.SCALA,
-      SkillDB.POSTGRESQL,
-      SkillDB.DOCKER,
-    ],
-  },
-  FIELDBOX_SOFTWARE: {
+  FIELDBOX: {
     id: 3,
-    title: "Fullstack Software Engineer",
+    title: "Software Developer",
     entity: "FieldBox.ai",
     location: "Bordeaux, France",
     startDate: "2020-02-01",
-    endDate: "2022-02-01",
+    endDate: "2023-10-01",
     description:
       "Frontend and backend development on diverse web applications using Django and React. " +
       "(with a bit of Erlang and Scala here and there).",
@@ -93,13 +73,13 @@ export const WorkExperienceDB: Record<string, WorkExperience> = Object.freeze({
       "Assisted the IT Project Manager with on-going projects (wire-framing, specs, tests, etc.).",
     skills: [],
   },
-  WTTJ_BACKEND_DEVELOPER: {
+  WTTJ: {
     id: 6,
     title: "Software Developer",
     entity: "Welcome to the Jungle",
     location: "Paris, France",
     startDate: "2023-10-01",
-    endDate: undefined,
+    endDate: "2025-05-01",
     description:
       "Fullstack development using Elixir/Phoenix and Typescript/React for the job board platform.",
     skills: [
@@ -109,6 +89,23 @@ export const WorkExperienceDB: Record<string, WorkExperience> = Object.freeze({
       SkillDB.REACT,
       SkillDB.POSTGRESQL,
       SkillDB.DOCKER,
+    ],
+  },
+  ALAN: {
+    id: 7,
+    title: "Software Engineer",
+    entity: "Alan",
+    location: "Paris, France",
+    startDate: "2025-05-01",
+    endDate: undefined,
+    description:
+      "Fullstack development using Python/Flask and Typescript/React/React Native.",
+    skills: [
+      SkillDB.PYTHON,
+      SkillDB.FLASK,
+      SkillDB.TYPESCRIPT,
+      SkillDB.REACT,
+      SkillDB.POSTGRESQL,
     ],
   },
 });
