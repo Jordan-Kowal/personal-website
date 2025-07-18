@@ -1,7 +1,7 @@
-import { Space } from "@/components/ui";
 import { Typography } from "antd";
 import classNames from "classnames";
 import { memo } from "react";
+import { Space } from "@/components/ui";
 
 const { Title } = Typography;
 

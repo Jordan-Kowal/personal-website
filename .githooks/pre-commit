@@ -3,7 +3,7 @@ set -eu
 
 echo "---------- Git hook: pre-commit ----------"
 
-# Biome (lint and format)
+# Biome (lint, format, imports)
 echo ">>> [1/2] Running Biome on frontend"
 yarn biome:check
 

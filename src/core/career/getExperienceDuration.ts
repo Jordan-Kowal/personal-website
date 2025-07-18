@@ -1,5 +1,5 @@
-import { date, dateFormatter, now } from "@/utils/dates";
 import type { Dayjs } from "dayjs";
+import { date, dateFormatter, now } from "@/utils/dates";
 
 type ComputeDurationAsString = (
   startDate: string | Dayjs,

@@ -1,8 +1,8 @@
-import { LINKEDIN_URL } from "@/core/constants";
-import { theme } from "@/styles";
 import { Button } from "antd";
 import { memo } from "react";
 import { Link } from "react-router-dom";
+import { LINKEDIN_URL } from "@/core/constants";
+import { theme } from "@/styles";
 
 const contactStyle = {
   height: `calc(${theme.layout.mainHeight} - ${theme.layout.layoutPadding})`,

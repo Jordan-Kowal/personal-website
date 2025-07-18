@@ -1,10 +1,10 @@
+import { Col, Radio, type RadioChangeEvent, Row } from "antd";
+import classNames from "classnames";
+import { memo, useCallback, useState } from "react";
 import { SkillIcon, Space } from "@/components/ui";
 import { skillFilter } from "@/core/skills";
 import { SkillDB } from "@/data";
 import type { Skill } from "@/data/skills";
-import { Col, Radio, type RadioChangeEvent, Row } from "antd";
-import classNames from "classnames";
-import { memo, useCallback, useState } from "react";
 
 type Option = {
   label: string;

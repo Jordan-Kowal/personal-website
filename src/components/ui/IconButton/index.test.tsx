@@ -1,7 +1,7 @@
-import { getByTestId, render } from "@/tests/utils";
 import { UserOutlined } from "@ant-design/icons";
 import { act, fireEvent, waitFor } from "@testing-library/react";
 import { describe, test, vi } from "vitest";
+import { getByTestId, render } from "@/tests/utils";
 import { IconButton } from "./index";
 
 describe.concurrent("components/ui/IconButton", () => {

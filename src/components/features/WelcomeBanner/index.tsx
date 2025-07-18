@@ -1,6 +1,6 @@
+import { memo } from "react";
 import { Socials } from "@/components/features/Socials";
 import { Logo, Space } from "@/components/ui";
-import { memo } from "react";
 import { PresentationText } from "./PresentationText";
 
 export const WelcomeBanner: React.FC = memo(() => (

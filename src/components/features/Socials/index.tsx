@@ -1,5 +1,3 @@
-import { IconButton, Space } from "@/components/ui";
-import { GITHUB_URL, LINKEDIN_URL, YOUTUBE_URL } from "@/core/constants";
 import {
   FilePdfOutlined,
   GithubOutlined,
@@ -8,6 +6,8 @@ import {
 } from "@ant-design/icons";
 import { memo } from "react";
 import { Link } from "react-router-dom";
+import { IconButton, Space } from "@/components/ui";
+import { GITHUB_URL, LINKEDIN_URL, YOUTUBE_URL } from "@/core/constants";
 
 export const Socials: React.FC = memo(() => (
   <Space size={20}>

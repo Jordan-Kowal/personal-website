@@ -1,6 +1,3 @@
-import { Space } from "@/components/ui";
-import { EducationDB, WorkExperienceDB } from "@/data";
-import { dateFormatter } from "@/utils/dates";
 import {
   Col,
   Grid,
@@ -12,6 +9,9 @@ import {
 } from "antd";
 import classNames from "classnames";
 import { memo, useCallback, useState } from "react";
+import { Space } from "@/components/ui";
+import { EducationDB, WorkExperienceDB } from "@/data";
+import { dateFormatter } from "@/utils/dates";
 import styles from "./Career.module.less";
 import { Item } from "./Item";
 import { ItemDot } from "./ItemDot";

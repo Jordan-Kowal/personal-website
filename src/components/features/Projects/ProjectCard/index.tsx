@@ -1,6 +1,3 @@
-import { IconButton, Ribbon, SkillIcon, Space } from "@/components/ui";
-import type { Project } from "@/data/projects";
-import { theme } from "@/styles";
 import {
   GithubOutlined,
   GlobalOutlined,
@@ -8,6 +5,9 @@ import {
 } from "@ant-design/icons";
 import { Card, Typography } from "antd";
 import { memo, useCallback } from "react";
+import { IconButton, Ribbon, SkillIcon, Space } from "@/components/ui";
+import type { Project } from "@/data/projects";
+import { theme } from "@/styles";
 import { LinkCardAction } from "../LinkCardAction";
 
 const { Text } = Typography;

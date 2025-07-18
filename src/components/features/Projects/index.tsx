@@ -1,6 +1,6 @@
-import { ProjectDB } from "@/data";
 import { Col, Row } from "antd";
 import { memo, useCallback, useState } from "react";
+import { ProjectDB } from "@/data";
 import { ProjectCard } from "./ProjectCard";
 import { ScreenshotGallery } from "./ScreenshotGallery";
 

@@ -1,6 +1,6 @@
-import { getByTestId, render } from "@/tests/utils";
 import { waitFor } from "@testing-library/react";
 import { describe, test } from "vitest";
+import { getByTestId, render } from "@/tests/utils";
 import { Space } from "./index";
 
 describe.concurrent("components/ui/Space", () => {

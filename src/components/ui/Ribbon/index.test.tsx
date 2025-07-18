@@ -1,6 +1,6 @@
-import { render } from "@/tests/utils";
 import { waitFor } from "@testing-library/react";
 import { describe, test } from "vitest";
+import { render } from "@/tests/utils";
 import { Ribbon } from "./index";
 
 describe.concurrent("components/ui/Ribbon", () => {

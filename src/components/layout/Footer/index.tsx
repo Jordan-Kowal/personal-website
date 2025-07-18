@@ -1,9 +1,9 @@
-import { Socials } from "@/components/features/Socials";
-import { Logo, Space } from "@/components/ui";
-import { now } from "@/utils/dates";
 import { Layout, Typography } from "antd";
 import type React from "react";
 import { memo } from "react";
+import { Socials } from "@/components/features/Socials";
+import { Logo, Space } from "@/components/ui";
+import { now } from "@/utils/dates";
 
 const { Text } = Typography;
 

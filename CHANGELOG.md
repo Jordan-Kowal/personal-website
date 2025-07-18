@@ -3,6 +3,7 @@
 ## TBD
 
 - Added `CODEOWNERS` file
+- Migrated `biome` to v2 and applied fixes
 
 ## [v2.3.0] - 2025-02-08
 

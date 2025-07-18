@@ -1,7 +1,7 @@
-import type { Skill } from "@/data/skills";
 import { Image, Tooltip } from "antd";
 import classNames from "classnames";
 import { memo } from "react";
+import type { Skill } from "@/data/skills";
 
 type SkillIconProps = {
   className?: string;

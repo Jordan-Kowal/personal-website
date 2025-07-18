@@ -1,1 +1,1 @@
-export { dateFormatter, date, now } from "./utils";
+export { date, dateFormatter, now } from "./utils";

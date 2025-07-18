@@ -1,3 +1,5 @@
+import { Anchor } from "antd";
+import { memo } from "react";
 import {
   Career,
   Contact,
@@ -6,8 +8,6 @@ import {
   WelcomeBanner,
 } from "@/components/features";
 import { Section, Space } from "@/components/ui";
-import { Anchor } from "antd";
-import { memo } from "react";
 
 type PageSection = {
   key: string;

@@ -1,7 +1,7 @@
+import { memo, Suspense } from "react";
+import { Navigate, Route, Routes as RouterRoutes } from "react-router-dom";
 import { Spin } from "@/components/ui";
 import { theme } from "@/styles";
-import { Suspense, memo } from "react";
-import { Navigate, Route, Routes as RouterRoutes } from "react-router-dom";
 import { type RouteConfigProps, routeConfig } from "../routeConfig";
 
 const routeStyle = {

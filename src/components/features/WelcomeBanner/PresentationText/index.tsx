@@ -1,8 +1,8 @@
-import { Space } from "@/components/ui";
-import { theme } from "@/styles";
 import { Typography } from "antd";
 import { memo } from "react";
 import { TypeAnimation } from "react-type-animation";
+import { Space } from "@/components/ui";
+import { theme } from "@/styles";
 
 const { Text } = Typography;
 

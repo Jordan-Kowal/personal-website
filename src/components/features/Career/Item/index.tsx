@@ -1,6 +1,3 @@
-import { SkillIcon, Space } from "@/components/ui";
-import { getExperienceDuration } from "@/core/career";
-import type { Education, WorkExperience } from "@/data/career";
 import {
   ClockCircleOutlined,
   HomeOutlined,
@@ -9,6 +6,9 @@ import {
 import { Card, Typography } from "antd";
 import classNames from "classnames";
 import { memo } from "react";
+import { SkillIcon, Space } from "@/components/ui";
+import { getExperienceDuration } from "@/core/career";
+import type { Education, WorkExperience } from "@/data/career";
 
 const { Text } = Typography;
 
