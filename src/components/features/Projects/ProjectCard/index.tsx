@@ -15,8 +15,6 @@ const { Text } = Typography;
 const cardBodyStyle = {
   paddingTop: 80,
   minHeight: 280,
-  backgroundPositionX: "right -1px",
-  backgroundPositionY: "-1px",
   lineHeight: "0 !important",
 };
 
@@ -46,7 +44,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(
           className=""
           classNames={{
             actions: "!bg-bg-darker",
-            body: "overflow-hidden text-left bg-bg-darker border-0 rounded-none bg-project-card bg-no-repeat",
+            body: "overflow-hidden text-left bg-bg-darker border-0 rounded-none bg-project-card bg-no-repeat bg-right-top",
           }}
           actions={[
             <LinkCardAction
