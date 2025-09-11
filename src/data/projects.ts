@@ -30,7 +30,7 @@ export const ProjectDB: Record<string, Project> = Object.freeze({
     githubUrl: "https://github.com/Jordan-Kowal/jkscript",
     websiteUrl: "https://www.npmjs.com/package/jcscript",
     screenshots: [],
-    deprecated: false,
+    deprecated: true,
     skills: [SkillDB.TYPESCRIPT],
   },
   DJANGO_REACT_STARTER: {
@@ -40,8 +40,12 @@ export const ProjectDB: Record<string, Project> = Object.freeze({
       "Django-React starter with Docker support for fast and easy web development.",
     githubUrl: "https://github.com/Jordan-Kowal/django-react-starter",
     websiteUrl: undefined,
-    screenshots: [],
-    deprecated: false,
+    screenshots: [
+      "screenshots/starter-login.png",
+      "screenshots/starter-homepage.png",
+      "screenshots/starter-settings.png",
+    ],
+    deprecated: true,
     skills: [
       SkillDB.PYTHON,
       SkillDB.DJANGO,
@@ -92,7 +96,7 @@ export const ProjectDB: Record<string, Project> = Object.freeze({
     githubUrl: "https://github.com/Jordan-Kowal/challenges",
     websiteUrl: undefined,
     screenshots: [],
-    deprecated: false,
+    deprecated: true,
     skills: [SkillDB.PYTHON, SkillDB.ELIXIR],
   },
   DISCORD_DICE_ROLLER: {
@@ -163,7 +167,7 @@ export const ProjectDB: Record<string, Project> = Object.freeze({
     githubUrl: "https://github.com/Jordan-Kowal/django-utils-kit",
     websiteUrl: "https://pypi.org/project/django-utils-kit/",
     screenshots: [],
-    deprecated: false,
+    deprecated: true,
     skills: [SkillDB.PYTHON, SkillDB.DJANGO],
   },
   DJANGO_MEILISEARCH_INDEXER: {
@@ -173,7 +177,7 @@ export const ProjectDB: Record<string, Project> = Object.freeze({
     githubUrl: "https://github.com/Jordan-Kowal/django-meilisearch-indexer",
     websiteUrl: "https://pypi.org/project/django-meilisearch-indexer/",
     screenshots: [],
-    deprecated: false,
+    deprecated: true,
     skills: [SkillDB.PYTHON, SkillDB.DJANGO],
   },
 });

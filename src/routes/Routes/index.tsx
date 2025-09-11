@@ -12,8 +12,9 @@ const routeStyle = {
 export const Routes: React.FC = memo(() => (
   <RouterRoutes>
     {Object.entries(routeConfig).map(([key, { path }]) => {
-      // @ts-ignore
-      const data = routeConfig[key] as RouteConfigProps;
+      const data = routeConfig[
+        key as keyof typeof routeConfig
+      ] as RouteConfigProps;
       const Component = data.component;
       return (
         <Route

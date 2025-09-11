@@ -17,7 +17,7 @@ const themeConfig = {
 };
 
 export const App = memo(() => (
-  // @ts-ignore
+  // @ts-expect-error
   <BrowserRouter basename={import.meta.env.BASE_URL || ""}>
     <ConfigProvider locale={frFR} theme={themeConfig}>
       <AppLayout>

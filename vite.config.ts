@@ -1,6 +1,7 @@
+import { resolve } from "node:path";
 import react from "@vitejs/plugin-react";
 import million from "million/compiler";
-import { resolve } from "node:path";
+import { visualizer } from "rollup-plugin-visualizer";
 import { defineConfig } from "vite";
 
 const reactScanPlugin = {
@@ -15,7 +16,17 @@ const reactScanPlugin = {
 
 export default defineConfig(({ mode }) => {
   const isDev = mode === "development";
-  const plugins = [million.vite({ auto: true }), react()];
+  const plugins = [
+    million.vite({ auto: true }),
+    react(),
+    visualizer({
+      filename: "bundle-stats.html",
+      title: "Bundle Stats",
+      gzipSize: true,
+      open: true,
+    }),
+  ];
+
   if (isDev) plugins.push(reactScanPlugin);
 
   return {

@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/correctness/useUniqueElementIds: It's a test file, it's fine */
 import { waitFor } from "@testing-library/react";
 import { describe, test } from "vitest";
 import { render } from "@/tests/utils";
@@ -11,7 +12,7 @@ describe.concurrent("components/ui/Ribbon", () => {
     div: HTMLDivElement;
   } => ({
     ribbon: container.querySelector(".ant-ribbon") as HTMLDivElement,
-    div: container.querySelector("#test") as HTMLDivElement,
+    div: container.querySelector("#test-id") as HTMLDivElement,
   });
 
   test("should only render the children if show=false", async ({ expect }) => {

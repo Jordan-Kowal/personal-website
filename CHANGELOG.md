@@ -1,5 +1,11 @@
 # Changelog
 
+## [v2.5.0] - 2025-09-11
+
+- Added `rollup-plugin-visualizer`
+- Updated dependencies
+- Updated projects
+
 ## [v2.4.0] - 2025-07-19
 
 - Added `CODEOWNERS` file
