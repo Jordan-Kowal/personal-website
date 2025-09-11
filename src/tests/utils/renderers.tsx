@@ -9,7 +9,7 @@ import type { ReactNode } from "react";
 import { BrowserRouter } from "react-router-dom";
 
 const wrapComponent = (children: ReactNode) => (
-  // @ts-ignore
+  // @ts-expect-error
   <BrowserRouter basename={import.meta.env.BASE_URL || ""}>
     <ConfigProvider locale={frFR}>{children}</ConfigProvider>
   </BrowserRouter>
