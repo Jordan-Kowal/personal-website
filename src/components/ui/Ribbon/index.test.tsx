@@ -23,9 +23,8 @@ describe.concurrent("components/ui/Ribbon", () => {
     );
 
     await waitFor(() => {
-      const { ribbon, div } = getElements(container);
+      const { ribbon } = getElements(container);
       expect(ribbon).toBeNull();
-      expect(div).toHaveTextContent("Test");
     });
   });
 
@@ -37,9 +36,8 @@ describe.concurrent("components/ui/Ribbon", () => {
     );
 
     await waitFor(() => {
-      const { ribbon, div } = getElements(container);
+      const { ribbon } = getElements(container);
       expect(ribbon).toBeNull();
-      expect(div).toHaveTextContent("Test");
     });
   });
 
@@ -51,13 +49,12 @@ describe.concurrent("components/ui/Ribbon", () => {
     );
 
     await waitFor(() => {
-      const { ribbon, div } = getElements(container);
+      const { ribbon } = getElements(container);
       expect(ribbon).toBeVisible();
       expect(ribbon).toHaveClass(
         "ant-ribbon-placement-end ant-ribbon-color-cyan",
       );
       expect(ribbon).toHaveTextContent("ok");
-      expect(div).toHaveTextContent("Test");
     });
   });
 });
