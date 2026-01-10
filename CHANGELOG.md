@@ -1,5 +1,10 @@
 # Changelog
 
+## [v3.0.0] - TBD
+
+- Framework: Migrated from React to SolidJS
+- UI: Rely on DaisyUI for components (on top of Tailwind)
+
 ## [v2.5.0] - 2025-09-11
 
 - Added `rollup-plugin-visualizer`

@@ -3,12 +3,12 @@ set -eu
 
 echo "---------- Git hook: pre-commit ----------"
 
-# Biome (lint, format, imports)
-echo ">>> [1/2] Running Biome on frontend"
-yarn biome:check
+# Biome (lint and format)
+echo ">>> [1/2] Running Biome"
+pnpm biome:check
 
 # Typescript (type checking)
-echo ">>> [2/2] Compiling Typescript"
-yarn tsc
+echo ">>> [2/2] Running tsc"
+pnpm tsc
 
 echo "------------------------------------------"

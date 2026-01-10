@@ -15,23 +15,21 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: "20" # Cached by github (https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md#nodejs)
-          cache: "yarn"
-          cache-dependency-path: ./yarn.lock
+          node-version: "24" # Cached by github (https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md#nodejs)
+          cache: "pnpm"
+          cache-dependency-path: ./pnpm-lock.yaml
 
-      - name: Cache dependencies
+      - uses: actions/cache@v3
         id: cache-dependencies
-        uses: actions/cache@v3
         with:
           path: |
-            ~/.yarn
+            ~/.pnpm-store
             ./node_modules
-          key: yarn-${{ hashFiles('./yarn.lock') }}
+          key: pnpm-${{ hashFiles('./pnpm-lock.yaml') }}
 
       - name: Install dependencies
         if: ${{ steps.cache-dependencies.outputs.cache-hit != 'true' }}
-        run: |
-          yarn install
+        run: pnpm install
 
   biome:
     needs: setup
@@ -40,13 +38,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Cache dependencies
-        uses: actions/cache@v3
+      - uses: actions/cache@v3
         with:
           path: |
-            ~/.yarn
+            ~/.pnpm-store
             ./node_modules
-          key: yarn-${{ hashFiles('./yarn.lock') }}
+          key: pnpm-${{ hashFiles('./pnpm-lock.yaml') }}
 
       - name: Run biome
         run: |
@@ -59,34 +56,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Cache dependencies
-        uses: actions/cache@v3
+      - uses: actions/cache@v3
         with:
           path: |
-            ~/.yarn
+            ~/.pnpm-store
             ./node_modules
-          key: yarn-${{ hashFiles('./yarn.lock') }}
+          key: pnpm-${{ hashFiles('./pnpm-lock.yaml') }}
 
       - name: Run tsc
         run: |
           yarn tsc
-
-  coverage:
-    needs: setup
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Cache dependencies
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.yarn
-            ./node_modules
-          key: yarn-${{ hashFiles('./yarn.lock') }}
-
-      - name: Run tests
-        run: |
-          yarn test
-          # yarn test:coverage

@@ -24,24 +24,37 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Set up Node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'yarn'
+          node-version: "24" # Cached by github (https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md#nodejs)
+          cache: "pnpm"
+          cache-dependency-path: ./pnpm-lock.yaml
+
+      - uses: actions/cache@v3
+        id: cache-dependencies
+        with:
+          path: |
+            ~/.pnpm-store
+            ./node_modules
+          key: pnpm-${{ hashFiles('./pnpm-lock.yaml') }}
+
       - name: Install dependencies
-        run: yarn install
+        if: ${{ steps.cache-dependencies.outputs.cache-hit != 'true' }}
+        run: pnpm install
+
       - name: Build
         run: yarn build
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload dist repository
           path: './dist'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
