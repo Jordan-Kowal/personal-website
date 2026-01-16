@@ -5,6 +5,12 @@
         "matcher": "Write|Edit|NotebookEdit",
         "command": "pnpm biome:check:fix $CLAUDE_FILE_PATHS"
       }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "command": "pnpm tsc 2>&1 | head -30 || true"
+      }
     ]
   }
 }

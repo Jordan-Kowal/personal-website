@@ -64,12 +64,6 @@ If a component/hook/util is used by a single feature, keep it in that feature's 
 - Utilities: `camelCase.ts`
 - Types: `camelCase.ts`
 
-### Barrel Exports (index.ts)
-
-- Use `index.ts` in `src/features/*/` to export feature's public API
-- Use `index.ts` in `src/components/layout/` and `src/components/ui/`
-- Do NOT create `index.ts` in `src/components/` root (avoids circular imports)
-
 ## SolidJS Patterns
 
 ### Reactivity
@@ -117,36 +111,28 @@ Wrap async boundaries with `<Suspense>` and `<ErrorBoundary>`:
 - Maintain responsive design (`sm:`, `md:`, `lg:` breakpoints)
 - Include accessibility attributes (`aria-*`, semantic HTML)
 
+## Boundaries
+
+**Always:**
+
+- Run `/quality` after code changes
+- Use SolidJS control flow (`<Show>`, `<For>`, `<Switch>`)
+- Use Plan Mode for multi-file changes
+- Read existing code before modifying
+
+**Ask first:**
+
+- Adding new dependencies
+- Changing project structure
+- Modifying shared components in `src/components/`
+- Creating new features in `src/features/`
+
+**Never:**
+
+- Use `.map()` for lists or ternaries for conditionals in JSX
+- Create SSR/server components
+- Make changes beyond what's requested
+
 ## MCP Servers
 
-**Context7** is available for fetching live documentation. Use it when working with library APIs that may have changed since training:
-
-- "Using context7, show me SolidJS createResource API"
-- "Using context7, how do DaisyUI 5 themes work?"
-
-## Verification
-
-After completing code changes, use the `quality` skill or run `pnpm quality` to ensure all checks pass.
-
-## Session Management
-
-**Use Plan Mode (Shift+Tab)** for:
-
-- New features or multi-file changes
-- Architectural decisions
-- Unclear requirements needing exploration
-
-**Proactively offer to:**
-
-- Summarize completed work when context is getting long
-- Verify if previous context is still needed when switching tasks
-- Review what's been accomplished after major milestones
-
-## Code Changes
-
-- Read existing code before modifying
-- Make changes file by file
-- Single chunk per file—no multi-step instructions
-- No whitespace-only changes
-- No changes beyond what's requested
-- Consider performance and security implications
+**Context7** is available for fetching live documentation for SolidJS, DaisyUI, Tailwind, etc.
