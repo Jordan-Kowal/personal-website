@@ -2,80 +2,151 @@
 alwaysApply: true
 ---
 
-# Rules
+# Frontend Personal Website
 
-You are an experienced fullstack developer.
-You are an expert in TypeScript, Node.js, SolidJS, Vite, Tailwind + DaisyUI.
+## Tech Stack
 
-## Generic
+- **Framework**: SolidJS
+- **Build**: Vite
+- **Styling**: Tailwind CSS v4 + DaisyUI
+- **Icons**: Lucide Solid
+- **Utilities**: es-toolkit, Day.js
+- **Linting/Formatting**: Biome
+- **Package Manager**: pnpm
 
-- **Follow instructions**: All instructions within this document must be followed, these are not optional unless explicitly stated.
-- **Ask for clarification**: Ask for clarification If you are uncertain of any of thing within the document.
-- **Be succinct**: Do not waste tokens, be succinct and concise.
-- **Verify Information**: Always verify information before presenting it. Do not make assumptions or speculate without clear evidence.
-- **No Apologies**: Never use apologies.
-- **No Understanding Feedback**: Avoid giving feedback about understanding in comments or documentation.
-- **No Unnecessary Confirmations**: Don't ask for confirmation of information already provided in the context.
-- **No Implementation Checks**: Don't ask the user to verify implementations that are visible in the provided context.
-- **Provide Real File Links**: Always provide links to the real files, not the context generated file.
--. **No Current Implementation**: Don't show or discuss the current implementation unless specifically requested.
--. **Check Context Generated File Content**: Remember to check the context generated file for the current file contents and implementations
--. **No Summaries**: Don't summarize changes made.
+## Project Structure
 
-## Code change
+```txt
+src/
+  assets/        # Static assets and external asset references
+  components/    # Shared reusable components
+    layout/      # Layout components (header, footer, etc.)
+    ui/          # UI primitives (buttons, inputs, etc.)
+  config/        # Configuration files (dayjs, daisyui, etc.)
+  features/      # Feature-specific code (components, hooks, utils)
+  styles/        # Global styles
+  types/         # Shared type definitions
+  utils/         # Shared utilities
+```
 
-- **No fluff**: Do not edit more code than you have to.
-- **File-by-File Changes**: Make changes file by file and give me a chance to spot mistakes.
-- **No Whitespace Suggestions**: Don't suggest whitespace changes.
-- **Single Chunk Edits**: Provide all edits in a single chunk instead of multiple-step instructions or explanations for the same file.
-- **No Unnecessary Updates**: Don't suggest updates or changes to files when there are no actual modifications needed.
-- **Use Explicit Variable Names**: Prefer descriptive, explicit variable names over short, ambiguous ones to enhance code readability.
-- **Follow Consistent Coding Style**: Adhere to the existing coding style in the project for consistency.
-- **Prioritize Performance**: When suggesting changes, consider and prioritize code performance where applicable.
-- **Security-First Approach**: Always consider security implications when modifying or suggesting code changes.
--. **Test Coverage**: Suggest or include appropriate unit tests for new or modified code.
--. **Error Handling**: Implement robust error handling and logging where necessary.
--. **Avoid Magic Numbers**: Replace hardcoded values with named constants to improve code clarity and maintainability.
--. **Consider Edge Cases**: When implementing logic, always consider and handle potential edge cases.
--. **Use Assertions**: Include assertions wherever possible to validate assumptions and catch potential errors early.
--. **Use Route Constants**: Never hardcode route paths as strings. Always use the `routePaths` constant from the centralized routing configuration.
+If a component/hook/util is used by a single feature, keep it in that feature's folder.
 
-## Frontend Key Principles
+## Commands
 
-- Write concise, technical TypeScript code with accurate examples.
-- Use functional and declarative programming patterns; avoid classes.
-- Prefer iteration and modularization over code duplication.
-- Use descriptive variable names with auxiliary verbs (e.g., isLoading, hasError).
-- Follow the existing project structure. If a component/hook/... is used by a single feature, it should be in its folder.
-- Do not use SSR and Server-side components. This is a static frontend with no server-side.
+- `pnpm start` - Development server
+- `pnpm build` - Production build (cleans dist first)
+- `pnpm biome:check` - Check code with Biome
+- `pnpm biome:check:fix` - Fix code issues with Biome
+- `pnpm tsc` - TypeScript type checking
+- `pnpm quality` - Run both Biome and TypeScript checks
 
-### Syntax and Formatting
+## Code Style
 
-- Use TypeScript for all code and prefer types to interfaces.
-- Always use named exports for components, except for page components.
-- Use the arrow functions for pure functions.
-- Use curly braces for all conditionals. Favor simplicity over cleverness.
-- Use declarative JSX.
+### TypeScript
 
-### UI and Styling
+- Use `type` over `interface`
+- Use arrow functions for pure functions
+- Use descriptive names with auxiliary verbs: `isLoading`, `hasError`, `canSubmit`
+- Replace magic numbers with named constants
+- Always handle edge cases
 
-- Use DaisyUI and Tailwind CSS for styling components, following a utility-first approach.
-- Leverage daisyUI's pre-built components for quick UI development.
-- Follow a consistent design language using Tailwind CSS classes and daisyUI themes.
-- Ensure the design remains responsive.
-- Optimize for accessibility (e.g., aria-attributes) when using components.
+### Components
 
-### Package Manager & Commands
+- Named exports for components
+- Curly braces for all conditionals
+- Declarative JSX only
+- No SSR/server components—this is a static frontend
 
-- **Package Manager**: Use `pnpm` for all package management tasks (install, add, remove, etc.)
-- **Commands**: Always lookup available commands in `package.json` scripts section before running any command
+### File Naming
 
-### Dependencies
+- Components: `PascalCase.tsx`
+- Hooks: `useCamelCase.ts`
+- Utilities: `camelCase.ts`
+- Types: `camelCase.ts`
 
-- Vite (for building)
-- Biome (for linting and formatting)
-- SolidJS (main framework)
-- SolidJS Router (for routing)
-- DaisyUI + Tailwind (for styling)
-- Solid Query (for data fetching)
-- Dayjs (for dates)
+### Barrel Exports (index.ts)
+
+- Use `index.ts` in `src/features/*/` to export feature's public API
+- Use `index.ts` in `src/components/layout/` and `src/components/ui/`
+- Do NOT create `index.ts` in `src/components/` root (avoids circular imports)
+
+## SolidJS Patterns
+
+### Reactivity
+
+- `createSignal` for primitive local state
+- `createStore` for complex/nested objects
+- `createMemo` for derived values (avoid inline computations in JSX)
+- `createEffect` only for side effects, not derivations
+
+### Control Flow
+
+```tsx
+// Conditionals - use <Show>, never ternaries for components
+<Show when={isVisible()} fallback={<Placeholder />}>
+  <Content />
+</Show>
+
+// Lists - use <For>, never .map()
+<For each={items()}>{(item) => <Item data={item} />}</For>
+
+// Multiple conditions - use <Switch>/<Match>
+<Switch>
+  <Match when={status() === 'loading'}><Spinner /></Match>
+  <Match when={status() === 'error'}><Error /></Match>
+  <Match when={status() === 'success'}><Content /></Match>
+</Switch>
+```
+
+### Error Handling
+
+Wrap async boundaries with `<Suspense>` and `<ErrorBoundary>`:
+
+```tsx
+<ErrorBoundary fallback={(err) => <ErrorDisplay error={err} />}>
+  <Suspense fallback={<Skeleton />}>
+    <AsyncContent />
+  </Suspense>
+</ErrorBoundary>
+```
+
+## Styling (Tailwind + DaisyUI)
+
+- Utility-first approach
+- Use DaisyUI components where applicable
+- Maintain responsive design (`sm:`, `md:`, `lg:` breakpoints)
+- Include accessibility attributes (`aria-*`, semantic HTML)
+
+## MCP Servers
+
+**Context7** is available for fetching live documentation. Use it when working with library APIs that may have changed since training:
+
+- "Using context7, show me SolidJS createResource API"
+- "Using context7, how do DaisyUI 5 themes work?"
+
+## Verification
+
+After completing code changes, use the `quality` skill or run `pnpm quality` to ensure all checks pass.
+
+## Session Management
+
+**Use Plan Mode (Shift+Tab)** for:
+
+- New features or multi-file changes
+- Architectural decisions
+- Unclear requirements needing exploration
+
+**Proactively offer to:**
+
+- Summarize completed work when context is getting long
+- Verify if previous context is still needed when switching tasks
+- Review what's been accomplished after major milestones
+
+## Code Changes
+
+- Read existing code before modifying
+- Make changes file by file
+- Single chunk per file—no multi-step instructions
+- No whitespace-only changes
+- No changes beyond what's requested
+- Consider performance and security implications
