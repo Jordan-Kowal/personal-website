@@ -4,6 +4,18 @@ alwaysApply: true
 
 # Frontend Personal Website
 
+## Project Overview
+
+This is a **single-page application (SPA)** with no router—just one scrollable page divided into sections:
+
+1. **Hero Banner** - Introduction/landing section
+2. **Skills** - Technical skills showcase
+3. **Projects** - Portfolio of work
+4. **Timeline** - Career/education history
+5. **Contact** - Contact information/form
+
+Each section has its own folder in `features/` containing section-specific components, hooks, and utilities.
+
 ## Tech Stack
 
 - **Framework**: SolidJS
@@ -20,16 +32,19 @@ alwaysApply: true
 src/
   assets/        # Static assets and external asset references
   components/    # Shared reusable components
-    layout/      # Layout components (header, footer, etc.)
+    layout/      # Layout components (Hero, Section, etc.)
     ui/          # UI primitives (buttons, inputs, etc.)
   config/        # Configuration files (dayjs, daisyui, etc.)
-  features/      # Feature-specific code (components, hooks, utils)
+  features/      # Feature-specific code (one folder per section)
+    hero/        # Hero banner section
+    skills/      # Skills section
+    projects/    # Projects section
+    timeline/    # Timeline section
+    contact/     # Contact section
   styles/        # Global styles
   types/         # Shared type definitions
   utils/         # Shared utilities
 ```
-
-If a component/hook/util is used by a single feature, keep it in that feature's folder.
 
 ## Commands
 
@@ -63,6 +78,21 @@ If a component/hook/util is used by a single feature, keep it in that feature's 
 - Hooks: `useCamelCase.ts`
 - Utilities: `camelCase.ts`
 - Types: `camelCase.ts`
+
+### Architecture & Organization
+
+- **Shared code** lives at root level (`components/`, `hooks/`, `utils/`, etc.)
+- **Feature-specific code** stays in its feature folder with the same internal structure
+- Each feature folder mirrors the root structure: `components/`, `hooks/`, `utils/`, `types/`
+
+### Barrel Exports (index.ts)
+
+- Use barrel `index.ts` files at every level **except** root `components/`
+- For `src/components/`, skip the first level—barrel exports start **inside** `layout/` or `ui/`
+  - ✅ `src/components/layout/index.tsx` exports all layout components
+  - ✅ `src/components/ui/index.tsx` exports all UI components
+  - ❌ No `src/components/index.tsx`
+- All other directories (features, utils, types, etc.) use barrel exports at every level
 
 ## SolidJS Patterns
 
