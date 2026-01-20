@@ -66,23 +66,26 @@ Use `index.ts` at every level **except** `src/components/`:
 - Named exports only (no default exports)
 - No SSR/server components—this is a static frontend
 
-## Claude configuration
+### SolidJS Patterns
 
-### MCP Servers
+**Control Flow (Critical):**
 
-**Context7** - Fetch live docs for SolidJS, DaisyUI, Tailwind, etc.
+- ✅ Uses `<Show>` instead of ternaries for conditionals
+- ✅ Uses `<For>` instead of `.map()` for lists
+- ✅ Uses `<Switch>`/`<Match>` for multiple conditions
+- ❌ NEVER use ternaries for component rendering
+- ❌ NEVER use `.map()` for rendering lists
 
-### Skills
+**Reactivity:**
 
-| Skill | When to use | Auto-apply |
-| ------- | ------------- | ---------- |
-| `solidjs-review` | Writing/reviewing components, SolidJS patterns | Yes - on any `.tsx` edit |
-| `docs-fetcher` | Need library documentation | Yes - when unsure about library patterns |
-| `learn` | Capture session learnings into this file | No - user-triggered only |
+- ✅ `createSignal` for primitive local state
+- ✅ `createStore` for complex/nested objects
+- ✅ `createMemo` for derived values (avoid inline computations in JSX)
+- ✅ `createEffect` only for side effects, not derivations
+- ✅ Signals called as functions in JSX: `{count()}` not `{count}`
 
-### Slash Commands
+**Async & Error Handling:**
 
-- `/quality` - Run quality checks and fix issues
-- `/branch` - Create or switch git branches
-- `/commit` - Create conventional commits
-- `/review-diff` - Review local changes before committing
+- ✅ Async boundaries wrapped with `<Suspense>`
+- ✅ Error boundaries with `<ErrorBoundary>`
+- ✅ Proper fallback components
