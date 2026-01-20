@@ -102,6 +102,7 @@ src/
 - `createStore` for complex/nested objects
 - `createMemo` for derived values (avoid inline computations in JSX)
 - `createEffect` only for side effects, not derivations
+  - Always add comments above `createEffect` calls explaining what they do
 
 ### Control Flow
 

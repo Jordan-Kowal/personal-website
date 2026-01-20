@@ -1,2 +1,2 @@
-export type Theme = "bumblebee";
-export const DEFAULT_THEME: Theme = "bumblebee";
+export type Theme = "coffee";
+export const DEFAULT_THEME: Theme = "coffee";
