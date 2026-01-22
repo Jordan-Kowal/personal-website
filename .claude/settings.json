@@ -5,7 +5,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "echo '=== Project Status ===' && git status -s && echo '\n=== Type Check (first 15 errors) ===' && pnpm tsc --noEmit 2>&1 | head -15 || true"
+            "command": "git status --short && echo '---' && git log -3 --oneline"
           }
         ]
       }

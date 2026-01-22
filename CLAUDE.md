@@ -4,13 +4,20 @@ alwaysApply: true
 
 # Frontend Personal Website
 
+## Context Files
+
+Reference these for project details:
+
+- @README.md - Project overview and setup instructions
+- @package.json - Available scripts and dependencies
+- @tsconfig.json - TypeScript configuration and path aliases
+- @biome.json - Linting, formatting rules, and SolidJS domain settings
+
 ## Project Overview
 
 Single-page SPA with sections: Hero, Skills, Projects, Timeline, Contact. Each section has its own folder in `features/`.
 
-## Tech Stack
-
-SolidJS, Vite, Tailwind CSS v4 + DaisyUI, Lucide Solid, es-toolkit, Day.js, Biome, pnpm
+Tech stack: SolidJS, Vite, Tailwind CSS v4 + DaisyUI, Lucide Solid, es-toolkit, Day.js, Biome, pnpm
 
 ## Project Structure
 
@@ -32,12 +39,11 @@ src/
 
 When in doubt: default to feature-specific (easier to promote later)
 
-## Important commands
+## Context Management
 
-- `pnpm start` - Dev server
-- `pnpm build` - Production build
-- `pnpm quality` - Biome + TypeScript checks
-- `pnpm biome:check:fix` - Auto-fix Biome errors
+- Use `/clear` between unrelated features to reset context
+- Use `/compact` if responses slow down or context feels bloated
+- Run `/verify` before commits to ensure quality checks pass
 
 ## Code Style
 
