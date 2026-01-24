@@ -1,5 +1,6 @@
 import "@/config/dayjs";
 import { HeroBanner } from "@/features/hero";
+import { SkillsSection } from "@/features/skills";
 import { DEFAULT_THEME } from "./config/daisyui";
 
 export const App = () => {
@@ -9,6 +10,7 @@ export const App = () => {
       class="min-w-full prose prose-sm md:prose-base bg-base-100"
     >
       <HeroBanner />
+      <SkillsSection />
     </div>
   );
 };
