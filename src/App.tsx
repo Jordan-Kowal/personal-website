@@ -1,5 +1,6 @@
 import "@/config/dayjs";
 import { HeroBanner } from "@/features/hero";
+import { ProjectsSection } from "@/features/projects";
 import { SkillsSection } from "@/features/skills";
 import { DEFAULT_THEME } from "./config/daisyui";
 
@@ -11,6 +12,7 @@ export const App = () => {
     >
       <HeroBanner />
       <SkillsSection />
+      <ProjectsSection />
     </div>
   );
 };
