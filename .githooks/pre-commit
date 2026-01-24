@@ -5,10 +5,10 @@ echo "---------- Git hook: pre-commit ----------"
 
 # Biome (lint and format)
 echo ">>> [1/2] Running Biome"
-pnpm biome:check
+bun biome:check
 
 # Typescript (type checking)
 echo ">>> [2/2] Running tsc"
-pnpm tsc
+bun tsc
 
 echo "------------------------------------------"

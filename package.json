@@ -10,7 +10,7 @@
     "biome:check": "biome check ./src",
     "biome:check:fix": "biome check ./src --write --unsafe",
     "tsc": "tsc",
-    "quality": "pnpm biome:check && pnpm tsc"
+    "quality": "bun biome:check && bun tsc"
   },
   "dependencies": {
     "dayjs": "1.11.19",

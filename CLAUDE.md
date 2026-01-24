@@ -17,7 +17,7 @@ Reference these for project details:
 
 Single-page SPA with sections: Hero, Skills, Projects, Timeline, Contact. Each section has its own folder in `features/`.
 
-Tech stack: SolidJS, Vite, Tailwind CSS v4 + DaisyUI, Lucide Solid, es-toolkit, Day.js, Biome, pnpm
+Tech stack: SolidJS, Vite, Tailwind CSS v4 + DaisyUI, Lucide Solid, es-toolkit, Day.js, Biome, Bun
 
 ## Project Structure
 

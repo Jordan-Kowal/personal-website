@@ -1,6 +1,6 @@
 # Personal Website
 
-My personal static website made with Vite + React + Antd.
+My personal static website made with Vite + SolidJS + Tailwind CSS.
 Single Page Application with the following sections:
 
 - Banner
@@ -14,8 +14,8 @@ Single Page Application with the following sections:
 Simply run the following:
 
 ```shell
-yarn install
-yarn start
+bun install
+bun start
 ```
 
 ## Setting up the pre-commits

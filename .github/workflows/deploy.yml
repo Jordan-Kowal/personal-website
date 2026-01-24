@@ -26,26 +26,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version: "24" # Cached by github (https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md#nodejs)
-          cache: "pnpm"
-          cache-dependency-path: ./pnpm-lock.yaml
-
-      - uses: actions/cache@v3
-        id: cache-dependencies
-        with:
-          path: |
-            ~/.pnpm-store
-            ./node_modules
-          key: pnpm-${{ hashFiles('./pnpm-lock.yaml') }}
+          bun-version: latest
 
       - name: Install dependencies
-        if: ${{ steps.cache-dependencies.outputs.cache-hit != 'true' }}
-        run: pnpm install
+        run: bun install
 
       - name: Build
-        run: yarn build
+        run: bun build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
