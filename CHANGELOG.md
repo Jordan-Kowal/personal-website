@@ -2,8 +2,11 @@
 
 ## [v3.0.0] - TBD
 
-- Framework: Migrated from React to SolidJS
-- UI: Rely on DaisyUI for components (on top of Tailwind)
+| Category         | Before         | After                |
+| ---------------- | -------------- | -------------------- |
+| Framework        | `React`        | `SolidJS`            |
+| UI               | `Ant Design`   | `DaisyUI + Tailwind` |
+| Package manager  | `pnpm`         | `Bun`                |
 
 ## [v2.5.0] - 2025-09-11
 
