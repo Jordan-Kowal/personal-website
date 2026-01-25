@@ -3,11 +3,13 @@
 My personal static website made with Vite + SolidJS + Tailwind CSS.
 Single Page Application with the following sections:
 
-- Banner
+- Hero Banner
 - Skills
 - Projects
-- Career
-- Contact
+- Timeline (Career/Education)
+- GitHub Activity
+- Reviews (Client testimonials)
+- Contact (Footer)
 
 ## Running the application
 

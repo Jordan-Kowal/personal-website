@@ -14,7 +14,7 @@ export function HeroBanner() {
       </ContentContainer>
 
       {/* Blocs de contenu devant l'image */}
-      <ContentContainer class="absolute left-1/2 top-1/2 z-[25] -translate-x-1/2 -translate-y-1/2">
+      <ContentContainer class="absolute left-1/2 top-1/2 z-25 -translate-x-1/2 -translate-y-1/2">
         <div class="flex justify-between">
           {/* Bloc gauche - Texte */}
           <div class="text-lg font-semibold">My name is Jordan Koval</div>
@@ -44,7 +44,7 @@ export function HeroBanner() {
           <img
             src="/images/me_1.png"
             alt=""
-            class="h-[80vh] w-auto object-cover"
+            class="h-[80vh] w-auto object-contain"
             aria-hidden="true"
           />
         </div>
