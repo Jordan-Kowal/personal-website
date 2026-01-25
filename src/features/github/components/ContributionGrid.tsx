@@ -80,8 +80,12 @@ export const ContributionGrid: Component = () => {
                             >
                               <div class="bg-base-200 text-base-content px-2 py-1 rounded shadow-lg border border-base-300 text-xs">
                                 <div class="font-semibold">
-                                  {contribution.count} contribution
-                                  {contribution.count !== 1 ? "s" : ""}
+                                  <Show
+                                    when={contribution.count !== 1}
+                                    fallback={`${contribution.count} contribution`}
+                                  >
+                                    {contribution.count} contributions
+                                  </Show>
                                 </div>
                                 <div class="text-base-content/70">
                                   {formatShortDate(contribution.date)}

@@ -27,13 +27,10 @@ export const Navbar = () => {
       setIsSticky(scrollY > heroHeight * 0.8);
 
       // Trouver la section actuellement visible
-      const sections = navItems.map((item) => {
-        if (item.id === "home") {
-          return { id: item.id, element: null };
-        }
-        const element = document.getElementById(item.id);
-        return { id: item.id, element };
-      });
+      const sections = navItems.map((item) => ({
+        id: item.id,
+        element: item.id === "home" ? null : document.getElementById(item.id),
+      }));
 
       // Si on est en haut de la page, activer "home"
       if (scrollY < heroHeight * 0.5) {

@@ -4,7 +4,7 @@ export function HeroBanner() {
   return (
     <div class="relative h-screen w-full overflow-hidden">
       {/* Première couleur - environ 90% de l'écran */}
-      <div class="absolute inset-0 bg-base-100" />
+      <div class="absolute inset-0 bg-base-300" />
 
       {/* Texte WELCOME - derrière l'image */}
       <ContentContainer class="relative z-10 h-full not-prose">
@@ -42,7 +42,7 @@ export function HeroBanner() {
       >
         <div class="flex justify-center">
           <img
-            src="/images/me_1.png"
+            src="/images/jordan-wttj.png"
             alt=""
             class="h-[80vh] w-auto object-contain"
             aria-hidden="true"
@@ -53,7 +53,7 @@ export function HeroBanner() {
       {/* SVG pour créer la deuxième couleur avec séparation courbée */}
       <svg
         aria-hidden="true"
-        class="absolute inset-0 z-30 h-full w-full text-base-300"
+        class="absolute inset-0 z-30 h-full w-full text-base-100"
         preserveAspectRatio="none"
         viewBox="0 0 100 100"
         xmlns="http://www.w3.org/2000/svg"

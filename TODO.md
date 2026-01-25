@@ -32,3 +32,5 @@ TIMELINE:
 GITHUB STATS
 
 GET IN TOUCH
+
+Cleanup images

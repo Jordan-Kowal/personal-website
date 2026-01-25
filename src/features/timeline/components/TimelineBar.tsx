@@ -1,4 +1,4 @@
-import type { Component } from "solid-js";
+import { type Component, For, Show } from "solid-js";
 import type { TimelineItemWithPosition } from "../utils";
 
 type TimelineBarProps = {
@@ -60,13 +60,17 @@ export const TimelineBar: Component<TimelineBarProps> = (props) => {
           <p class="text-xs text-base-content/90 mb-2">
             {props.item.description}
           </p>
-          {props.item.technologies && props.item.technologies.length > 0 && (
+          <Show
+            when={props.item.technologies && props.item.technologies.length > 0}
+          >
             <div class="flex flex-wrap gap-1">
-              {props.item.technologies.map((tech) => (
-                <span class="badge badge-primary badge-sm">{tech}</span>
-              ))}
+              <For each={props.item.technologies}>
+                {(tech) => (
+                  <span class="badge badge-primary badge-sm">{tech}</span>
+                )}
+              </For>
             </div>
-          )}
+          </Show>
         </div>
       </div>
     </div>

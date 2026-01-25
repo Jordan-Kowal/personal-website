@@ -13,17 +13,25 @@ export const ReviewCard: Component<ReviewCardProps> = (props) => {
         {/* Rating */}
         <div class="rating rating-sm mb-3">
           <For each={Array.from({ length: 5 })}>
-            {(_, index) => {
-              const isFilled = index() < props.review.rating;
-              return (
+            {(_, index) => (
+              <Show
+                when={index() < props.review.rating}
+                fallback={
+                  <div
+                    class="mask mask-star-2 bg-base-300"
+                    aria-label={`${index() + 1} star`}
+                    role="img"
+                  />
+                }
+              >
                 <div
-                  class={`mask mask-star-2 ${isFilled ? "bg-warning" : "bg-base-300"}`}
+                  class="mask mask-star-2 bg-warning"
                   aria-label={`${index() + 1} star`}
-                  aria-current={isFilled ? "true" : undefined}
+                  aria-current="true"
                   role="img"
                 />
-              );
-            }}
+              </Show>
+            )}
           </For>
         </div>
 

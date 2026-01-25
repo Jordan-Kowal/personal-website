@@ -1,4 +1,4 @@
-import type { Component } from "solid-js";
+import { type Component, For, Show } from "solid-js";
 import type { TimelineItem } from "../types";
 
 type TimelineCardProps = {
@@ -40,13 +40,17 @@ export const TimelineCard: Component<TimelineCardProps> = (props) => {
         <p class="text-sm leading-relaxed text-base-content/90">
           {props.item.description}
         </p>
-        {props.item.technologies && props.item.technologies.length > 0 && (
+        <Show
+          when={props.item.technologies && props.item.technologies.length > 0}
+        >
           <div class="mt-4 flex flex-wrap gap-2">
-            {props.item.technologies.map((tech) => (
-              <span class="badge badge-primary badge-sm">{tech}</span>
-            ))}
+            <For each={props.item.technologies}>
+              {(tech) => (
+                <span class="badge badge-primary badge-sm">{tech}</span>
+              )}
+            </For>
           </div>
-        )}
+        </Show>
       </div>
     </div>
   );
