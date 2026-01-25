@@ -5,7 +5,7 @@ import { reviewsData } from "./data";
 
 export const ReviewsSection = () => {
   return (
-    <section class="py-16 bg-base-200">
+    <section id="reviews" class="py-16 bg-base-200">
       <ContentContainer>
         <h2 class="mb-8 text-center text-4xl font-bold">Avis clients</h2>
 

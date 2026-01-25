@@ -1,5 +1,5 @@
 import "@/config/dayjs";
-import { Footer } from "@/components/layout";
+import { Footer, Navbar } from "@/components/layout";
 import { GitHubSection } from "@/features/github";
 import { HeroBanner } from "@/features/hero";
 import { ProjectsSection } from "@/features/projects";
@@ -11,10 +11,12 @@ import { DEFAULT_THEME } from "./config/daisyui";
 export const App = () => {
   return (
     <div
+      id="home"
       data-theme={DEFAULT_THEME}
       class="min-w-full prose prose-sm md:prose-base bg-base-100"
     >
       <HeroBanner />
+      <Navbar />
       <SkillsSection />
       <ProjectsSection />
       <TimelineSection />

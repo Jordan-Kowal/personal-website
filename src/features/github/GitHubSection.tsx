@@ -8,7 +8,7 @@ export const GitHubSection = () => {
   const [contributionsData] = createResource(fetchGitHubContributions);
 
   return (
-    <section class="py-16 bg-base-200">
+    <section id="github" class="py-16 bg-base-200">
       <ContentContainer>
         <div class="mb-8 text-center">
           <h2 class="mb-4 text-4xl font-bold flex items-center justify-center gap-3">

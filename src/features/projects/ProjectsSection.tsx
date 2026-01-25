@@ -66,7 +66,7 @@ export const ProjectsSection = () => {
   };
 
   return (
-    <section class="py-16">
+    <section id="projects" class="py-16">
       <ContentContainer>
         <h2 class="mb-8 text-center text-4xl font-bold">Projects</h2>
 

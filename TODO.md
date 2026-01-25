@@ -18,10 +18,12 @@ SKILLS:
 - Font icon
 - Animation (border that turns) with each its color
 - Hover on a badge links activates light on related badges
+- 1 color per thematique
 
 PROJECTS:
 
 - Dragging
+- Design
 
 TIMELINE:
 

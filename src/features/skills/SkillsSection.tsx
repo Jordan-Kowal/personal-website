@@ -9,7 +9,7 @@ const skills = {
 
 export const SkillsSection = () => {
   return (
-    <section class="py-16">
+    <section id="skills" class="py-16">
       <ContentContainer>
         <h2 class="mb-8 text-center text-4xl font-bold">Skills</h2>
         <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
