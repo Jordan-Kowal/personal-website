@@ -1,36 +1,39 @@
 # TODO
 
-- SolidJS migration
-- Redesign with animations
-- README update
-- CHANGELOG update
-
 BANNER:
 
-- Diff or HoverGallery
-
-RATINGS Rating zone
-
-- Funny ratings carousel (Mom: 5 stars, would make another one) Cat / Dog / Girlfriend / ClaudeCode
+- Title at the very top
+- Stars reviews on the side
+  - responsive: Put them right below the hero section
+    - Funny ratings carousel (Mom: 5 stars, would make another one) Cat / Dog / Girlfriend / ClaudeCode
 
 SKILLS:
 
-- Font icon
-- Animation (border that turns) with each its color
-- Hover on a badge links activates light on related badges
-- 1 color per thematique
+- Data -> IA to categorize
+- Font icon for fonts
+- 1 color per section
+- Highlight animation on hover + links
 
 PROJECTS:
 
-- Dragging
-- Design
+- Card design
+- Support card dragging
+- No infinite loop?
 
 TIMELINE:
 
-- Collapse + Stats
+- Design?
 
 GITHUB STATS
 
-GET IN TOUCH
+- Remove hover animation
+  - Last icon should be "Crashed prod ?? times"
 
-Cleanup images
+CONTACT
+
+- Same as before with the big pulsing button
+
+CLEANUP
+
+- Quid other images
+- Ensure responsive/mobile friendly

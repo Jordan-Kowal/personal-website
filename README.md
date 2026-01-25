@@ -8,7 +8,6 @@ Single Page Application with the following sections:
 - Projects
 - Timeline (Career/Education)
 - GitHub Activity
-- Reviews (Client testimonials)
 - Contact (Footer)
 
 ## Running the application
