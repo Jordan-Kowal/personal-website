@@ -7,12 +7,7 @@ export const GitHubSection = () => {
   const [contributionsData] = createResource(fetchGitHubContributions);
 
   return (
-    <Section
-      id="github"
-      title="GitHub Activity"
-      description="Can you guess when I broke production?"
-      alternate
-    >
+    <Section id="github" title="GitHub Activity" alternate>
       <ErrorBoundary
         fallback={(err) => (
           <div class="alert alert-error">
@@ -30,33 +25,28 @@ export const GitHubSection = () => {
           <Show when={contributionsData()}>
             {(data) => (
               <div class="space-y-6">
-                {/* Stats */}
-                <div class="stats stats-vertical lg:stats-horizontal shadow w-full ">
-                  {/* <div class="stats stats-vertical lg:stats-horizontal shadow w-full bg-base-100"> */}
+                <div class="stats stats-vertical lg:stats-horizontal shadow w-full">
                   <div class="stat">
-                    <div class="stat-title">Total Contributions</div>
+                    <div class="stat-title">Total contributions</div>
                     <div class="stat-value text-primary">
                       {data().totalContributions.toLocaleString()}
                     </div>
                     <div class="stat-desc">contributions this year</div>
                   </div>
                   <div class="stat">
-                    <div class="stat-title">Current Streak</div>
+                    <div class="stat-title">Current streak</div>
                     <div class="stat-value text-secondary">
                       {data().currentStreak}
                     </div>
                     <div class="stat-desc">consecutive days</div>
                   </div>
                   <div class="stat">
-                    <div class="stat-title">Longest Streak</div>
-                    <div class="stat-value text-accent">
-                      {data().longestStreak}
-                    </div>
-                    <div class="stat-desc">consecutive days</div>
+                    <div class="stat-title">Days since last incident</div>
+                    <div class="stat-value text-accent">??</div>
+                    <div class="stat-desc">it's gonna be fine...</div>
                   </div>
                 </div>
 
-                {/* Contribution Grid */}
                 <div class="card">
                   <div class="card-body">
                     <ContributionGrid />

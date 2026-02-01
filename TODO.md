@@ -24,11 +24,6 @@ TIMELINE:
 
 - Design?
 
-GITHUB STATS
-
-- Remove hover animation
-  - Last icon should be "Crashed prod ?? times"
-
 CONTACT
 
 - Same as before with the big pulsing button
