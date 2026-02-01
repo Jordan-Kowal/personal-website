@@ -8,7 +8,7 @@ export const ContributionGrid: Component = () => {
 
   const formatShortDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString("fr-FR", {
+    return date.toLocaleDateString("en-US", {
       month: "short",
       day: "numeric",
     });
@@ -64,48 +64,56 @@ export const ContributionGrid: Component = () => {
                             <div class="w-3 h-3 rounded-sm bg-transparent" />
                           }
                         >
-                          <div class="relative group">
+                          <div
+                            class={
+                              contribution.count > 0
+                                ? "relative group"
+                                : "relative"
+                            }
+                          >
                             <div
                               class={`w-3 h-3 rounded-sm ${getContributionLevelClass(
                                 contribution.level,
-                              )} hover:ring-2 hover:ring-primary transition-all cursor-pointer`}
+                              )} ${contribution.count > 0 ? "hover:ring-2 hover:ring-primary transition-all cursor-pointer" : ""}`}
                             />
-                            {/* Tooltip au hover - positionné en bas si en haut de la grille, en haut si en bas */}
-                            <div
-                              class={`absolute left-1/2 -translate-x-1/2 hidden group-hover:block z-50 whitespace-nowrap ${
-                                dayIndex() < 3
-                                  ? "top-full mt-2"
-                                  : "bottom-full mb-2"
-                              }`}
-                            >
-                              <div class="bg-base-200 text-base-content px-2 py-1 rounded shadow-lg border border-base-300 text-xs">
-                                <div class="font-semibold">
-                                  <Show
-                                    when={contribution.count !== 1}
-                                    fallback={`${contribution.count} contribution`}
-                                  >
-                                    {contribution.count} contributions
-                                  </Show>
-                                </div>
-                                <div class="text-base-content/70">
-                                  {formatShortDate(contribution.date)}
-                                </div>
-                              </div>
-                              {/* Flèche du tooltip */}
+                            <Show when={contribution.count > 0}>
+                              {/* Tooltip au hover - positionné en bas si en haut de la grille, en haut si en bas */}
                               <div
-                                class={`absolute left-1/2 -translate-x-1/2 ${
+                                class={`absolute left-1/2 -translate-x-1/2 hidden group-hover:block z-50 whitespace-nowrap ${
                                   dayIndex() < 3
-                                    ? "bottom-full mb-0"
-                                    : "top-full mt-0"
+                                    ? "top-full mt-2"
+                                    : "bottom-full mb-2"
                                 }`}
                               >
+                                <div class="bg-base-200 text-base-content px-2 py-1 rounded shadow-lg border border-base-300 text-xs">
+                                  <div class="font-semibold">
+                                    {contribution.count}{" "}
+                                    {contribution.count === 1
+                                      ? "contribution"
+                                      : "contributions"}
+                                  </div>
+                                  <div class="text-base-content/70">
+                                    {formatShortDate(contribution.date)}
+                                  </div>
+                                </div>
+                                {/* Flèche du tooltip */}
                                 <div
-                                  class={`w-2 h-2 bg-base-200 border-r border-b border-base-300 ${
-                                    dayIndex() < 3 ? "rotate-225" : "rotate-45"
+                                  class={`absolute left-1/2 -translate-x-1/2 ${
+                                    dayIndex() < 3
+                                      ? "bottom-full mb-0"
+                                      : "top-full mt-0"
                                   }`}
-                                ></div>
+                                >
+                                  <div
+                                    class={`w-2 h-2 bg-base-200 border-r border-b border-base-300 ${
+                                      dayIndex() < 3
+                                        ? "rotate-225"
+                                        : "rotate-45"
+                                    }`}
+                                  ></div>
+                                </div>
                               </div>
-                            </div>
+                            </Show>
                           </div>
                         </Show>
                       )}

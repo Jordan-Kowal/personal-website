@@ -1,5 +1,5 @@
 import { createSignal, For } from "solid-js";
-import { ContentContainer } from "@/components/layout";
+import { Section } from "@/components/layout";
 import { ProjectCard } from "./components/ProjectCard";
 
 type Project = {
@@ -66,99 +66,95 @@ export const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" class="py-16">
-      <ContentContainer>
-        <h2 class="mb-8 text-center text-4xl font-bold">Projects</h2>
+    <Section id="projects" title="Projects" alternate>
+      <div class="relative flex h-[400px] items-center justify-center overflow-hidden">
+        <For each={projects}>
+          {(project, index) => {
+            // Calcul réactif - currentIndex() déclenche la réactivité
+            const relativePosition = () => {
+              const current = currentIndex();
+              const total = projects.length;
+              let pos = index() - current;
 
-        <div class="relative flex h-[400px] items-center justify-center overflow-hidden">
-          <For each={projects}>
-            {(project, index) => {
-              // Calcul réactif - currentIndex() déclenche la réactivité
-              const relativePosition = () => {
-                const current = currentIndex();
-                const total = projects.length;
-                let pos = index() - current;
+              // Normaliser la position relative pour gérer le wrap-around
+              if (pos > total / 2) {
+                pos -= total;
+              } else if (pos < -total / 2) {
+                pos += total;
+              }
 
-                // Normaliser la position relative pour gérer le wrap-around
-                if (pos > total / 2) {
-                  pos -= total;
-                } else if (pos < -total / 2) {
-                  pos += total;
-                }
+              return pos;
+            };
 
-                return pos;
+            const style = () => {
+              const pos = relativePosition();
+              const baseOffset = 150;
+              const offset = pos * baseOffset;
+              let scale = 1;
+              let zIndex = 20;
+
+              if (pos === 0) {
+                scale = 1;
+                zIndex = 20;
+              } else if (Math.abs(pos) === 1) {
+                scale = 0.9;
+                zIndex = 10;
+              } else if (Math.abs(pos) === 2) {
+                scale = 0.8;
+                zIndex = 0;
+              } else {
+                scale = 0;
+                zIndex = -1;
+              }
+
+              return {
+                transform: `translateX(calc(-50% + ${offset}px)) scale(${scale})`,
+                "z-index": zIndex,
+                opacity: scale > 0 ? 1 : 0,
               };
+            };
 
-              const style = () => {
-                const pos = relativePosition();
-                const baseOffset = 150;
-                const offset = pos * baseOffset;
-                let scale = 1;
-                let zIndex = 20;
+            return (
+              <div
+                class="absolute left-1/2 h-[400px] w-[300px] origin-center transition-all duration-500 ease-in-out"
+                style={style()}
+              >
+                <ProjectCard
+                  title={project.title}
+                  description={project.description}
+                  technologies={project.technologies}
+                  isActive={relativePosition() === 0}
+                />
+              </div>
+            );
+          }}
+        </For>
+      </div>
 
-                if (pos === 0) {
-                  scale = 1;
-                  zIndex = 20;
-                } else if (Math.abs(pos) === 1) {
-                  scale = 0.9;
-                  zIndex = 10;
-                } else if (Math.abs(pos) === 2) {
-                  scale = 0.8;
-                  zIndex = 0;
-                } else {
-                  scale = 0;
-                  zIndex = -1;
-                }
-
-                return {
-                  transform: `translateX(calc(-50% + ${offset}px)) scale(${scale})`,
-                  "z-index": zIndex,
-                  opacity: scale > 0 ? 1 : 0,
-                };
-              };
-
-              return (
-                <div
-                  class="absolute left-1/2 h-[400px] w-[300px] origin-center transition-all duration-500 ease-in-out"
-                  style={style()}
-                >
-                  <ProjectCard
-                    title={project.title}
-                    description={project.description}
-                    technologies={project.technologies}
-                    isActive={relativePosition() === 0}
-                  />
-                </div>
-              );
-            }}
-          </For>
+      {/* Navigation */}
+      <div class="mt-8 flex justify-center gap-4">
+        <button
+          onclick={goToPrev}
+          class="btn btn-outline btn-primary"
+          aria-label="Previous project"
+          type="button"
+        >
+          ← Previous
+        </button>
+        <div class="flex items-center gap-2">
+          <span class="text-sm">
+            {currentIndex() + 1} / {projects.length}
+          </span>
         </div>
-
-        {/* Navigation */}
-        <div class="mt-8 flex justify-center gap-4">
-          <button
-            onclick={goToPrev}
-            class="btn btn-outline btn-primary"
-            aria-label="Previous project"
-            type="button"
-          >
-            ← Previous
-          </button>
-          <div class="flex items-center gap-2">
-            <span class="text-sm">
-              {currentIndex() + 1} / {projects.length}
-            </span>
-          </div>
-          <button
-            onclick={goToNext}
-            class="btn btn-outline btn-primary"
-            type="button"
-            aria-label="Next project"
-          >
-            Next →
-          </button>
-        </div>
-      </ContentContainer>
-    </section>
+        <button
+          onclick={goToNext}
+          class="btn btn-outline btn-primary"
+          type="button"
+          aria-label="Next project"
+        >
+          Next →
+        </button>
+      </div>
+    </Section>
   );
 };

@@ -1,5 +1,5 @@
 import { createMemo, For } from "solid-js";
-import { ContentContainer } from "@/components/layout";
+import { Section } from "@/components/layout";
 import { educationData, experienceData } from "./data";
 
 export const TimelineSection = () => {
@@ -28,28 +28,24 @@ export const TimelineSection = () => {
   });
 
   return (
-    <section id="timeline" class="py-16">
-      <ContentContainer>
-        <h2 class="mb-8 text-center text-4xl font-bold">Timeline</h2>
+    <Section id="timeline" title="Timeline">
+      {/* Timeline horizontale DaisyUI */}
+      <ul class="timeline timeline-horizontal w-full overflow-x-auto pb-4">
+        <For each={allDates()}>
+          {(year, index) => {
+            const isLast = () => index() === allDates().length - 1;
 
-        {/* Timeline horizontale DaisyUI */}
-        <ul class="timeline timeline-horizontal w-full overflow-x-auto pb-4">
-          <For each={allDates()}>
-            {(year, index) => {
-              const isLast = () => index() === allDates().length - 1;
-
-              return (
-                <li>
-                  <div class="timeline-start timeline-box">
-                    <div class="font-mono text-lg font-bold">{year}</div>
-                  </div>
-                  {!isLast() && <hr />}
-                </li>
-              );
-            }}
-          </For>
-        </ul>
-      </ContentContainer>
-    </section>
+            return (
+              <li>
+                <div class="timeline-start timeline-box">
+                  <div class="font-mono text-lg font-bold">{year}</div>
+                </div>
+                {!isLast() && <hr />}
+              </li>
+            );
+          }}
+        </For>
+      </ul>
+    </Section>
   );
 };

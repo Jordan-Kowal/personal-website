@@ -1,4 +1,4 @@
-import { ContentContainer } from "@/components/layout";
+import { Section } from "@/components/layout";
 import { SkillCard } from "./components/SkillCard";
 
 const skills = {
@@ -9,20 +9,17 @@ const skills = {
 
 export const SkillsSection = () => {
   return (
-    <section id="skills" class="py-16">
-      <ContentContainer>
-        <h2 class="mb-8 text-center text-4xl font-bold">Skills</h2>
-        <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-          {/* Colonne 1 - Languages */}
-          <SkillCard title="Languages" skills={skills.languages} />
+    <Section id="skills" title="Skills">
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+        {/* Colonne 1 - Languages */}
+        <SkillCard title="Languages" skills={skills.languages} />
 
-          {/* Colonne 2 - Frameworks */}
-          <SkillCard title="Frameworks" skills={skills.frameworks} />
+        {/* Colonne 2 - Frameworks */}
+        <SkillCard title="Frameworks" skills={skills.frameworks} />
 
-          {/* Colonne 3 - Tools */}
-          <SkillCard title="Tools" skills={skills.tools} />
-        </div>
-      </ContentContainer>
-    </section>
+        {/* Colonne 3 - Tools */}
+        <SkillCard title="Tools" skills={skills.tools} />
+      </div>
+    </Section>
   );
 };
