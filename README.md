@@ -4,6 +4,7 @@ My personal static website made with Vite + SolidJS + Tailwind CSS.
 Single Page Application with the following sections:
 
 - Hero Banner
+- Reviews
 - Skills
 - Projects
 - Timeline (Career/Education)

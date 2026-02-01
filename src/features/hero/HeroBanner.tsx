@@ -3,13 +3,12 @@ import { ContentContainer } from "@/components/layout";
 export function HeroBanner() {
   return (
     <div class="relative h-screen w-full bg-base-300 overflow-hidden">
-      {/* Diff avec les deux images */}
       <ContentContainer>
-        <figure class="diff aspect-video h-screen" tabindex="0">
+        <figure class="diff aspect-video h-screen m-0!" tabindex="0">
           <div class="diff-item-1" role="img" tabindex="0">
             <img
               alt="daisy"
-              src="/images/jordan-wttj-pixel.png"
+              src="/images/jordan-wordcloud.png"
               class="object-bottom object-cover"
             />
           </div>
@@ -22,7 +21,7 @@ export function HeroBanner() {
           </div>
           <div class="diff-resizer"></div>
         </figure>
-        {/* SVG blanc en bas */}
+        {/* SVG white-curved-bottom */}
         <svg
           aria-hidden="true"
           class="absolute inset-0 z-10 h-full w-full text-base-100"
