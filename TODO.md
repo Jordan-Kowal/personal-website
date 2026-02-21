@@ -3,9 +3,6 @@
 BANNER:
 
 - Title at the very top
-- Stars reviews on the side
-  - responsive: Put them right below the hero section
-    - Funny ratings carousel (Mom: 5 stars, would make another one) Cat / Dog / Girlfriend / ClaudeCode
 
 SKILLS:
 
