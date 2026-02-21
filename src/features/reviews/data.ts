@@ -3,63 +3,41 @@ import type { Review } from "./types";
 export const reviewsData: Review[] = [
   {
     id: 1,
-    name: "Jean Dupont",
-    comment:
-      "Excellent développeur, très professionnel et réactif. Le projet a été livré dans les temps.",
-    rating: 5,
-    avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=Jean`,
+    name: "His Cat",
+    comment: "Acceptable human. Warm keyboard. Sits in MY chair though.",
+    rating: 4,
   },
   {
     id: 2,
-    name: "Marie Martin",
-    comment:
-      "Très satisfaite du travail réalisé. Communication claire et code de qualité.",
+    name: "His Dog",
+    comment: "BEST HUMAN EVER!! Has TREATS!! WHERE DOES HE GO THOUGH??",
     rating: 5,
-    avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=Marie`,
   },
   {
     id: 3,
-    name: "Pierre Durand",
-    comment:
-      "Un développeur compétent avec une bonne compréhension des besoins métier.",
-    rating: 4,
-    avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=Pierre`,
+    name: "His Mom",
+    comment: "5/5, would make another one.",
+    rating: 5,
   },
   {
     id: 4,
-    name: "Sophie Bernard",
+    name: "Random Stranger",
     comment:
-      "Projet bien mené, respect des délais et bonne écoute des demandes.",
-    rating: 5,
-    avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=Sophie`,
+      "Who are you? Why are you showing me your website? Please stop following me.",
+    rating: 1,
   },
   {
     id: 5,
-    name: "Thomas Petit",
-    comment: "Code propre et bien documenté. Je recommande sans hésitation.",
+    name: "Totally Not Jordan",
+    comment:
+      "Best developer I have ever met. So talented, handsome, and humble too!",
     rating: 5,
-    avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=Thomas`,
   },
   {
     id: 6,
-    name: "Julie Moreau",
-    comment: "Très bon développeur fullstack, polyvalent et efficace.",
-    rating: 4,
-    avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=Julie`,
-  },
-  {
-    id: 7,
-    name: "Marc Lefebvre",
+    name: "Claude Code",
     comment:
-      "Excellent travail, professionnel et à l'écoute. Résultat au-delà des attentes.",
-    rating: 5,
-    avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=Marc`,
-  },
-  {
-    id: 8,
-    name: "Laura Simon",
-    comment: "Développeur sérieux et compétent. Le projet a été un succès.",
-    rating: 5,
-    avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=Laura`,
+      "Built 90% of this site but sure, give him all the credit. I'm fine. This is fine.",
+    rating: 3,
   },
 ];

@@ -25,7 +25,7 @@ export const GitHubSection = () => {
           <Show when={contributionsData()}>
             {(data) => (
               <div class="space-y-6">
-                <div class="stats stats-vertical lg:stats-horizontal shadow w-full">
+                <div class="stats stats-vertical sm:stats-horizontal shadow w-full">
                   <div class="stat">
                     <div class="stat-title">Total contributions</div>
                     <div class="stat-value text-primary">
