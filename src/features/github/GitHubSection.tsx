@@ -24,23 +24,23 @@ export const GitHubSection = () => {
         >
           <Show when={contributionsData()}>
             {(data) => (
-              <div class="space-y-6">
-                <div class="stats stats-vertical sm:stats-horizontal shadow w-full">
-                  <div class="stat">
+              <div class="flex flex-col items-center gap-6">
+                <div class="stats stats-vertical sm:stats-horizontal shadow max-w-xl mx-auto">
+                  <div class="stat min-w-40">
                     <div class="stat-title">Total contributions</div>
                     <div class="stat-value text-primary">
                       {data().totalContributions.toLocaleString()}
                     </div>
                     <div class="stat-desc">contributions this year</div>
                   </div>
-                  <div class="stat">
+                  <div class="stat min-w-40">
                     <div class="stat-title">Current streak</div>
                     <div class="stat-value text-secondary">
                       {data().currentStreak}
                     </div>
                     <div class="stat-desc">consecutive days</div>
                   </div>
-                  <div class="stat">
+                  <div class="stat min-w-40">
                     <div class="stat-title">Days since last incident</div>
                     <div class="stat-value text-accent">??</div>
                     <div class="stat-desc">it's gonna be fine...</div>

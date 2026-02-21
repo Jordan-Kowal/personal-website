@@ -15,7 +15,7 @@ export const ContributionGrid: Component = () => {
   };
 
   return (
-    <div class="w-full overflow-x-auto">
+    <div class="w-full">
       <Show
         when={!contributionsData.loading && contributionsData()}
         fallback={
@@ -64,57 +64,23 @@ export const ContributionGrid: Component = () => {
                             <div class="w-3 h-3 rounded-sm bg-transparent" />
                           }
                         >
-                          <div
-                            class={
-                              contribution.count > 0
-                                ? "relative group"
-                                : "relative"
+                          <Show
+                            when={contribution.count > 0}
+                            fallback={
+                              <div
+                                class={`w-3 h-3 rounded-sm ${getContributionLevelClass(contribution.level)}`}
+                              />
                             }
                           >
                             <div
-                              class={`w-3 h-3 rounded-sm ${getContributionLevelClass(
-                                contribution.level,
-                              )} ${contribution.count > 0 ? "hover:ring-2 hover:ring-primary transition-all cursor-pointer" : ""}`}
-                            />
-                            <Show when={contribution.count > 0}>
-                              {/* Tooltip au hover - positionné en bas si en haut de la grille, en haut si en bas */}
+                              class={`tooltip ${dayIndex() < 3 ? "tooltip-bottom" : "tooltip-top"}`}
+                              data-tip={`${contribution.count} ${contribution.count === 1 ? "contribution" : "contributions"} on ${formatShortDate(contribution.date)}`}
+                            >
                               <div
-                                class={`absolute left-1/2 -translate-x-1/2 hidden group-hover:block z-50 whitespace-nowrap ${
-                                  dayIndex() < 3
-                                    ? "top-full mt-2"
-                                    : "bottom-full mb-2"
-                                }`}
-                              >
-                                <div class="bg-base-200 text-base-content px-2 py-1 rounded shadow-lg border border-base-300 text-xs">
-                                  <div class="font-semibold">
-                                    {contribution.count}{" "}
-                                    {contribution.count === 1
-                                      ? "contribution"
-                                      : "contributions"}
-                                  </div>
-                                  <div class="text-base-content/70">
-                                    {formatShortDate(contribution.date)}
-                                  </div>
-                                </div>
-                                {/* Flèche du tooltip */}
-                                <div
-                                  class={`absolute left-1/2 -translate-x-1/2 ${
-                                    dayIndex() < 3
-                                      ? "bottom-full mb-0"
-                                      : "top-full mt-0"
-                                  }`}
-                                >
-                                  <div
-                                    class={`w-2 h-2 bg-base-200 border-r border-b border-base-300 ${
-                                      dayIndex() < 3
-                                        ? "rotate-225"
-                                        : "rotate-45"
-                                    }`}
-                                  ></div>
-                                </div>
-                              </div>
-                            </Show>
-                          </div>
+                                class={`w-3 h-3 rounded-sm ${getContributionLevelClass(contribution.level)} hover:ring-2 hover:ring-primary transition-all cursor-pointer`}
+                              />
+                            </div>
+                          </Show>
                         </Show>
                       )}
                     </For>
