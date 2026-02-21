@@ -3,16 +3,14 @@ import { createResource, For, Show } from "solid-js";
 import type { GitHubContribution } from "../types";
 import { fetchGitHubContributions, getContributionLevelClass } from "../utils";
 
+const formatShortDate = (dateString: string) =>
+  new Date(dateString).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+  });
+
 export const ContributionGrid: Component = () => {
   const [contributionsData] = createResource(fetchGitHubContributions);
-
-  const formatShortDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("en-US", {
-      month: "short",
-      day: "numeric",
-    });
-  };
 
   return (
     <div class="w-full">
@@ -35,7 +33,6 @@ export const ContributionGrid: Component = () => {
               currentWeek.length === 7 ||
               index === contributions().length - 1
             ) {
-              // Compléter la dernière semaine si nécessaire
               while (
                 currentWeek.length < 7 &&
                 index === contributions().length - 1
@@ -57,7 +54,7 @@ export const ContributionGrid: Component = () => {
                 {(week) => (
                   <div class="flex flex-col gap-1">
                     <For each={week}>
-                      {(contribution, dayIndex) => (
+                      {(contribution) => (
                         <Show
                           when={contribution.date}
                           fallback={
@@ -73,11 +70,11 @@ export const ContributionGrid: Component = () => {
                             }
                           >
                             <div
-                              class={`tooltip ${dayIndex() < 3 ? "tooltip-bottom" : "tooltip-top"}`}
-                              data-tip={`${contribution.count} ${contribution.count === 1 ? "contribution" : "contributions"} on ${formatShortDate(contribution.date)}`}
+                              class="tooltip tooltip-top cursor-pointer"
+                              data-tip={`${contribution.count} contributions on ${formatShortDate(contribution.date)}`}
                             >
                               <div
-                                class={`w-3 h-3 rounded-sm ${getContributionLevelClass(contribution.level)} hover:ring-2 hover:ring-primary transition-all cursor-pointer`}
+                                class={`w-3 h-3 rounded-sm ${getContributionLevelClass(contribution.level)}`}
                               />
                             </div>
                           </Show>

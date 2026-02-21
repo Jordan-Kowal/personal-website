@@ -1,9 +1,5 @@
 # TODO
 
-BANNER:
-
-- Title at the very top
-
 SKILLS:
 
 - Data -> IA to categorize
@@ -20,10 +16,6 @@ PROJECTS:
 TIMELINE:
 
 - Design?
-
-CONTACT
-
-- Same as before with the big pulsing button
 
 CLEANUP
 

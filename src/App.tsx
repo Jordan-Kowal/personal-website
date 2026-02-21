@@ -1,5 +1,6 @@
 import "@/config/dayjs";
 import { Footer, Navbar } from "@/components/layout";
+import { ContactSection } from "@/features/contact";
 import { GitHubSection } from "@/features/github";
 import { HeroBanner } from "@/features/hero";
 import { ProjectsSection } from "@/features/projects";
@@ -22,6 +23,7 @@ export const App = () => {
       <TimelineSection />
       <GitHubSection />
       <ReviewsSection />
+      <ContactSection />
       <Footer />
     </div>
   );

@@ -1,38 +1,41 @@
 import { Github, Linkedin, Youtube } from "lucide-solid";
 import type { Component } from "solid-js";
+import { FOOTER_HEIGHT_PX } from "@/config/layout";
+import { SOCIALS } from "@/config/socials";
 
 export const Footer: Component = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer class="footer sm:footer-horizontal bg-neutral text-neutral-content items-center p-4">
-      <aside class="grid-flow-col items-center">
-        <p>Copyright © {currentYear} - All right reserved</p>
-      </aside>
-      <nav class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+    <footer
+      class="flex items-center justify-between bg-neutral text-neutral-content px-4"
+      style={{ "min-height": `${FOOTER_HEIGHT_PX}px` }}
+    >
+      <p class="m-0!">Copyright © {currentYear} - All right reserved</p>
+      <nav class="flex gap-4">
         <a
-          href="https://github.com/jordan-kowal"
+          href={SOCIALS.github}
           target="_blank"
           rel="noopener noreferrer"
-          class="hover:text-primary transition-colors"
+          class="hover:text-primary transition-colors text-neutral-content"
           aria-label="GitHub"
         >
           <Github size={24} />
         </a>
         <a
-          href="https://www.linkedin.com/in/jordan-kowal/"
+          href={SOCIALS.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          class="hover:text-primary transition-colors"
+          class="hover:text-primary transition-colors text-neutral-content"
           aria-label="LinkedIn"
         >
           <Linkedin size={24} />
         </a>
         <a
-          href="https://www.youtube.com/watch?v=8d9u9qAZrpY"
+          href={SOCIALS.youtube}
           target="_blank"
           rel="noopener noreferrer"
-          class="hover:text-primary transition-colors"
+          class="hover:text-primary transition-colors text-neutral-content"
           aria-label="YouTube"
         >
           <Youtube size={24} />

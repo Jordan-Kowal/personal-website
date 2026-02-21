@@ -12,6 +12,7 @@ const navItems: NavItem[] = [
   { id: "projects", label: "Projects", href: "#projects" },
   { id: "github", label: "GitHub", href: "#github" },
   { id: "reviews", label: "Reviews", href: "#reviews" },
+  { id: "contact", label: "Contact", href: "#contact" },
 ];
 
 export const Navbar = () => {
