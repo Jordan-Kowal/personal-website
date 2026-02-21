@@ -4,20 +4,23 @@ alwaysApply: true
 
 # Frontend Personal Website
 
-## Context Files
-
-Reference these for project details:
-
-- @README.md - Project overview and setup instructions
-- @package.json - Available scripts and dependencies
-- @tsconfig.json - TypeScript configuration and path aliases
-- @biome.json - Linting, formatting rules, and SolidJS domain settings
-
 ## Project Overview
 
-Single-page SPA with sections: Hero, Skills, Projects, Timeline, GitHub Activity, Reviews, Contact. Each section has its own folder in `features/`.
+Single-page SPA with sections: Hero, Skills, Projects, Timeline, GitHub Activity, Reviews. Each section has its own folder in `features/`. Contact/Footer lives in `components/layout/`.
 
 Tech stack: SolidJS, Vite, Tailwind CSS v4 + DaisyUI, Lucide Solid, es-toolkit, Day.js, Biome, Bun
+
+## Commands
+
+```bash
+bun install          # Install dependencies
+bun start            # Dev server
+bun build            # Production build (rimraf dist && vite build)
+bun quality          # Lint + typecheck (biome:check && tsc)
+bun biome:check:fix  # Auto-fix lint/format issues
+```
+
+Pre-commit hook runs `bun quality` automatically.
 
 ## Project Structure
 
@@ -31,19 +34,12 @@ src/
   features/      # Feature-specific code (one folder per section)
   styles/        # Global styles
   types/         # Shared types
-  utils/         # Shared utilities
 ```
 
 **Shared** (`src/{type}/`) — used by 2+ features
 **Feature-specific** (`src/features/{name}/{type}/`) — used by single feature only
 
 When in doubt: default to feature-specific (easier to promote later)
-
-## Context Management
-
-- Use `/clear` between unrelated features to reset context
-- Use `/compact` if responses slow down or context feels bloated
-- Run `/verify` before commits to ensure quality checks pass
 
 ## Code Style
 

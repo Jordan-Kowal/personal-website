@@ -141,5 +141,8 @@ vite.config.ts.timestamp-*
 ## Bundle stats
 bundle-stats.html
 
+# OS files
+.DS_Store
+
 # Claude Code local settings
 .claude/settings.local.json
