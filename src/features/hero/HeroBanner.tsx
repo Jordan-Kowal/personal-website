@@ -4,23 +4,11 @@ export function HeroBanner() {
   return (
     <div class="relative h-screen w-full bg-base-300 overflow-hidden">
       <ContentContainer>
-        <figure class="diff aspect-video h-screen m-0!" tabindex="0">
-          <div class="diff-item-1" role="img" tabindex="0">
-            <img
-              alt="daisy"
-              src="/images/jordan-wordcloud.png"
-              class="object-bottom object-cover"
-            />
-          </div>
-          <div class="diff-item-2" role="img">
-            <img
-              alt="daisy"
-              src="/images/jordan-wttj.png"
-              class="object-bottom object-cover"
-            />
-          </div>
-          <div class="diff-resizer"></div>
-        </figure>
+        <img
+          alt="Jordan Kowal"
+          src="/images/jordan-wttj.png"
+          class="absolute bottom-0 left-1/2 -translate-x-1/2 h-full object-cover object-bottom"
+        />
         {/* SVG white-curved-bottom */}
         <svg
           aria-hidden="true"
