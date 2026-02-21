@@ -21,3 +21,4 @@ CLEANUP
 
 - Quid other images
 - Ensure responsive/mobile friendly
+- navbar design
