@@ -2,56 +2,74 @@ import { Briefcase } from "lucide-solid";
 import { createSignal, For } from "solid-js";
 import { Section } from "@/components/layout";
 import { ProjectCard } from "./components/ProjectCard";
-
-type Project = {
-  id: number;
-  title: string;
-  description: string;
-  technologies: string[];
-};
+import type { Project } from "./types";
 
 const projects: Project[] = [
   {
     id: 1,
-    title: "E-Commerce Platform",
+    name: "E-Commerce Platform",
     description:
       "A full-featured e-commerce platform with payment integration, inventory management, and admin dashboard.",
-    technologies: ["React", "Node.js", "PostgreSQL", "Stripe"],
+    githubUrl: undefined,
+    websiteUrl: undefined,
+    screenshots: [],
+    deprecated: false,
+    skills: ["React", "Node.js", "PostgreSQL", "Stripe"],
   },
   {
     id: 2,
-    title: "Task Management App",
+    name: "Task Management App",
     description:
       "Collaborative task management application with real-time updates, drag-and-drop, and team collaboration features.",
-    technologies: ["Vue.js", "Firebase", "TypeScript"],
+    githubUrl: undefined,
+    websiteUrl: undefined,
+    screenshots: [],
+    deprecated: false,
+    skills: ["Vue.js", "Firebase", "TypeScript"],
   },
   {
     id: 3,
-    title: "Weather Dashboard",
+    name: "Weather Dashboard",
     description:
       "Beautiful weather dashboard with forecasts, maps, and weather alerts for multiple locations.",
-    technologies: ["Solid.js", "OpenWeather API", "Tailwind CSS"],
+    githubUrl: undefined,
+    websiteUrl: undefined,
+    screenshots: [],
+    deprecated: false,
+    skills: ["Solid.js", "OpenWeather API", "Tailwind CSS"],
   },
   {
     id: 4,
-    title: "Social Media Analytics",
+    name: "Social Media Analytics",
     description:
       "Analytics platform for social media metrics with data visualization, reports, and insights.",
-    technologies: ["Python", "Django", "Chart.js", "PostgreSQL"],
+    githubUrl: undefined,
+    websiteUrl: undefined,
+    screenshots: [],
+    deprecated: false,
+    skills: ["Python", "Django", "Chart.js", "PostgreSQL"],
   },
   {
     id: 5,
-    title: "Learning Management System",
+    name: "Learning Management System",
     description:
       "Online learning platform with courses, quizzes, progress tracking, and certificate generation.",
-    technologies: ["React", "MongoDB", "Express", "Node.js"],
+    githubUrl: undefined,
+    websiteUrl: undefined,
+    screenshots: [],
+    deprecated: false,
+    skills: ["React", "MongoDB", "Express", "Node.js"],
   },
   {
     id: 6,
-    title: "Recipe Sharing App",
+    name: "Recipe Sharing App",
     description:
       "Community-driven recipe sharing platform with search, favorites, meal planning, and shopping lists.",
-    technologies: ["Next.js", "Prisma", "PostgreSQL", "AWS"],
+    githubUrl: undefined,
+    websiteUrl: undefined,
+    screenshots: [],
+    deprecated: false,
+    skills: ["Next.js", "Prisma", "PostgreSQL", "AWS"],
   },
 ];
 
@@ -121,10 +139,9 @@ export const ProjectsSection = () => {
                 style={style()}
               >
                 <ProjectCard
-                  title={project.title}
-                  description={project.description}
-                  technologies={project.technologies}
+                  project={project}
                   isActive={relativePosition() === 0}
+                  onThumbnailClick={() => {}}
                 />
               </div>
             );
