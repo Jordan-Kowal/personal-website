@@ -49,7 +49,7 @@ export const GitHubSection = () => {
                 </div>
 
                 <div class="card">
-                  <div class="card-body">
+                  <div class="card-body pb-0!">
                     <ContributionGrid />
                     <div class="mt-4 flex items-center justify-center gap-4 text-sm text-base-content/70">
                       <span>Less</span>

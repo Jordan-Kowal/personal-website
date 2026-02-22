@@ -57,7 +57,7 @@ export const ProjectsSection = () => {
       </div>
 
       {/* Carousel */}
-      <div class="relative flex h-110 items-center justify-center overflow-hidden">
+      <div class="relative flex h-105 items-center justify-center overflow-hidden">
         <For each={filteredProjects()}>
           {(project, index) => {
             const relativePosition = () => {
