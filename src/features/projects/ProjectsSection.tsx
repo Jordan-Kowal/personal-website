@@ -1,107 +1,71 @@
 import { Briefcase } from "lucide-solid";
-import { createSignal, For } from "solid-js";
+import { createMemo, createSignal, For, Show } from "solid-js";
 import { Section } from "@/components/layout";
 import { ProjectCard } from "./components/ProjectCard";
-import type { Project } from "./types";
-
-const projects: Project[] = [
-  {
-    id: 1,
-    name: "E-Commerce Platform",
-    description:
-      "A full-featured e-commerce platform with payment integration, inventory management, and admin dashboard.",
-    githubUrl: undefined,
-    websiteUrl: undefined,
-    screenshots: [],
-    deprecated: false,
-    skills: ["React", "Node.js", "PostgreSQL", "Stripe"],
-  },
-  {
-    id: 2,
-    name: "Task Management App",
-    description:
-      "Collaborative task management application with real-time updates, drag-and-drop, and team collaboration features.",
-    githubUrl: undefined,
-    websiteUrl: undefined,
-    screenshots: [],
-    deprecated: false,
-    skills: ["Vue.js", "Firebase", "TypeScript"],
-  },
-  {
-    id: 3,
-    name: "Weather Dashboard",
-    description:
-      "Beautiful weather dashboard with forecasts, maps, and weather alerts for multiple locations.",
-    githubUrl: undefined,
-    websiteUrl: undefined,
-    screenshots: [],
-    deprecated: false,
-    skills: ["Solid.js", "OpenWeather API", "Tailwind CSS"],
-  },
-  {
-    id: 4,
-    name: "Social Media Analytics",
-    description:
-      "Analytics platform for social media metrics with data visualization, reports, and insights.",
-    githubUrl: undefined,
-    websiteUrl: undefined,
-    screenshots: [],
-    deprecated: false,
-    skills: ["Python", "Django", "Chart.js", "PostgreSQL"],
-  },
-  {
-    id: 5,
-    name: "Learning Management System",
-    description:
-      "Online learning platform with courses, quizzes, progress tracking, and certificate generation.",
-    githubUrl: undefined,
-    websiteUrl: undefined,
-    screenshots: [],
-    deprecated: false,
-    skills: ["React", "MongoDB", "Express", "Node.js"],
-  },
-  {
-    id: 6,
-    name: "Recipe Sharing App",
-    description:
-      "Community-driven recipe sharing platform with search, favorites, meal planning, and shopping lists.",
-    githubUrl: undefined,
-    websiteUrl: undefined,
-    screenshots: [],
-    deprecated: false,
-    skills: ["Next.js", "Prisma", "PostgreSQL", "AWS"],
-  },
-];
+import { ScreenshotModal } from "./components/ScreenshotModal";
+import { projectsData } from "./data";
 
 export const ProjectsSection = () => {
+  const [showDeprecated, setShowDeprecated] = createSignal(false);
   const [currentIndex, setCurrentIndex] = createSignal(0);
+  const [modalScreenshots, setModalScreenshots] = createSignal<string[]>([]);
+  const [modalIndex, setModalIndex] = createSignal(0);
+
+  const filteredProjects = createMemo(() => {
+    if (showDeprecated()) return projectsData;
+    return projectsData.filter((p) => !p.deprecated);
+  });
+
+  const toggleDeprecated = () => {
+    setShowDeprecated((prev) => !prev);
+    setCurrentIndex(0);
+  };
 
   const goToNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % projects.length);
+    setCurrentIndex((prev) => (prev + 1) % filteredProjects().length);
   };
 
   const goToPrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
+    setCurrentIndex(
+      (prev) =>
+        (prev - 1 + filteredProjects().length) % filteredProjects().length,
+    );
+  };
+
+  const openModal = (screenshots: string[], index: number) => {
+    setModalScreenshots(screenshots);
+    setModalIndex(index);
+  };
+
+  const closeModal = () => {
+    setModalScreenshots([]);
   };
 
   return (
     <Section id="projects" title="Projects" alternate icon={Briefcase}>
-      <div class="relative flex h-[400px] items-center justify-center overflow-hidden">
-        <For each={projects}>
+      {/* Filter toggle */}
+      <div class="mb-6 flex justify-center">
+        <label class="label cursor-pointer gap-2">
+          <span class="label-text">Show deprecated</span>
+          <input
+            type="checkbox"
+            class="toggle toggle-sm"
+            checked={showDeprecated()}
+            onChange={toggleDeprecated}
+          />
+        </label>
+      </div>
+
+      {/* Carousel */}
+      <div class="relative flex h-[450px] items-center justify-center overflow-hidden">
+        <For each={filteredProjects()}>
           {(project, index) => {
-            // Calcul réactif - currentIndex() déclenche la réactivité
             const relativePosition = () => {
               const current = currentIndex();
-              const total = projects.length;
+              const total = filteredProjects().length;
               let pos = index() - current;
-
-              // Normaliser la position relative pour gérer le wrap-around
-              if (pos > total / 2) {
-                pos -= total;
-              } else if (pos < -total / 2) {
-                pos += total;
-              }
-
+              if (pos > total / 2) pos -= total;
+              else if (pos < -total / 2) pos += total;
               return pos;
             };
 
@@ -135,13 +99,13 @@ export const ProjectsSection = () => {
 
             return (
               <div
-                class="absolute left-1/2 h-[400px] w-[300px] origin-center transition-all duration-500 ease-in-out"
+                class="absolute left-1/2 h-[450px] w-[300px] origin-center transition-all duration-500 ease-in-out"
                 style={style()}
               >
                 <ProjectCard
                   project={project}
                   isActive={relativePosition() === 0}
-                  onThumbnailClick={() => {}}
+                  onThumbnailClick={openModal}
                 />
               </div>
             );
@@ -161,7 +125,7 @@ export const ProjectsSection = () => {
         </button>
         <div class="flex items-center gap-2">
           <span class="text-sm">
-            {currentIndex() + 1} / {projects.length}
+            {currentIndex() + 1} / {filteredProjects().length}
           </span>
         </div>
         <button
@@ -173,6 +137,15 @@ export const ProjectsSection = () => {
           Next →
         </button>
       </div>
+
+      {/* Screenshot Modal */}
+      <Show when={modalScreenshots().length > 0}>
+        <ScreenshotModal
+          screenshots={modalScreenshots()}
+          initialIndex={modalIndex()}
+          onClose={closeModal}
+        />
+      </Show>
     </Section>
   );
 };
