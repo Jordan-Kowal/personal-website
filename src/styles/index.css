@@ -18,6 +18,15 @@ html {
   --default-font-family: "Nunito Sans", sans-serif;
 }
 
+@keyframes spin-border {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @keyframes fade-in-up {
   from {
     opacity: 0;

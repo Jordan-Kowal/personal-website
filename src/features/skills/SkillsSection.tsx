@@ -1,25 +1,32 @@
 import { Wrench } from "lucide-solid";
+import { createSignal, For } from "solid-js";
 import { Section } from "@/components/layout";
+import { CategoryLegend } from "./components/CategoryLegend";
 import { SkillCard } from "./components/SkillCard";
-
-const skills = {
-  languages: ["Python", "TypeScript", "JavaScript", "Java"],
-  frameworks: ["Solid.js", "React", "Vue.js", "Node.js"],
-  tools: ["Git", "Docker", "PostgreSQL", "MongoDB"],
-};
+import { SKILL_GROUPS, type SkillCategory } from "./constants";
 
 export const SkillsSection = () => {
+  const [highlightedCategory, setHighlightedCategory] =
+    createSignal<SkillCategory | null>(null);
+
   return (
     <Section id="skills" title="Skills" icon={Wrench}>
-      <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-        {/* Colonne 1 - Languages */}
-        <SkillCard title="Languages" skills={skills.languages} />
-
-        {/* Colonne 2 - Frameworks */}
-        <SkillCard title="Frameworks" skills={skills.frameworks} />
-
-        {/* Colonne 3 - Tools */}
-        <SkillCard title="Tools" skills={skills.tools} />
+      <div class="flex flex-col gap-6">
+        <CategoryLegend
+          highlightedCategory={highlightedCategory}
+          onHover={setHighlightedCategory}
+        />
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <For each={SKILL_GROUPS}>
+            {(group) => (
+              <SkillCard
+                group={group}
+                highlightedCategory={highlightedCategory}
+                onHover={setHighlightedCategory}
+              />
+            )}
+          </For>
+        </div>
       </div>
     </Section>
   );

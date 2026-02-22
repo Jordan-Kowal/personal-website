@@ -1,12 +1,5 @@
 # TODO
 
-SKILLS:
-
-- Data -> IA to categorize
-- Font icon for fonts
-- 1 color per section
-- Highlight animation on hover + links
-
 PROJECTS:
 
 - Card design
