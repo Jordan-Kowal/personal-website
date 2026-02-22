@@ -53,7 +53,7 @@ export const Navbar = () => {
     const handleScroll = () => {
       const heroHeight = window.innerHeight;
       const scrollY = window.scrollY;
-      setIsSticky(scrollY > heroHeight * 0.8);
+      setIsSticky(scrollY > heroHeight);
 
       const sections = navItems.map((item) => ({
         id: item.id,
