@@ -1,3 +1,4 @@
+import { Clock } from "lucide-solid";
 import { createMemo, For } from "solid-js";
 import { Section } from "@/components/layout";
 import { educationData, experienceData } from "./data";
@@ -28,7 +29,7 @@ export const TimelineSection = () => {
   });
 
   return (
-    <Section id="timeline" title="Timeline">
+    <Section id="timeline" title="Timeline" icon={Clock}>
       {/* Timeline horizontale DaisyUI */}
       <ul class="timeline timeline-horizontal w-full overflow-x-auto pb-4">
         <For each={allDates()}>

@@ -1,4 +1,6 @@
-import type { ParentComponent } from "solid-js";
+import type { Component, ParentComponent } from "solid-js";
+import { Show } from "solid-js";
+import { Dynamic } from "solid-js/web";
 import { ContentContainer } from "./ContentContainer";
 
 type SectionProps = {
@@ -6,6 +8,7 @@ type SectionProps = {
   title: string;
   description?: string;
   alternate?: boolean;
+  icon?: Component<{ size: number }>;
 };
 
 export const Section: ParentComponent<SectionProps> = (props) => {
@@ -16,7 +19,12 @@ export const Section: ParentComponent<SectionProps> = (props) => {
     >
       <ContentContainer>
         <div class="text-center my-8!">
-          <h2 class="text-4xl font-bold mt-0! mb-0!">{props.title}</h2>
+          <h2 class="text-4xl font-bold mt-0! mb-0! flex items-center justify-center gap-3">
+            <Show when={props.icon}>
+              {(icon) => <Dynamic component={icon()} size={36} />}
+            </Show>
+            {props.title}
+          </h2>
           {props.description && (
             <p class="text-base-content/70">{props.description}</p>
           )}

@@ -1,3 +1,4 @@
+import { Wrench } from "lucide-solid";
 import { Section } from "@/components/layout";
 import { SkillCard } from "./components/SkillCard";
 
@@ -9,7 +10,7 @@ const skills = {
 
 export const SkillsSection = () => {
   return (
-    <Section id="skills" title="Skills">
+    <Section id="skills" title="Skills" icon={Wrench}>
       <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
         {/* Colonne 1 - Languages */}
         <SkillCard title="Languages" skills={skills.languages} />

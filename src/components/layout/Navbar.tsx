@@ -1,45 +1,70 @@
+import {
+  Briefcase,
+  Github,
+  Home,
+  Linkedin,
+  Mail,
+  MessageSquare,
+  Wrench,
+  Youtube,
+} from "lucide-solid";
+import type { Component } from "solid-js";
 import { createEffect, createSignal, For, onCleanup } from "solid-js";
+import { Dynamic } from "solid-js/web";
+import { SOCIALS } from "../../config/socials";
 
 type NavItem = {
   id: string;
   label: string;
   href: string;
+  icon: Component<{ size: number }>;
 };
 
 const navItems: NavItem[] = [
-  { id: "home", label: "Home", href: "#home" },
-  { id: "skills", label: "Skills", href: "#skills" },
-  { id: "projects", label: "Projects", href: "#projects" },
-  { id: "github", label: "GitHub", href: "#github" },
-  { id: "reviews", label: "Reviews", href: "#reviews" },
-  { id: "contact", label: "Contact", href: "#contact" },
+  { id: "home", label: "Home", href: "#home", icon: Home },
+  { id: "skills", label: "Skills", href: "#skills", icon: Wrench },
+  { id: "projects", label: "Projects", href: "#projects", icon: Briefcase },
+  { id: "github", label: "GitHub", href: "#github", icon: Github },
+  { id: "reviews", label: "Reviews", href: "#reviews", icon: MessageSquare },
+  { id: "contact", label: "Contact", href: "#contact", icon: Mail },
 ];
+
+type SocialLinkProps = {
+  href: string;
+  icon: Component<{ size: number }>;
+};
+
+const SocialLink: Component<SocialLinkProps> = (props) => (
+  <a
+    href={props.href}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="no-underline rounded-full p-1.5 text-base-content/70 hover:text-base-content hover:bg-base-200 transition-all duration-200"
+  >
+    <Dynamic component={props.icon} size={16} />
+  </a>
+);
 
 export const Navbar = () => {
   const [activeSection, setActiveSection] = createSignal<string>("home");
   const [isSticky, setIsSticky] = createSignal(false);
 
-  // Détecter la section active au scroll
   createEffect(() => {
     const handleScroll = () => {
-      // Vérifier si on a scrollé assez pour rendre la navbar sticky
       const heroHeight = window.innerHeight;
       const scrollY = window.scrollY;
       setIsSticky(scrollY > heroHeight * 0.8);
 
-      // Trouver la section actuellement visible
       const sections = navItems.map((item) => ({
         id: item.id,
         element: item.id === "home" ? null : document.getElementById(item.id),
       }));
 
-      // Si on est en haut de la page, activer "home"
       if (scrollY < heroHeight * 0.5) {
         setActiveSection("home");
         return;
       }
 
-      // Trouver la section la plus proche du haut de la fenêtre
       let currentSection = "home";
       let minDistance = Infinity;
 
@@ -50,7 +75,6 @@ export const Navbar = () => {
         const rect = element.getBoundingClientRect();
         const distance = Math.abs(rect.top);
 
-        // Si la section est visible dans le viewport (top entre 0 et viewport height)
         if (rect.top <= window.innerHeight * 0.3 && rect.bottom > 0) {
           if (distance < minDistance) {
             minDistance = distance;
@@ -59,7 +83,6 @@ export const Navbar = () => {
         }
       }
 
-      // Si aucune section n'est trouvée mais qu'on a scrollé, prendre la dernière
       if (currentSection === "home" && scrollY > heroHeight) {
         const lastSection = sections
           .filter((s) => s.element)
@@ -77,7 +100,7 @@ export const Navbar = () => {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Appel initial
+    handleScroll();
 
     onCleanup(() => {
       window.removeEventListener("scroll", handleScroll);
@@ -93,7 +116,6 @@ export const Navbar = () => {
     const id = href.replace("#", "");
     const element = document.getElementById(id);
     if (element) {
-      // Offset pour la navbar sticky (hauteur navbar + marge top + padding)
       const offset = isSticky() ? 100 : 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - offset;
@@ -111,14 +133,20 @@ export const Navbar = () => {
         isSticky() ? "top-4" : "top-0"
       }`}
     >
-      <div class="mx-auto w-full max-w-[1024px] px-4">
+      <div class="flex justify-center">
         <div
-          class={`flex items-center justify-center gap-6 rounded-2xl py-4 transition-all duration-300 ${
+          class={`flex items-center gap-1 rounded-full px-4 py-2 transition-all duration-300 ${
             isSticky()
               ? "bg-base-100/95 backdrop-blur-sm shadow-xl"
               : "bg-transparent"
           }`}
         >
+          {/* Name */}
+          <span class="max-w-0 sm:max-w-40 overflow-hidden opacity-0 sm:opacity-100 transition-all duration-300 pr-0 sm:pr-3 text-sm font-bold text-base-content whitespace-nowrap">
+            Jordan Kowal
+          </span>
+
+          {/* Nav items */}
           <For each={navItems}>
             {(item: NavItem) => {
               const isActive = () => activeSection() === item.id;
@@ -129,17 +157,27 @@ export const Navbar = () => {
                     e.preventDefault();
                     scrollToSection(item.href);
                   }}
-                  class={`px-4 py-2 text-sm font-medium transition-all duration-200 rounded-lg ${
+                  class={`no-underline flex items-center justify-center px-3 py-1.5 text-sm font-medium transition-all duration-200 rounded-full ${
                     isActive()
                       ? "text-primary bg-primary/10"
                       : "text-base-content/70 hover:text-base-content hover:bg-base-200"
                   }`}
                 >
-                  {item.label}
+                  <span class="sm:hidden">
+                    <item.icon size={16} />
+                  </span>
+                  <span class="hidden sm:inline">{item.label}</span>
                 </a>
               );
             }}
           </For>
+
+          {/* Social links */}
+          <div class="flex items-center gap-1 max-w-0 sm:max-w-40 overflow-hidden opacity-0 sm:opacity-100 transition-all duration-300 pl-0 sm:pl-3">
+            <SocialLink href={SOCIALS.github} icon={Github} />
+            <SocialLink href={SOCIALS.linkedin} icon={Linkedin} />
+            <SocialLink href={SOCIALS.youtube} icon={Youtube} />
+          </div>
         </div>
       </div>
     </nav>

@@ -1,3 +1,4 @@
+import { Briefcase } from "lucide-solid";
 import { createSignal, For } from "solid-js";
 import { Section } from "@/components/layout";
 import { ProjectCard } from "./components/ProjectCard";
@@ -66,7 +67,7 @@ export const ProjectsSection = () => {
   };
 
   return (
-    <Section id="projects" title="Projects" alternate>
+    <Section id="projects" title="Projects" alternate icon={Briefcase}>
       <div class="relative flex h-[400px] items-center justify-center overflow-hidden">
         <For each={projects}>
           {(project, index) => {

@@ -1,3 +1,4 @@
+import { MessageSquare } from "lucide-solid";
 import { createSignal, For, onCleanup, onMount } from "solid-js";
 import { Section } from "@/components/layout";
 import { ReviewCard } from "@/components/ui";
@@ -27,7 +28,7 @@ export const ReviewsSection = () => {
   });
 
   return (
-    <Section id="reviews" title="Reviews">
+    <Section id="reviews" title="Reviews" icon={MessageSquare}>
       <div class="flex flex-col items-center gap-4">
         <div class="w-full max-w-md overflow-hidden">
           <div
