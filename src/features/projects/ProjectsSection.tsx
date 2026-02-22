@@ -3,10 +3,10 @@ import { createMemo, createSignal, For, Show } from "solid-js";
 import { Section } from "@/components/layout";
 import { ProjectCard } from "./components/ProjectCard";
 import { ScreenshotModal } from "./components/ScreenshotModal";
-import { projectsData } from "./data";
+import { projectsData } from "./constants";
 
 export const ProjectsSection = () => {
-  const [showDeprecated, setShowDeprecated] = createSignal(false);
+  const [showDeprecated, setShowDeprecated] = createSignal(true);
   const [currentIndex, setCurrentIndex] = createSignal(0);
   const [modalScreenshots, setModalScreenshots] = createSignal<string[]>([]);
   const [modalIndex, setModalIndex] = createSignal(0);
@@ -44,12 +44,12 @@ export const ProjectsSection = () => {
   return (
     <Section id="projects" title="Projects" alternate icon={Briefcase}>
       {/* Filter toggle */}
-      <div class="mb-6 flex justify-center">
+      <div class="flex justify-center">
         <label class="label cursor-pointer gap-2">
           <span class="label-text">Show deprecated</span>
           <input
             type="checkbox"
-            class="toggle toggle-sm"
+            class="toggle toggle-sm toggle-primary"
             checked={showDeprecated()}
             onChange={toggleDeprecated}
           />
@@ -57,7 +57,7 @@ export const ProjectsSection = () => {
       </div>
 
       {/* Carousel */}
-      <div class="relative flex h-[450px] items-center justify-center overflow-hidden">
+      <div class="relative flex h-110 items-center justify-center overflow-hidden">
         <For each={filteredProjects()}>
           {(project, index) => {
             const relativePosition = () => {
@@ -99,7 +99,7 @@ export const ProjectsSection = () => {
 
             return (
               <div
-                class="absolute left-1/2 h-[450px] w-[300px] origin-center transition-all duration-500 ease-in-out"
+                class="absolute left-1/2 h-90 w-[320px] origin-center transition-all duration-500 ease-in-out"
                 style={style()}
               >
                 <ProjectCard
@@ -117,7 +117,7 @@ export const ProjectsSection = () => {
       <div class="mt-8 flex justify-center gap-4">
         <button
           onclick={goToPrev}
-          class="btn btn-outline btn-primary"
+          class="btn btn-primary"
           aria-label="Previous project"
           type="button"
         >
@@ -130,7 +130,7 @@ export const ProjectsSection = () => {
         </div>
         <button
           onclick={goToNext}
-          class="btn btn-outline btn-primary"
+          class="btn btn-primary"
           type="button"
           aria-label="Next project"
         >

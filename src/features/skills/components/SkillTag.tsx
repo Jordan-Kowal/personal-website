@@ -4,15 +4,17 @@ import { CATEGORY_COLORS, type Skill, type SkillCategory } from "../constants";
 
 type SkillTagProps = {
   skill: Skill;
-  highlightedCategory: Accessor<SkillCategory | null>;
-  onHover: (category: SkillCategory | null) => void;
+  highlightedCategory?: Accessor<SkillCategory | null>;
+  onHover?: (category: SkillCategory | null) => void;
 };
 
 const BORDER_WIDTH = 1;
 
 export const SkillTag: Component<SkillTagProps> = (props) => {
   const isHighlighted = createMemo(
-    () => props.highlightedCategory() === props.skill.category,
+    () =>
+      !props.highlightedCategory ||
+      props.highlightedCategory() === props.skill.category,
   );
 
   const colors = createMemo(() => CATEGORY_COLORS[props.skill.category]);
@@ -39,8 +41,8 @@ export const SkillTag: Component<SkillTagProps> = (props) => {
 
   return (
     <div
-      onmouseenter={() => props.onHover(props.skill.category)}
-      onmouseleave={() => props.onHover(null)}
+      onmouseenter={() => props.onHover?.(props.skill.category)}
+      onmouseleave={() => props.onHover?.(null)}
     >
       <div
         class="relative overflow-hidden rounded-full"

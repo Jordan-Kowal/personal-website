@@ -1,3 +1,4 @@
+import { SkillName } from "@/features/skills/constants";
 import type { Project } from "./types";
 
 export const projectsData: Project[] = [
@@ -8,9 +9,18 @@ export const projectsData: Project[] = [
       "Desktop app for managing your local dev stack — configure once, launch everything with a click.",
     githubUrl: "https://github.com/Jordan-Kowal/click-launch",
     websiteUrl: undefined,
-    screenshots: [],
+    screenshots: [
+      "screenshots/click-launch-1.png",
+      "screenshots/click-launch-2.png",
+      "screenshots/click-launch-3.png",
+    ],
     deprecated: false,
-    skills: ["TypeScript", "Solid", "Wails", "Go"],
+    skills: [
+      SkillName.TypeScript,
+      SkillName.Solid,
+      SkillName.Wails,
+      SkillName.Go,
+    ],
   },
   {
     id: 11,
@@ -20,7 +30,7 @@ export const projectsData: Project[] = [
     websiteUrl: "https://pypi.org/project/pipe-operator/",
     screenshots: [],
     deprecated: false,
-    skills: ["Python"],
+    skills: [SkillName.Python],
   },
   {
     id: 5,
@@ -29,9 +39,9 @@ export const projectsData: Project[] = [
       "You are viewing it right now. My personal static website made with Vite, SolidJS, and DaisyUI.",
     githubUrl: "https://github.com/Jordan-Kowal/personal-website",
     websiteUrl: "https://jordan-kowal.github.io/personal-website/",
-    screenshots: [],
+    screenshots: ["screenshots/personal-website.png"],
     deprecated: false,
-    skills: ["TypeScript", "SolidJS"],
+    skills: [SkillName.TypeScript, SkillName.SolidJS],
   },
   {
     id: 3,
@@ -46,7 +56,14 @@ export const projectsData: Project[] = [
       "screenshots/starter-settings.png",
     ],
     deprecated: true,
-    skills: ["Python", "Django", "TypeScript", "React", "PostgreSQL", "Docker"],
+    skills: [
+      SkillName.Python,
+      SkillName.Django,
+      SkillName.TypeScript,
+      SkillName.React,
+      SkillName.PostgreSQL,
+      SkillName.Docker,
+    ],
   },
   {
     id: 12,
@@ -56,7 +73,7 @@ export const projectsData: Project[] = [
     websiteUrl: "https://pypi.org/project/django-utils-kit/",
     screenshots: [],
     deprecated: true,
-    skills: ["Python", "Django"],
+    skills: [SkillName.Python, SkillName.Django],
   },
   {
     id: 13,
@@ -66,7 +83,7 @@ export const projectsData: Project[] = [
     websiteUrl: "https://pypi.org/project/django-meilisearch-indexer/",
     screenshots: [],
     deprecated: true,
-    skills: ["Python", "Django"],
+    skills: [SkillName.Python, SkillName.Django, SkillName.Meilisearch],
   },
   {
     id: 2,
@@ -76,7 +93,7 @@ export const projectsData: Project[] = [
     websiteUrl: "https://www.npmjs.com/package/jcscript",
     screenshots: [],
     deprecated: true,
-    skills: ["TypeScript"],
+    skills: [SkillName.TypeScript],
   },
   {
     id: 6,
@@ -87,7 +104,7 @@ export const projectsData: Project[] = [
     websiteUrl: undefined,
     screenshots: [],
     deprecated: true,
-    skills: ["Python", "Elixir"],
+    skills: [SkillName.Python, SkillName.Elixir],
   },
   {
     id: 1,
@@ -98,7 +115,7 @@ export const projectsData: Project[] = [
     websiteUrl: "https://pypi.org/project/jklib/",
     screenshots: [],
     deprecated: true,
-    skills: ["Python", "Django"],
+    skills: [SkillName.Python, SkillName.Django],
   },
   {
     id: 4,
@@ -113,7 +130,14 @@ export const projectsData: Project[] = [
       "screenshots/enseirb-schedule-notifier-3.png",
     ],
     deprecated: true,
-    skills: ["Python", "Django", "JavaScript", "React", "PostgreSQL", "Docker"],
+    skills: [
+      SkillName.Python,
+      SkillName.Django,
+      SkillName.JavaScript,
+      SkillName.React,
+      SkillName.PostgreSQL,
+      SkillName.Docker,
+    ],
   },
   {
     id: 10,
@@ -124,7 +148,14 @@ export const projectsData: Project[] = [
     websiteUrl: undefined,
     screenshots: ["screenshots/world-map-1.png"],
     deprecated: true,
-    skills: ["Python", "Django", "JavaScript", "React", "PostgreSQL", "Docker"],
+    skills: [
+      SkillName.Python,
+      SkillName.Django,
+      SkillName.JavaScript,
+      SkillName.React,
+      SkillName.PostgreSQL,
+      SkillName.Docker,
+    ],
   },
   {
     id: 7,
@@ -135,7 +166,7 @@ export const projectsData: Project[] = [
     websiteUrl: "https://jordan-kowal.github.io/discord-dice-roller/",
     screenshots: ["screenshots/discord-dice-roller-1.png"],
     deprecated: true,
-    skills: ["Python"],
+    skills: [SkillName.Python],
   },
   {
     id: 8,
@@ -146,7 +177,7 @@ export const projectsData: Project[] = [
     websiteUrl: "https://pypi.org/project/django-database-translation/",
     screenshots: [],
     deprecated: true,
-    skills: ["Python", "Django", "PostgreSQL"],
+    skills: [SkillName.Python, SkillName.Django, SkillName.PostgreSQL],
   },
   {
     id: 9,
@@ -157,6 +188,6 @@ export const projectsData: Project[] = [
     websiteUrl: "https://pypi.org/project/sudoku-manager/",
     screenshots: [],
     deprecated: true,
-    skills: ["Python"],
+    skills: [SkillName.Python],
   },
 ];

@@ -1,10 +1,6 @@
 # TODO
 
-PROJECTS:
-
-- Card design
 - Support card dragging
-- No infinite loop?
 
 TIMELINE:
 

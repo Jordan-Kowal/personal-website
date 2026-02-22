@@ -1,7 +1,11 @@
 import { ExternalLink, Github } from "lucide-solid";
 import type { Component } from "solid-js";
 import { For, Show } from "solid-js";
+import { SkillTag } from "@/features/skills/components/SkillTag";
+import { SKILLS, type SkillCategory } from "@/features/skills/constants";
 import type { Project } from "../types";
+
+const NO_HIGHLIGHT: () => SkillCategory | null = () => null;
 
 type ProjectCardProps = {
   project: Project;
@@ -12,45 +16,49 @@ type ProjectCardProps = {
 export const ProjectCard: Component<ProjectCardProps> = (props) => {
   return (
     <div
-      class={`card card-border h-full bg-base-200 transition-all duration-300 ${
-        props.isActive ? "shadow-xl" : "opacity-75"
-      } ${props.project.deprecated ? "opacity-60" : ""}`}
+      class={`card card-border h-full bg-white text-black transition-all duration-300 ${
+        props.isActive
+          ? `shadow-xl border ${props.project.deprecated ? "border-error" : "border-primary"}`
+          : ""
+      }`}
     >
-      <div class="card-body gap-3">
-        {/* Title + deprecated badge */}
-        <div class="flex items-center gap-2">
-          <h3 class="card-title text-base">{props.project.name}</h3>
-          <Show when={props.project.deprecated}>
-            <span class="badge badge-warning badge-sm">Deprecated</span>
-          </Show>
-        </div>
+      <div class="card-body gap-1">
+        {/* Title */}
+        <h3 class="card-title text-base my-0!">{props.project.name}</h3>
+        <Show when={props.project.deprecated}>
+          <span class="badge badge-error badge-sm">Deprecated</span>
+        </Show>
 
         {/* Links */}
-        <div class="flex gap-2">
+        <div class="flex gap-0">
           <Show when={props.project.githubUrl}>
-            <a
-              href={props.project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn btn-ghost btn-xs"
-            >
-              <Github size={14} />
-            </a>
+            <div class="tooltip" data-tip="GitHub">
+              <a
+                href={props.project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-ghost btn-xs"
+              >
+                <Github size={14} />
+              </a>
+            </div>
           </Show>
           <Show when={props.project.websiteUrl}>
-            <a
-              href={props.project.websiteUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn btn-ghost btn-xs"
-            >
-              <ExternalLink size={14} />
-            </a>
+            <div class="tooltip" data-tip="Official website">
+              <a
+                href={props.project.websiteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-ghost btn-xs"
+              >
+                <ExternalLink size={14} />
+              </a>
+            </div>
           </Show>
         </div>
 
         {/* Description */}
-        <p class="text-sm">{props.project.description}</p>
+        <p class="text-sm mt-1!">{props.project.description}</p>
 
         {/* Thumbnail strip */}
         <Show when={props.project.screenshots.length > 0}>
@@ -67,7 +75,7 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
                   <img
                     src={screenshot}
                     alt={`${props.project.name} screenshot ${index() + 1}`}
-                    class="h-full w-full object-cover"
+                    class="m-0!"
                   />
                 </button>
               )}
@@ -79,8 +87,13 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
         <div class="card-actions mt-auto justify-end">
           <div class="flex flex-wrap gap-1">
             <For each={props.project.skills}>
-              {(skill) => (
-                <span class="badge badge-outline badge-sm">{skill}</span>
+              {(skillName) => (
+                <SkillTag
+                  skill={SKILLS[skillName]}
+                  highlightedCategory={
+                    props.isActive ? undefined : NO_HIGHLIGHT
+                  }
+                />
               )}
             </For>
           </div>

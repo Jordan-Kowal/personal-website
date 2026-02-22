@@ -1,3 +1,5 @@
+import type { SkillName } from "@/features/skills/constants";
+
 export type Project = {
   id: number;
   name: string;
@@ -6,5 +8,5 @@ export type Project = {
   websiteUrl: string | undefined;
   screenshots: string[];
   deprecated: boolean;
-  skills: string[];
+  skills: SkillName[];
 };
