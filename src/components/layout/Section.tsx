@@ -19,9 +19,9 @@ export const Section: ParentComponent<SectionProps> = (props) => {
     >
       <ContentContainer>
         <div class="text-center my-8!">
-          <h2 class="text-4xl font-bold mt-0! mb-0! flex items-center justify-center gap-3">
+          <h2 class="text-2xl sm:text-4xl font-bold mt-0! mb-0! flex items-center justify-center gap-3">
             <Show when={props.icon}>
-              {(icon) => <Dynamic component={icon()} size={36} />}
+              {(icon) => <Dynamic component={icon()} size={28} />}
             </Show>
             {props.title}
           </h2>

@@ -1,5 +1,12 @@
 import type { Component } from "solid-js";
-import { createResource, For, Show } from "solid-js";
+import {
+  createResource,
+  createSignal,
+  For,
+  onCleanup,
+  onMount,
+  Show,
+} from "solid-js";
 import type { GitHubContribution } from "../types";
 import { fetchGitHubContributions, getContributionLevelClass } from "../utils";
 
@@ -11,9 +18,27 @@ const formatShortDate = (dateString: string) =>
 
 export const ContributionGrid: Component = () => {
   const [contributionsData] = createResource(fetchGitHubContributions);
+  const [scale, setScale] = createSignal(1);
+  const [gridHeight, setGridHeight] = createSignal(0);
+  let wrapperRef!: HTMLDivElement;
+  let gridRef!: HTMLDivElement;
+
+  const updateScale = () => {
+    if (!gridRef) return;
+    const availableWidth = window.innerWidth - 32;
+    const gridWidth = gridRef.offsetWidth;
+    const newScale = Math.min(1, availableWidth / gridWidth);
+    setScale(newScale);
+    setGridHeight(gridRef.offsetHeight * newScale);
+  };
+
+  onMount(() => {
+    window.addEventListener("resize", updateScale);
+    onCleanup(() => window.removeEventListener("resize", updateScale));
+  });
 
   return (
-    <div class="w-full">
+    <div ref={wrapperRef} class="w-full overflow-hidden">
       <Show
         when={!contributionsData.loading && contributionsData()}
         fallback={
@@ -48,42 +73,55 @@ export const ContributionGrid: Component = () => {
             }
           });
 
+          requestAnimationFrame(updateScale);
+
           return (
-            <div class="flex gap-1 justify-center flex-wrap relative">
-              <For each={weeks}>
-                {(week) => (
-                  <div class="flex flex-col gap-1">
-                    <For each={week}>
-                      {(contribution) => (
-                        <Show
-                          when={contribution.date}
-                          fallback={
-                            <div class="w-3 h-3 rounded-sm bg-transparent" />
-                          }
-                        >
+            <div
+              style={{ height: gridHeight() ? `${gridHeight()}px` : "auto" }}
+            >
+              <div
+                ref={gridRef}
+                class="flex gap-1 absolute left-1/2"
+                style={{
+                  transform: `translateX(-50%) scale(${scale()})`,
+                  "transform-origin": "top center",
+                }}
+              >
+                <For each={weeks}>
+                  {(week) => (
+                    <div class="flex flex-col gap-1">
+                      <For each={week}>
+                        {(contribution) => (
                           <Show
-                            when={contribution.count > 0}
+                            when={contribution.date}
                             fallback={
-                              <div
-                                class={`w-3 h-3 rounded-sm ${getContributionLevelClass(contribution.level)}`}
-                              />
+                              <div class="w-3 h-3 rounded-sm bg-transparent" />
                             }
                           >
-                            <div
-                              class="tooltip tooltip-top cursor-pointer"
-                              data-tip={`${contribution.count} contributions on ${formatShortDate(contribution.date)}`}
+                            <Show
+                              when={contribution.count > 0}
+                              fallback={
+                                <div
+                                  class={`w-3 h-3 rounded-sm ${getContributionLevelClass(contribution.level)}`}
+                                />
+                              }
                             >
                               <div
-                                class={`w-3 h-3 rounded-sm ${getContributionLevelClass(contribution.level)}`}
-                              />
-                            </div>
+                                class="tooltip tooltip-top cursor-pointer"
+                                data-tip={`${contribution.count} contributions on ${formatShortDate(contribution.date)}`}
+                              >
+                                <div
+                                  class={`w-3 h-3 rounded-sm ${getContributionLevelClass(contribution.level)}`}
+                                />
+                              </div>
+                            </Show>
                           </Show>
-                        </Show>
-                      )}
-                    </For>
-                  </div>
-                )}
-              </For>
+                        )}
+                      </For>
+                    </div>
+                  )}
+                </For>
+              </div>
             </div>
           );
         }}
