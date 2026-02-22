@@ -1,7 +1,5 @@
 # TODO
 
-- Support card dragging
-
 TIMELINE:
 
 - Design?
