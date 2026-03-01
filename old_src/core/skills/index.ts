@@ -1,1 +1,0 @@
-export { skillFilter } from "./skillFilter";
