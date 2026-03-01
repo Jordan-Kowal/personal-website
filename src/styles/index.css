@@ -37,3 +37,12 @@ html {
     transform: translateY(0);
   }
 }
+
+@keyframes popover-appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

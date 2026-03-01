@@ -1,61 +1,29 @@
+import { MonitorPlay } from "lucide-solid";
 import type { TimelineItem } from "./types";
-
-export const educationData: TimelineItem[] = [
-  {
-    id: 1,
-    title: "Master en Informatique",
-    entity: "ENSEIRB-MATMECA",
-    location: "Bordeaux, France",
-    startDate: "2010-09-01",
-    endDate: "2013-06-30",
-    description:
-      "Formation d'ingénieur en informatique avec spécialisation en développement logiciel et systèmes distribués.",
-    technologies: ["Java", "C++", "Python", "PostgreSQL"],
-  },
-  {
-    id: 2,
-    title: "Formation Autodidacte",
-    entity: "Diverses plateformes",
-    location: "En ligne",
-    startDate: "2015-01-01",
-    description:
-      "Formation continue en développement web moderne, frameworks JavaScript, et architectures cloud.",
-    technologies: ["React", "Node.js", "TypeScript", "Docker", "AWS"],
-  },
-  {
-    id: 3,
-    title: "Baccalauréat Scientifique",
-    entity: "Lycée",
-    location: "France",
-    startDate: "2007-09-01",
-    endDate: "2010-06-30",
-    description: "Baccalauréat scientifique option mathématiques.",
-  },
-];
 
 export const experienceData: TimelineItem[] = [
   {
     id: 1,
-    title: "Software Developer",
+    title: "Software Engineer",
     entity: "Alan",
     location: "Paris, France",
-    startDate: "2023-10-01",
+    startDate: "2025-05-01",
     description:
-      "Développement de fonctionnalités backend et frontend pour la plateforme d'assurance santé. " +
-      "Travail sur l'architecture microservices et l'amélioration de l'expérience utilisateur.",
-    technologies: ["Python", "Django", "React", "TypeScript", "PostgreSQL"],
+      "Fullstack development using Python/Flask and Typescript/React/React Native.",
+    category: "experience",
+    logo: "/images/alan_logo.jpeg",
   },
   {
     id: 2,
-    title: "Mentor",
-    entity: "OpenClassrooms",
-    location: "Remote",
-    startDate: "2022-02-01",
-    endDate: "2023-03-01",
+    title: "Software Developer",
+    entity: "Welcome to the Jungle",
+    location: "Paris, France",
+    startDate: "2023-10-01",
+    endDate: "2025-05-01",
     description:
-      "Mentorat d'étudiants dans le programme 'Développeur Python'. " +
-      "Accompagnement dans l'apprentissage du développement web et des bonnes pratiques.",
-    technologies: ["Python", "Django", "JavaScript", "Docker"],
+      "Fullstack development using Elixir/Phoenix and Typescript/React for the job board platform.",
+    category: "experience",
+    logo: "/images/wttj_logo.jpeg",
   },
   {
     id: 3,
@@ -65,17 +33,73 @@ export const experienceData: TimelineItem[] = [
     startDate: "2020-02-01",
     endDate: "2023-10-01",
     description:
-      "Développement frontend et backend sur diverses applications web utilisant Django et React. " +
-      "Travail occasionnel sur des projets en Erlang et Scala.",
-    technologies: [
-      "Python",
-      "Django",
-      "JavaScript",
-      "React",
-      "Erlang",
-      "Scala",
-      "PostgreSQL",
-      "Docker",
-    ],
+      "Frontend and backend development on diverse web applications using Django and React. " +
+      "(with a bit of Erlang and Scala here and there).",
+    category: "experience",
+    logo: "/images/fieldboxai_logo.jpeg",
+  },
+  {
+    id: 4,
+    title: "Mentor",
+    entity: "OpenClassrooms",
+    location: "Remote",
+    startDate: "2022-02-01",
+    endDate: "2023-03-01",
+    description: 'Mentor at OpenClassrooms for the "Python Developer" program.',
+    category: "experience",
+    logo: "/images/openclassrooms_logo.jpeg",
+  },
+  {
+    id: 5,
+    title: "IT Project Manager",
+    entity: "Garantie Privée",
+    location: "Bordeaux, France",
+    startDate: "2013-01-01",
+    endDate: "2019-06-30",
+    description:
+      "In charge of software and application developments such as: " +
+      "insurance subscription platform, " +
+      "fully customized e-commerce websites, " +
+      "and point-of-sales software.",
+    category: "experience",
+    logo: "/images/garantie_privee_logo.jpeg",
+  },
+  {
+    id: 6,
+    title: "Assistant IT Project Manager",
+    entity: "Garantie Privée",
+    location: "Bordeaux, France",
+    startDate: "2011-07-01",
+    endDate: "2012-07-01",
+    description:
+      "Assisted the IT Project Manager with on-going projects (wire-framing, specs, tests, etc.).",
+    category: "experience",
+    logo: "/images/garantie_privee_logo.jpeg",
+  },
+];
+
+export const educationData: TimelineItem[] = [
+  {
+    id: 7,
+    title: "Self-training in web development",
+    entity: "Online courses",
+    location: "Remote",
+    startDate: "2018-06-01",
+    endDate: "2019-06-01",
+    description:
+      "About 10h/week to learn web development with HTML/CSS, Javascript/VueJS, Python/Django, and Git.",
+    category: "education",
+    logo: MonitorPlay,
+  },
+  {
+    id: 8,
+    title: "Master of Business Administration",
+    entity: "Kedge Business School",
+    location: "Bordeaux, France",
+    startDate: "2009-09-01",
+    endDate: "2013-06-01",
+    description: "Specialization in Information Systems Management.",
+    category: "education",
+    logo: "/images/kedge_logo.jpeg",
   },
 ];

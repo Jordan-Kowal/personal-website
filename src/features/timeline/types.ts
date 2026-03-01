@@ -1,3 +1,7 @@
+import type { LucideIcon } from "lucide-solid";
+
+export type TimelineView = "education" | "experience";
+
 export type TimelineItem = {
   id: number;
   title: string;
@@ -6,7 +10,6 @@ export type TimelineItem = {
   startDate: string;
   endDate?: string;
   description: string;
-  technologies?: string[];
+  category: TimelineView;
+  logo?: string | LucideIcon;
 };
-
-export type TimelineView = "education" | "experience";

@@ -9,13 +9,14 @@ type SectionProps = {
   description?: string;
   alternate?: boolean;
   icon?: Component<{ size: number }>;
+  overflowVisible?: boolean;
 };
 
 export const Section: ParentComponent<SectionProps> = (props) => {
   return (
     <section
       id={props.id}
-      class={`pt-4 pb-8 overflow-x-hidden ${props.alternate ? "bg-base-200" : ""}`}
+      class={`pt-4 pb-8 ${props.overflowVisible ? "" : "overflow-x-hidden"} ${props.alternate ? "bg-base-200" : ""}`}
     >
       <ContentContainer>
         <div class="text-center my-8!">
