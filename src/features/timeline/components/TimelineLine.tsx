@@ -1,7 +1,20 @@
 import type { Component } from "solid-js";
-import { createMemo, For, Show } from "solid-js";
+import {
+  createEffect,
+  createMemo,
+  createSignal,
+  For,
+  onCleanup,
+  Show,
+} from "solid-js";
 import type { TimelineItem } from "../types";
 import { dateToPosition } from "../utils";
+
+const getYearStep = (width: number): number => {
+  if (width >= 768) return 1;
+  if (width >= 640) return 2;
+  return 3;
+};
 
 type TimelineLineProps = {
   startYear: number;
@@ -10,9 +23,18 @@ type TimelineLineProps = {
 };
 
 export const TimelineLine: Component<TimelineLineProps> = (props) => {
+  const [yearStep, setYearStep] = createSignal(getYearStep(window.innerWidth));
+
+  createEffect(() => {
+    const onResize = () => setYearStep(getYearStep(window.innerWidth));
+    window.addEventListener("resize", onResize);
+    onCleanup(() => window.removeEventListener("resize", onResize));
+  });
+
   const years = createMemo(() => {
+    const step = yearStep();
     const result: number[] = [];
-    for (let y = props.startYear; y <= props.endYear; y++) {
+    for (let y = props.startYear; y <= props.endYear; y += step) {
       result.push(y);
     }
     return result;
