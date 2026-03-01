@@ -1,12 +1,14 @@
 # Changelog
 
-## [v3.0.0] - TBD
+## [v3.0.0] - 2026-03-01
 
-| Category         | Before         | After                |
-| ---------------- | -------------- | -------------------- |
-| Framework        | `React`        | `SolidJS`            |
-| UI               | `Ant Design`   | `DaisyUI + Tailwind` |
-| Package manager  | `pnpm`         | `Bun`                |
+Overall re-design of the whole application, and migrating to more efficient/performant technologies:
+
+| Category        | Before       | After                |
+| --------------- | ------------ | -------------------- |
+| Framework       | `React`      | `SolidJS`            |
+| UI              | `Ant Design` | `DaisyUI + Tailwind` |
+| Package manager | `pnpm`       | `Bun`                |
 
 ## [v2.5.0] - 2025-09-11
 
