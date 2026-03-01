@@ -1,28 +1,30 @@
-import { AppLayout } from "@/components/layout";
-import { Routes } from "@/routes";
-import { antdTheme } from "@/styles";
-import "@/styles/antd.less";
-import "@/styles/global.less";
-import "@/styles/tailwind.css";
-import "@/utils/dates/config";
-import { ConfigProvider, theme } from "antd";
-import "antd/dist/reset.css";
-import frFR from "antd/locale/fr_FR";
-import { memo } from "react";
-import { BrowserRouter } from "react-router-dom";
+import "@/config/dayjs";
+import { Footer, Navbar } from "@/components/layout";
+import { ContactSection } from "@/features/contact";
+import { GitHubSection } from "@/features/github";
+import { HeroBanner } from "@/features/hero";
+import { ProjectsSection } from "@/features/projects";
+import { ReviewsSection } from "@/features/reviews";
+import { SkillsSection } from "@/features/skills";
+import { TimelineSection } from "@/features/timeline";
+import { DEFAULT_THEME } from "./config/daisyui";
 
-const themeConfig = {
-  algorithm: theme.darkAlgorithm,
-  token: antdTheme,
+export const App = () => {
+  return (
+    <div
+      id="home"
+      data-theme={DEFAULT_THEME}
+      class="min-w-full prose prose-sm md:prose-base bg-base-100"
+    >
+      <HeroBanner />
+      <Navbar />
+      <SkillsSection />
+      <ProjectsSection />
+      <TimelineSection />
+      <GitHubSection />
+      <ReviewsSection />
+      <ContactSection />
+      <Footer />
+    </div>
+  );
 };
-
-export const App = memo(() => (
-  // @ts-expect-error
-  <BrowserRouter basename={import.meta.env.BASE_URL || ""}>
-    <ConfigProvider locale={frFR} theme={themeConfig}>
-      <AppLayout>
-        <Routes />
-      </AppLayout>
-    </ConfigProvider>
-  </BrowserRouter>
-));

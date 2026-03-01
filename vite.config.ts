@@ -1,57 +1,31 @@
 import { resolve } from "node:path";
-import react from "@vitejs/plugin-react";
-import million from "million/compiler";
+import tailwindcss from "@tailwindcss/vite";
 import { visualizer } from "rollup-plugin-visualizer";
+import devtools from "solid-devtools/vite";
 import { defineConfig } from "vite";
+import solidPlugin from "vite-plugin-solid";
 
-const reactScanPlugin = {
-  name: "inject-react-scan",
-  transformIndexHtml(html: string) {
-    return html.replace(
-      "</head>",
-      `<script src="https://unpkg.com/react-scan/dist/auto.global.js"></script></head>`,
-    );
-  },
-};
-
-export default defineConfig(({ mode }) => {
-  const isDev = mode === "development";
-  const plugins = [
-    million.vite({ auto: true }),
-    react(),
+export default defineConfig(({ mode }) => ({
+  plugins: [
+    devtools({
+      autoname: true,
+    }),
+    solidPlugin(),
+    tailwindcss(),
     visualizer({
       filename: "bundle-stats.html",
       title: "Bundle Stats",
       gzipSize: true,
       open: true,
     }),
-  ];
-
-  if (isDev) plugins.push(reactScanPlugin);
-
-  return {
-    plugins: plugins,
-    server: {
-      port: 3000,
-      cors: true,
+  ],
+  build: {
+    target: "esnext",
+  },
+  resolve: {
+    alias: {
+      "@": resolve(__dirname, "./src"),
     },
-    esbuild: {
-      loader: "tsx",
-    },
-    optimizeDeps: {
-      esbuildOptions: {
-        loader: {
-          ".js": "jsx",
-          ".ts": "tsx",
-        },
-      },
-    },
-    resolve: {
-      alias: { "@": resolve(__dirname, "./src") },
-    },
-    build: {
-      assetsDir: "static",
-      chunkSizeWarningLimit: 1024,
-    },
-  };
-});
+  },
+  base: "/",
+}));
