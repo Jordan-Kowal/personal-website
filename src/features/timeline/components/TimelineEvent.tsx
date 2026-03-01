@@ -7,7 +7,7 @@ type TimelineEventProps = {
   item: TimelineItem;
   side: "above" | "below";
   isOpen: boolean;
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 export const TimelineEvent: Component<TimelineEventProps> = (props) => {

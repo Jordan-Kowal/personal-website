@@ -6,9 +6,11 @@ import { TimelineLine } from "./components/TimelineLine";
 import { TimelinePopover } from "./components/TimelinePopover";
 import { educationData, experienceData } from "./data";
 import type { TimelineItem } from "./types";
+import { useHasHover } from "./useHasHover";
 import { dateToPosition, getTimelineBounds } from "./utils";
 
 export const TimelineSection = () => {
+  const hasHover = useHasHover();
   const [hoveredItem, setHoveredItem] = createSignal<TimelineItem | null>(null);
   let leaveTimer: ReturnType<typeof setTimeout> | undefined;
 
@@ -76,8 +78,10 @@ export const TimelineSection = () => {
                 }}
                 style={{ left: `${positioned.position}%` }}
                 data-timeline-event
-                onmouseenter={() => showItem(positioned.item)}
-                onmouseleave={hideItem}
+                onmouseenter={
+                  hasHover() ? () => showItem(positioned.item) : undefined
+                }
+                onmouseleave={hasHover() ? hideItem : undefined}
               >
                 {/* Popover above */}
                 <Show when={isOpen() && positioned.side === "above"}>
@@ -96,7 +100,9 @@ export const TimelineSection = () => {
                   item={positioned.item}
                   side={positioned.side}
                   isOpen={isOpen()}
-                  onClick={() => toggleItem(positioned.item)}
+                  onClick={
+                    hasHover() ? undefined : () => toggleItem(positioned.item)
+                  }
                 />
 
                 {/* Popover below */}
