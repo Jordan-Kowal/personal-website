@@ -11,7 +11,7 @@ export const experienceData: TimelineItem[] = [
     description:
       "Fullstack development using Python/Flask and Typescript/React/React Native.",
     category: "experience",
-    logo: "/images/alan_logo.jpeg",
+    logo: "/images/logo-alan.jpeg",
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ export const experienceData: TimelineItem[] = [
     description:
       "Fullstack development using Elixir/Phoenix and Typescript/React for the job board platform.",
     category: "experience",
-    logo: "/images/wttj_logo.jpeg",
+    logo: "/images/logo-wttj.jpeg",
   },
   {
     id: 3,
@@ -36,7 +36,7 @@ export const experienceData: TimelineItem[] = [
       "Frontend and backend development on diverse web applications using Django and React. " +
       "(with a bit of Erlang and Scala here and there).",
     category: "experience",
-    logo: "/images/fieldboxai_logo.jpeg",
+    logo: "/images/logo-fieldbox.jpeg",
   },
   {
     id: 4,
@@ -47,7 +47,7 @@ export const experienceData: TimelineItem[] = [
     endDate: "2023-03-01",
     description: 'Mentor at OpenClassrooms for the "Python Developer" program.',
     category: "experience",
-    logo: "/images/openclassrooms_logo.jpeg",
+    logo: "/images/logo-openclassrooms.jpeg",
   },
   {
     id: 5,
@@ -62,7 +62,7 @@ export const experienceData: TimelineItem[] = [
       "fully customized e-commerce websites, " +
       "and point-of-sales software.",
     category: "experience",
-    logo: "/images/garantie_privee_logo.jpeg",
+    logo: "/images/logo-garantie-privee.jpeg",
   },
   {
     id: 6,
@@ -74,7 +74,7 @@ export const experienceData: TimelineItem[] = [
     description:
       "Assisted the IT Project Manager with on-going projects (wire-framing, specs, tests, etc.).",
     category: "experience",
-    logo: "/images/garantie_privee_logo.jpeg",
+    logo: "/images/logo-garantie-privee.jpeg",
   },
 ];
 
@@ -100,6 +100,6 @@ export const educationData: TimelineItem[] = [
     endDate: "2013-06-01",
     description: "Specialization in Information Systems Management.",
     category: "education",
-    logo: "/images/kedge_logo.jpeg",
+    logo: "/images/logo-kedge.jpeg",
   },
 ];

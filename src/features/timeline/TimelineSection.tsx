@@ -81,7 +81,12 @@ export const TimelineSection = () => {
               >
                 {/* Popover above */}
                 <Show when={isOpen() && positioned.side === "above"}>
-                  <div class="absolute bottom-full left-1/2 mb-2 -translate-x-1/2">
+                  <div
+                    class="absolute bottom-full left-1/2 mb-2"
+                    style={{
+                      transform: `translateX(-${positioned.position}%)`,
+                    }}
+                  >
                     <TimelinePopover item={positioned.item} side="above" />
                   </div>
                 </Show>
@@ -96,7 +101,12 @@ export const TimelineSection = () => {
 
                 {/* Popover below */}
                 <Show when={isOpen() && positioned.side === "below"}>
-                  <div class="absolute top-full left-1/2 mt-2 -translate-x-1/2">
+                  <div
+                    class="absolute top-full left-1/2 mt-2"
+                    style={{
+                      transform: `translateX(-${positioned.position}%)`,
+                    }}
+                  >
                     <TimelinePopover item={positioned.item} side="below" />
                   </div>
                 </Show>

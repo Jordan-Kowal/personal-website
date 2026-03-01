@@ -1,7 +1,14 @@
-import { For } from "solid-js";
+import { createSignal, For, onCleanup, onMount } from "solid-js";
 import { ContentContainer } from "@/components/layout";
 import { ReviewCard } from "@/components/ui";
 import { reviewsData } from "@/features/reviews/data";
+
+const HERO_IMAGES = [
+  "/images/jordan-wttj.png",
+  "/images/jordan-fbx.png",
+  "/images/jordan-spartan-2.png",
+];
+const ROTATION_INTERVAL_MS = 5000;
 
 const LEFT_CARDS = [
   { review: reviewsData[0], top: "8%", left: "2%" },
@@ -16,14 +23,28 @@ const RIGHT_CARDS = [
 ];
 
 export function HeroBanner() {
+  const [activeIndex, setActiveIndex] = createSignal(0);
+
+  onMount(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % HERO_IMAGES.length);
+    }, ROTATION_INTERVAL_MS);
+    onCleanup(() => clearInterval(interval));
+  });
+
   return (
     <div class="relative h-screen w-full bg-base-300 overflow-hidden">
       <ContentContainer>
-        <img
-          alt="Jordan Kowal"
-          src="/images/jordan-wttj.png"
-          class="absolute bottom-0 left-1/2 -translate-x-1/2 h-full object-cover object-bottom"
-        />
+        <For each={HERO_IMAGES}>
+          {(src, i) => (
+            <img
+              alt="Jordan Kowal"
+              src={src}
+              class="absolute bottom-0 left-1/2 -translate-x-1/2 h-full object-cover object-bottom transition-opacity duration-1000"
+              classList={{ "opacity-0": activeIndex() !== i() }}
+            />
+          )}
+        </For>
         {/* Review cards container - capped width so cards stay near portrait */}
         <div class="absolute inset-0 z-5 mx-auto max-w-6xl">
           {/* Left side */}
