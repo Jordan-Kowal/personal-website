@@ -138,7 +138,7 @@ export const Navbar = () => {
           class={`flex items-center gap-1 rounded-full px-4 py-2 transition-all duration-300 ${
             isSticky()
               ? "bg-base-100/95 backdrop-blur-sm shadow-xl"
-              : "bg-transparent"
+              : "bg-transparent shadow-md"
           }`}
         >
           {/* Name */}
