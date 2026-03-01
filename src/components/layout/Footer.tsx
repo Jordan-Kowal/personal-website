@@ -11,7 +11,9 @@ export const Footer: Component = () => {
       class="flex items-center justify-between bg-neutral text-neutral-content px-4"
       style={{ "min-height": `${FOOTER_HEIGHT_PX}px` }}
     >
-      <p class="m-0!">Copyright © {currentYear} - All right reserved</p>
+      <p class="m-0!">
+        © 2023–{currentYear} Jordan Kowal - All rights reserved
+      </p>
       <nav class="flex gap-4">
         <a
           href={SOCIALS.github}
