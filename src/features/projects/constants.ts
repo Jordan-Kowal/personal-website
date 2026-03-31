@@ -3,6 +3,28 @@ import type { Project } from "./types";
 
 export const projectsData: Project[] = [
   {
+    id: 15,
+    name: "grove",
+    description:
+      "macOS sidebar for managing git worktrees and monitoring Claude Code sessions across your workspaces.",
+    githubUrl: "https://github.com/Jordan-Kowal/grove",
+    websiteUrl: undefined,
+    screenshots: [
+      "screenshots/grove-1.png",
+      "screenshots/grove-2.png",
+      "screenshots/grove-3.png",
+      "screenshots/grove-4.png",
+      "screenshots/grove-5.png",
+    ],
+    deprecated: false,
+    skills: [
+      SkillName.TypeScript,
+      SkillName.Solid,
+      SkillName.Wails,
+      SkillName.Go,
+    ],
+  },
+  {
     id: 14,
     name: "click-launch",
     description:
