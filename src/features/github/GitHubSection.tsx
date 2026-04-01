@@ -1,6 +1,6 @@
-import { Github } from "lucide-solid";
 import { createResource, ErrorBoundary, Show, Suspense } from "solid-js";
 import { Section } from "@/components/layout";
+import { GithubIcon } from "@/components/ui/icons";
 import { ContributionGrid } from "./components/ContributionGrid";
 import { fetchGitHubContributions } from "./utils";
 
@@ -8,7 +8,7 @@ export const GitHubSection = () => {
   const [contributionsData] = createResource(fetchGitHubContributions);
 
   return (
-    <Section id="github" title="GitHub Activity" alternate icon={Github}>
+    <Section id="github" title="GitHub Activity" alternate icon={GithubIcon}>
       <ErrorBoundary
         fallback={(err) => (
           <div class="alert alert-error">

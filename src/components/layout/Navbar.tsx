@@ -1,16 +1,8 @@
-import {
-  Briefcase,
-  Github,
-  Home,
-  Linkedin,
-  Mail,
-  MessageSquare,
-  Wrench,
-  Youtube,
-} from "lucide-solid";
+import { Briefcase, Home, Mail, MessageSquare, Wrench } from "lucide-solid";
 import type { Component } from "solid-js";
 import { createEffect, createSignal, For, onCleanup } from "solid-js";
 import { Dynamic } from "solid-js/web";
+import { GithubIcon, LinkedinIcon, YoutubeIcon } from "@/components/ui/icons";
 import { SOCIALS } from "../../config/socials";
 
 type NavItem = {
@@ -24,7 +16,7 @@ const navItems: NavItem[] = [
   { id: "home", label: "Home", href: "#home", icon: Home },
   { id: "skills", label: "Skills", href: "#skills", icon: Wrench },
   { id: "projects", label: "Projects", href: "#projects", icon: Briefcase },
-  { id: "github", label: "GitHub", href: "#github", icon: Github },
+  { id: "github", label: "GitHub", href: "#github", icon: GithubIcon },
   { id: "reviews", label: "Reviews", href: "#reviews", icon: MessageSquare },
   { id: "contact", label: "Contact", href: "#contact", icon: Mail },
 ];
@@ -174,9 +166,9 @@ export const Navbar = () => {
 
           {/* Social links */}
           <div class="flex items-center gap-1 max-w-0 sm:max-w-40 overflow-hidden opacity-0 sm:opacity-100 transition-all duration-300 pl-0 sm:pl-3">
-            <SocialLink href={SOCIALS.github} icon={Github} />
-            <SocialLink href={SOCIALS.linkedin} icon={Linkedin} />
-            <SocialLink href={SOCIALS.youtube} icon={Youtube} />
+            <SocialLink href={SOCIALS.github} icon={GithubIcon} />
+            <SocialLink href={SOCIALS.linkedin} icon={LinkedinIcon} />
+            <SocialLink href={SOCIALS.youtube} icon={YoutubeIcon} />
           </div>
         </div>
       </div>

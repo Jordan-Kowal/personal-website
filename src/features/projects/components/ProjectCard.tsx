@@ -1,6 +1,7 @@
-import { ExternalLink, Github } from "lucide-solid";
+import { ExternalLink } from "lucide-solid";
 import type { Component } from "solid-js";
 import { For, Show } from "solid-js";
+import { GithubIcon } from "@/components/ui/icons";
 import { SkillTag } from "@/features/skills/components/SkillTag";
 import { SKILLS, type SkillCategory } from "@/features/skills/constants";
 import type { Project } from "../types";
@@ -39,7 +40,7 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
                 rel="noopener noreferrer"
                 class="btn btn-ghost btn-xs"
               >
-                <Github size={14} />
+                <GithubIcon size={14} />
               </a>
             </div>
           </Show>
