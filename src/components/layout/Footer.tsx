@@ -1,5 +1,5 @@
-import { Github, Linkedin, Youtube } from "lucide-solid";
 import type { Component } from "solid-js";
+import { GithubIcon, LinkedinIcon, YoutubeIcon } from "@/components/ui/icons";
 import { FOOTER_HEIGHT_PX } from "@/config/layout";
 import { SOCIALS } from "@/config/socials";
 
@@ -22,7 +22,7 @@ export const Footer: Component = () => {
           class="hover:text-primary transition-colors text-neutral-content"
           aria-label="GitHub"
         >
-          <Github size={24} />
+          <GithubIcon size={24} />
         </a>
         <a
           href={SOCIALS.linkedin}
@@ -31,7 +31,7 @@ export const Footer: Component = () => {
           class="hover:text-primary transition-colors text-neutral-content"
           aria-label="LinkedIn"
         >
-          <Linkedin size={24} />
+          <LinkedinIcon size={24} />
         </a>
         <a
           href={SOCIALS.youtube}
@@ -40,7 +40,7 @@ export const Footer: Component = () => {
           class="hover:text-primary transition-colors text-neutral-content"
           aria-label="YouTube"
         >
-          <Youtube size={24} />
+          <YoutubeIcon size={24} />
         </a>
       </nav>
     </footer>
