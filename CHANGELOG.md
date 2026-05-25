@@ -1,5 +1,10 @@
 # Changelog
 
+## [v3.0.1] - 2026-05-25
+
+- Added `bunfig.toml` with 7d release cooldown
+- Added `camcam` project
+
 ## [v3.0.0] - 2026-03-01
 
 Overall re-design of the whole application, and migrating to more efficient/performant technologies:
