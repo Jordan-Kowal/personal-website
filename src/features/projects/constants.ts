@@ -45,6 +45,17 @@ export const projectsData: Project[] = [
     ],
   },
   {
+    id: 16,
+    name: "camcam",
+    description:
+      "Static site distributing free PDF guides about transidentity for the French-speaking community.",
+    githubUrl: undefined,
+    websiteUrl: "https://www.camcamspace.com/",
+    screenshots: ["screenshots/camcam-1.png", "screenshots/camcam-2.png"],
+    deprecated: false,
+    skills: [SkillName.TypeScript, SkillName.SolidJS],
+  },
+  {
     id: 11,
     name: "pipe-operator",
     description: "Elixir's pipe operator in Python.",
