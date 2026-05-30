@@ -1,5 +1,13 @@
 # Changelog
 
+## [v3.1.0] - 2026-05-30
+
+- Migrated hosting to Cloudflare only (removed GitHub Pages + `resume.jkdev.app`)
+- Added SEO meta, Open Graph/Twitter cards, JSON-LD, `robots.txt`, `sitemap.xml`
+- Added security headers + CSP and caching rules (`public/_headers`)
+- Added Umami analytics and self-hosted favicon/logo
+- A11y: skip link and aria-labels on icon links
+
 ## [v3.0.1] - 2026-05-25
 
 - Added `bunfig.toml` with 7d release cooldown

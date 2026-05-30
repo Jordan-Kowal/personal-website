@@ -24,6 +24,7 @@ const navItems: NavItem[] = [
 type SocialLinkProps = {
   href: string;
   icon: Component<{ size: number }>;
+  label: string;
 };
 
 const SocialLink: Component<SocialLinkProps> = (props) => (
@@ -31,6 +32,7 @@ const SocialLink: Component<SocialLinkProps> = (props) => (
     href={props.href}
     target="_blank"
     rel="noopener noreferrer"
+    aria-label={props.label}
     class="no-underline rounded-full p-1.5 text-base-content/70 hover:text-base-content hover:bg-base-200 transition-all duration-200"
   >
     <Dynamic component={props.icon} size={16} />
@@ -166,9 +168,21 @@ export const Navbar = () => {
 
           {/* Social links */}
           <div class="flex items-center gap-1 max-w-0 sm:max-w-40 overflow-hidden opacity-0 sm:opacity-100 transition-all duration-300 pl-0 sm:pl-3">
-            <SocialLink href={SOCIALS.github} icon={GithubIcon} />
-            <SocialLink href={SOCIALS.linkedin} icon={LinkedinIcon} />
-            <SocialLink href={SOCIALS.youtube} icon={YoutubeIcon} />
+            <SocialLink
+              href={SOCIALS.github}
+              icon={GithubIcon}
+              label="GitHub"
+            />
+            <SocialLink
+              href={SOCIALS.linkedin}
+              icon={LinkedinIcon}
+              label="LinkedIn"
+            />
+            <SocialLink
+              href={SOCIALS.youtube}
+              icon={YoutubeIcon}
+              label="YouTube"
+            />
           </div>
         </div>
       </div>

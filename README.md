@@ -33,11 +33,11 @@ git config core.hooksPath .githooks
 
 ## QA and CI/CD
 
-We use GitHub actions to build and deploy the application. We currently have 2 main pipelines:
+- [QA](.github/workflows/qa.yml): GitHub Action that checks linters/formatters and runs `tsc` on pull requests.
+- **Deploy**: hosted on [Cloudflare Pages](https://www.jordankowal.com), which auto-builds and deploys on every push to `main` (build command `bun install && bun run build`, output `dist/`).
 
-- [QA](.github/workflows/qa.yml): Checks linters/formatters and run tests
-- [deploy](.github/workflows/deploy.yml): Builds the application and deploys it to GitHub Pages
+See [docs/](docs/) for the launch/hardening checklist (SEO, security headers, analytics, hosting).
 
 ## Made by JKDev
 
-<img alt="JKDev logo" src="https://jordan-kowal.github.io/assets/jkdev/logo.png" width="100" />
+<img alt="JKDev logo" src="https://www.jordankowal.com/logo.png" width="100" />
