@@ -38,6 +38,7 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
                 href={props.project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`${props.project.name} on GitHub`}
                 class="btn btn-ghost btn-xs"
               >
                 <GithubIcon size={14} />
@@ -50,6 +51,7 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
                 href={props.project.websiteUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`${props.project.name} official website`}
                 class="btn btn-ghost btn-xs"
               >
                 <ExternalLink size={14} />

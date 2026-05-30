@@ -1,0 +1,128 @@
+# Default: allow indexing, block hashed asset bundles
+User-agent: *
+Allow: /
+Disallow: /assets/
+
+# --- AI training crawlers (deny) ---
+# These crawlers harvest content to train LLMs without per-user intent.
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: Claude-SearchBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Google-CloudVertexBot
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: AI2Bot
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: ImagesiftBot
+Disallow: /
+
+User-agent: Omgili
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+User-agent: Novellum
+Disallow: /
+
+User-agent: ProRataInc
+Disallow: /
+
+User-agent: Timpibot
+Disallow: /
+
+User-agent: TikTok Spider
+Disallow: /
+
+User-agent: Anchor Browser
+Disallow: /
+
+User-agent: Cloudflare Crawler
+Disallow: /
+
+# --- Archivers (deny: prevent permanent third-party copies) ---
+User-agent: archive.org_bot
+Disallow: /
+
+User-agent: ia_archiver
+Disallow: /
+
+User-agent: Arquivo-web-crawler
+Disallow: /
+
+# --- Live AI assistants & AI search (allow: distribution channel) ---
+# These crawlers fetch on behalf of a specific user query; they do not train.
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /assets/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /assets/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /assets/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /assets/
+
+User-agent: DuckAssistBot
+Allow: /
+Disallow: /assets/
+
+User-agent: MistralAI-User
+Allow: /
+Disallow: /assets/
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+Disallow: /assets/
+
+User-agent: Manus
+Allow: /
+Disallow: /assets/
+
+User-agent: Applebot
+Allow: /
+Disallow: /assets/
+
+Sitemap: https://www.jordankowal.com/sitemap.xml

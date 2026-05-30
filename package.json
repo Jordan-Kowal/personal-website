@@ -1,6 +1,6 @@
 {
   "name": "personal-website",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "type": "module",
   "private": true,
   "homepage": "/",
@@ -13,6 +13,7 @@
     "quality": "bun biome:check && bun tsc"
   },
   "dependencies": {
+    "@solidjs/meta": "0.29.4",
     "dayjs": "1.11.20",
     "es-toolkit": "1.46.1",
     "lucide-solid": "1.14.0",

@@ -71,7 +71,7 @@ export const projectsData: Project[] = [
     description:
       "You are viewing it right now. My personal static website made with Vite, SolidJS, and DaisyUI.",
     githubUrl: "https://github.com/Jordan-Kowal/personal-website",
-    websiteUrl: "https://jordan-kowal.github.io/personal-website/",
+    websiteUrl: "https://www.jordankowal.com",
     screenshots: ["screenshots/personal-website.png"],
     deprecated: false,
     skills: [SkillName.TypeScript, SkillName.SolidJS],
