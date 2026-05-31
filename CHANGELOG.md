@@ -1,6 +1,6 @@
 # Changelog
 
-## [TBD]
+## [v3.1.1] - 2026-06-01
 
 - A11y: landmarks, `<h1>`, accessible names on icon buttons, and larger touch targets
 - Perf: converted images to resized WebP and preloaded the LCP hero image
