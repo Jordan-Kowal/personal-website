@@ -123,6 +123,7 @@ export const Navbar = () => {
 
   return (
     <nav
+      aria-label="Primary"
       class={`sticky z-50 w-full transition-all duration-300 ${
         isSticky() ? "top-4" : "top-0"
       }`}

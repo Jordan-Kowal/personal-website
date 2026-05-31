@@ -31,11 +31,14 @@ export const ScreenshotModal: Component<ScreenshotModalProps> = (props) => {
   return (
     <div
       role="dialog"
+      aria-modal="true"
+      aria-label="Screenshot viewer"
       class="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
       onClick={handleBackdropClick}
     >
       <button
         type="button"
+        aria-label="Close"
         class="btn btn-circle btn-ghost btn-sm absolute top-4 right-4 text-white"
         onClick={props.onClose}
       >
@@ -45,6 +48,7 @@ export const ScreenshotModal: Component<ScreenshotModalProps> = (props) => {
       <Show when={props.screenshots.length > 1}>
         <button
           type="button"
+          aria-label="Previous screenshot"
           class="btn btn-circle btn-ghost absolute left-4 text-white"
           onClick={goToPrev}
         >
@@ -61,6 +65,7 @@ export const ScreenshotModal: Component<ScreenshotModalProps> = (props) => {
       <Show when={props.screenshots.length > 1}>
         <button
           type="button"
+          aria-label="Next screenshot"
           class="btn btn-circle btn-ghost absolute right-4 text-white"
           onClick={goToNext}
         >

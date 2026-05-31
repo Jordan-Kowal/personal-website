@@ -1,5 +1,12 @@
 # Changelog
 
+## [TBD]
+
+- A11y: added `<main>` landmark, `<h1>`, and unique `aria-label`s on nav landmarks
+- A11y: accessible names on icon-only buttons (modal, timeline, reviews carousel)
+- A11y: fixed star rating `role="img"` labeling and carousel dot touch targets
+- Hero banner now uses a `<header>` landmark
+
 ## [v3.1.0] - 2026-05-30
 
 - Migrated hosting to Cloudflare only (removed GitHub Pages + `resume.jkdev.app`)

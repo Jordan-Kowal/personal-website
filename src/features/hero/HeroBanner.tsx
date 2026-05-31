@@ -33,7 +33,8 @@ export function HeroBanner() {
   });
 
   return (
-    <div class="relative h-screen w-full bg-base-300 overflow-hidden">
+    <header class="relative h-screen w-full bg-base-300 overflow-hidden">
+      <h1 class="sr-only">Jordan Kowal</h1>
       <ContentContainer>
         <For each={HERO_IMAGES}>
           {(src, i) => (
@@ -103,6 +104,6 @@ export function HeroBanner() {
           />
         </svg>
       </ContentContainer>
-    </div>
+    </header>
   );
 }

@@ -14,7 +14,7 @@ export const Footer: Component = () => {
       <p class="m-0!">
         © 2023–{currentYear} Jordan Kowal - All rights reserved
       </p>
-      <nav class="flex gap-4">
+      <nav aria-label="Social links" class="flex gap-4">
         <a
           href={SOCIALS.github}
           target="_blank"

@@ -49,16 +49,23 @@ export const ReviewsSection = () => {
             </For>
           </div>
         </div>
-        <div class="flex gap-2 my-2">
+        <div class="flex my-2" role="tablist" aria-label="Select review">
           <For each={reviewsData}>
             {(_, i) => (
               <button
                 type="button"
-                class={`w-2 h-2 rounded-full transition-colors cursor-pointer ${
-                  activeIndex() === i() ? "bg-primary" : "bg-base-300"
-                }`}
+                role="tab"
+                aria-label={`Review ${i() + 1}`}
+                aria-selected={activeIndex() === i()}
+                class="flex items-center justify-center min-h-6 min-w-6 cursor-pointer"
                 onClick={() => goTo(i())}
-              />
+              >
+                <span
+                  class={`w-2 h-2 rounded-full transition-colors ${
+                    activeIndex() === i() ? "bg-primary" : "bg-base-300"
+                  }`}
+                />
+              </button>
             )}
           </For>
         </div>

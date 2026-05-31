@@ -13,13 +13,18 @@ export const ReviewCard: Component<ReviewCardProps> = (props) => {
     <div
       class={`flex flex-col items-center text-center gap-2 ${props.class || ""}`}
     >
-      <div class="rating rating-sm mb-1">
+      <div
+        class="rating rating-sm mb-1"
+        role="img"
+        aria-label={`Rated ${props.rating} out of 5`}
+      >
         <For each={Array.from({ length: 5 })}>
           {(_, i) => (
             <div
-              class="mask mask-star-2 bg-orange-400"
-              role="img"
+              aria-hidden="true"
               aria-current={i() === props.rating - 1 ? "true" : undefined}
+              class="mask mask-star-2 bg-orange-400"
+              classList={{ "opacity-20": i() >= props.rating }}
             />
           )}
         </For>

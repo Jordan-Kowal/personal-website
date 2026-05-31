@@ -28,12 +28,14 @@ export const App = () => {
       >
         <HeroBanner />
         <Navbar />
-        <SkillsSection />
-        <ProjectsSection />
-        <TimelineSection />
-        <GitHubSection />
-        <ReviewsSection />
-        <ContactSection />
+        <main>
+          <SkillsSection />
+          <ProjectsSection />
+          <TimelineSection />
+          <GitHubSection />
+          <ReviewsSection />
+          <ContactSection />
+        </main>
         <Footer />
       </div>
     </MetaProvider>

@@ -31,6 +31,8 @@ export const TimelineEvent: Component<TimelineEventProps> = (props) => {
         <button
           type="button"
           onClick={props.onClick}
+          aria-label={`${props.item.entity} details`}
+          aria-expanded={props.isOpen}
           class="relative z-30 flex h-16 w-16 cursor-pointer items-center justify-center overflow-hidden rounded-full border-[3px] border-white transition-all duration-300 hover:scale-110 hover:shadow-lg"
           classList={{
             "scale-110 shadow-lg ring-2 ring-offset-2": props.isOpen,
