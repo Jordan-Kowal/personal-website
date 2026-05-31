@@ -2,10 +2,8 @@
 
 ## [TBD]
 
-- A11y: added `<main>` landmark, `<h1>`, and unique `aria-label`s on nav landmarks
-- A11y: accessible names on icon-only buttons (modal, timeline, reviews carousel)
-- A11y: fixed star rating `role="img"` labeling and carousel dot touch targets
-- Hero banner now uses a `<header>` landmark
+- A11y: landmarks, `<h1>`, accessible names on icon buttons, and larger touch targets
+- Perf: converted images to resized WebP and preloaded the LCP hero image
 
 ## [v3.1.0] - 2026-05-30
 

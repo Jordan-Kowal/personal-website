@@ -10,12 +10,24 @@
     />
     <link rel="canonical" href="https://www.jordankowal.com/" />
 
+    <!-- Preload LCP hero image so it is discoverable before the JS bundle runs. -->
+    <link
+      rel="preload"
+      as="image"
+      href="/images/jordan-wttj.webp"
+      fetchpriority="high"
+    />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Umami analytics origins (script + ingestion gateway). -->
+    <link rel="preconnect" href="https://cloud.umami.is" />
+    <link rel="preconnect" href="https://api-gateway.umami.dev" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Jordan Kowal" />

@@ -4,9 +4,9 @@ import { ReviewCard } from "@/components/ui";
 import { reviewsData } from "@/features/reviews/data";
 
 const HERO_IMAGES = [
-  "/images/jordan-wttj.png",
-  "/images/jordan-fbx.png",
-  "/images/jordan-spartan-2.png",
+  "/images/jordan-wttj.webp",
+  "/images/jordan-fbx.webp",
+  "/images/jordan-spartan-2.webp",
 ];
 const ROTATION_INTERVAL_MS = 5000;
 
@@ -41,6 +41,9 @@ export function HeroBanner() {
             <img
               alt="Jordan Kowal"
               src={src}
+              fetchpriority={i() === 0 ? "high" : undefined}
+              loading={i() === 0 ? "eager" : "lazy"}
+              decoding="async"
               class="absolute bottom-0 left-1/2 -translate-x-1/2 h-full object-cover object-bottom transition-opacity duration-1000"
               classList={{ "opacity-0": activeIndex() !== i() }}
             />
