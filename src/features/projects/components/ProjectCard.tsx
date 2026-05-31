@@ -76,9 +76,12 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
                   }
                 >
                   <img
-                    src={screenshot}
+                    src={screenshot.replace(/\.webp$/, "-thumb.webp")}
                     alt={`${props.project.name} screenshot ${index() + 1}`}
-                    class="m-0!"
+                    width="64"
+                    height="48"
+                    loading="lazy"
+                    class="m-0! h-full w-full object-cover"
                   />
                 </button>
               )}

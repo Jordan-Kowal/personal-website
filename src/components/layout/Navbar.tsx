@@ -43,62 +43,51 @@ export const Navbar = () => {
   const [activeSection, setActiveSection] = createSignal<string>("home");
   const [isSticky, setIsSticky] = createSignal(false);
 
+  // Track the sticky state from the scroll offset only. Reading `scrollY` does
+  // not force a layout reflow (unlike `getBoundingClientRect`).
   createEffect(() => {
-    const handleScroll = () => {
-      const heroHeight = window.innerHeight;
-      const scrollY = window.scrollY;
-      setIsSticky(scrollY > heroHeight);
-
-      const sections = navItems.map((item) => ({
-        id: item.id,
-        element: item.id === "home" ? null : document.getElementById(item.id),
-      }));
-
-      if (scrollY < heroHeight * 0.5) {
-        setActiveSection("home");
-        return;
-      }
-
-      let currentSection = "home";
-      let minDistance = Infinity;
-
-      for (const { id, element } of sections) {
-        if (id === "home") continue;
-        if (!element) continue;
-
-        const rect = element.getBoundingClientRect();
-        const distance = Math.abs(rect.top);
-
-        if (rect.top <= window.innerHeight * 0.3 && rect.bottom > 0) {
-          if (distance < minDistance) {
-            minDistance = distance;
-            currentSection = id;
-          }
-        }
-      }
-
-      if (currentSection === "home" && scrollY > heroHeight) {
-        const lastSection = sections
-          .filter((s) => s.element)
-          .reverse()
-          .find((s) => {
-            const rect = s.element!.getBoundingClientRect();
-            return rect.top < window.innerHeight;
-          });
-        if (lastSection) {
-          currentSection = lastSection.id;
-        }
-      }
-
-      setActiveSection(currentSection);
-    };
+    const handleScroll = () => setIsSticky(window.scrollY > window.innerHeight);
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
 
-    onCleanup(() => {
-      window.removeEventListener("scroll", handleScroll);
-    });
+    onCleanup(() => window.removeEventListener("scroll", handleScroll));
+  });
+
+  // Highlight the active nav item via IntersectionObserver. The browser reports
+  // visibility off the main thread, so there are no per-scroll geometry reads.
+  createEffect(() => {
+    const visibility = new Map<string, number>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          visibility.set(entry.target.id, entry.intersectionRatio);
+        }
+
+        let bestId = "home";
+        let bestRatio = 0;
+        for (const [id, ratio] of visibility) {
+          if (ratio > bestRatio) {
+            bestRatio = ratio;
+            bestId = id;
+          }
+        }
+
+        // Near the top, the hero owns the highlight even if a section peeks in.
+        setActiveSection(
+          window.scrollY < window.innerHeight * 0.5 ? "home" : bestId,
+        );
+      },
+      { threshold: [0, 0.25, 0.5, 0.75, 1] },
+    );
+
+    for (const item of navItems) {
+      if (item.id === "home") continue;
+      const element = document.getElementById(item.id);
+      if (element) observer.observe(element);
+    }
+
+    onCleanup(() => observer.disconnect());
   });
 
   const scrollToSection = (href: string) => {
@@ -148,6 +137,8 @@ export const Navbar = () => {
               return (
                 <a
                   href={item.href}
+                  aria-label={item.label}
+                  aria-current={isActive() ? "true" : undefined}
                   onclick={(e) => {
                     e.preventDefault();
                     scrollToSection(item.href);
