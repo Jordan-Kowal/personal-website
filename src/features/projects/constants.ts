@@ -16,7 +16,7 @@ export const projectsData: Project[] = [
       "screenshots/grove-4.webp",
       "screenshots/grove-5.webp",
     ],
-    deprecated: false,
+    deprecated: true,
     skills: [
       SkillName.TypeScript,
       SkillName.Solid,
@@ -36,7 +36,7 @@ export const projectsData: Project[] = [
       "screenshots/click-launch-2.webp",
       "screenshots/click-launch-3.webp",
     ],
-    deprecated: false,
+    deprecated: true,
     skills: [
       SkillName.TypeScript,
       SkillName.Solid,
