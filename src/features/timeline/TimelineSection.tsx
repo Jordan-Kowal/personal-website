@@ -70,6 +70,7 @@ export const TimelineSection = () => {
             );
 
             return (
+              // biome-ignore lint/a11y/noStaticElementInteractions: hover/focus here only mirrors the nested TimelineEvent button, which owns the accessible name, aria-expanded and click toggle
               <div
                 class="absolute z-10 -translate-x-1/2"
                 classList={{
@@ -82,6 +83,8 @@ export const TimelineSection = () => {
                   hasHover() ? () => showItem(positioned.item) : undefined
                 }
                 onmouseleave={hasHover() ? hideItem : undefined}
+                onfocusin={() => showItem(positioned.item)}
+                onfocusout={hideItem}
               >
                 {/* Popover above */}
                 <Show when={isOpen() && positioned.side === "above"}>
@@ -100,9 +103,7 @@ export const TimelineSection = () => {
                   item={positioned.item}
                   side={positioned.side}
                   isOpen={isOpen()}
-                  onClick={
-                    hasHover() ? undefined : () => toggleItem(positioned.item)
-                  }
+                  onClick={() => toggleItem(positioned.item)}
                 />
 
                 {/* Popover below */}

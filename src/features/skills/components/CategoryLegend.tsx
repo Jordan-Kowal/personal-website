@@ -50,13 +50,16 @@ const CategoryPill: Component<CategoryPillProps> = (props) => {
   );
 
   return (
-    <span
+    <button
+      type="button"
       class="cursor-pointer rounded-full border px-2.5 py-0.5 text-xs font-semibold"
       style={style()}
       onmouseenter={() => props.onHover(props.category)}
       onmouseleave={() => props.onHover(null)}
+      onfocus={() => props.onHover(props.category)}
+      onblur={() => props.onHover(null)}
     >
       {props.category}
-    </span>
+    </button>
   );
 };

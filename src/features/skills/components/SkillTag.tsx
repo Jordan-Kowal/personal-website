@@ -40,6 +40,7 @@ export const SkillTag: Component<SkillTagProps> = (props) => {
   );
 
   return (
+    // biome-ignore lint/a11y/noStaticElementInteractions: hover only recolors the tag, the same highlight is reachable from the keyboard-focusable CategoryLegend buttons
     <div
       onmouseenter={() => props.onHover?.(props.skill.category)}
       onmouseleave={() => props.onHover?.(null)}
