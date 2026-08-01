@@ -1,0 +1,55 @@
+{
+  "languages": {
+    "TypeScript": {
+      // Needs `biome` and `tsgo` extensions in Zed
+      "language_servers": ["biome", "typescript-ls"],
+      "formatter": {
+        "language_server": {
+          "name": "biome",
+        },
+      },
+      "code_actions_on_format": {
+        "source.fixAll.biome": true,
+        "source.organizeImports.biome": true,
+        "source.removeUnusedImports.ts": true,
+      },
+    },
+
+    "TSX": {
+      "language_servers": ["biome", "typescript-ls"],
+      "formatter": {
+        "language_server": {
+          "name": "biome",
+        },
+      },
+      "code_actions_on_format": {
+        "source.fixAll.biome": true,
+        "source.organizeImports.biome": true,
+        "source.removeUnusedImports.ts": true,
+      },
+    },
+
+    "JavaScript": {
+      "language_servers": ["biome", "typescript-ls"],
+      "formatter": {
+        "language_server": {
+          "name": "biome",
+        },
+      },
+      "code_actions_on_format": {
+        "source.fixAll.biome": true,
+        "source.organizeImports.biome": true,
+        "source.removeUnusedImports.ts": true,
+      },
+    },
+
+    "JSON": {
+      "language_servers": ["json-language-server", "biome"],
+      "formatter": {
+        "language_server": {
+          "name": "biome",
+        },
+      },
+    },
+  },
+}
