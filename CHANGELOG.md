@@ -5,6 +5,7 @@
 - Upgraded to `bun 1.4` and updated dependencies
 - Renamed "deprecated" projects to "archived" with a softer visual treatment, and moved active ones first
 - Added duration to career timeline entries
+- Fixed current streak resetting before the day was over
 
 ## [v3.1.1] - 2026-06-01
 

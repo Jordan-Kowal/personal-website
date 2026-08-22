@@ -30,7 +30,17 @@ export const fetchGitHubContributions =
       let tempStreak = 0;
 
       // Calculer la série actuelle en partant de la fin (dernière contribution)
-      for (let i = contributions.length - 1; i >= 0; i--) {
+      let streakStart = contributions.length - 1;
+      // La journée en cours n'est pas terminée : un 0 aujourd'hui ne casse pas la série.
+      const today = new Date().toISOString().split("T")[0];
+      if (
+        streakStart >= 0 &&
+        contributions[streakStart].date === today &&
+        contributions[streakStart].count === 0
+      ) {
+        streakStart--;
+      }
+      for (let i = streakStart; i >= 0; i--) {
         if (contributions[i].count > 0) {
           currentStreak++;
         } else {
