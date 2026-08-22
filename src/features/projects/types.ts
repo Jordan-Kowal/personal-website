@@ -7,6 +7,6 @@ export type Project = {
   githubUrl: string | undefined;
   websiteUrl: string | undefined;
   screenshots: string[];
-  deprecated: boolean;
+  archived: boolean;
   skills: SkillName[];
 };

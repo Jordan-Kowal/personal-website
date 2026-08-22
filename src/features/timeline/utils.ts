@@ -1,4 +1,16 @@
+import dayjs from "dayjs";
 import type { TimelineItem } from "./types";
+
+export const formatDuration = (startDate: string, endDate?: string): string => {
+  const end = endDate ? dayjs(endDate) : dayjs();
+  const totalMonths = end.diff(dayjs(startDate), "month");
+  const years = Math.floor(totalMonths / 12);
+  const months = totalMonths % 12;
+  const parts: string[] = [];
+  if (years > 0) parts.push(`${years} year(s)`);
+  if (months > 0) parts.push(`${months} month(s)`);
+  return parts.length > 0 ? parts.join(" and ") : "less than a month";
+};
 
 export const getTimelineBounds = (items: TimelineItem[]) => {
   let minYear = Number.POSITIVE_INFINITY;

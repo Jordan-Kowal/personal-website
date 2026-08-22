@@ -1,5 +1,11 @@
 # Changelog
 
+## [v3.2.0] - 2026-08-22
+
+- Upgraded to `bun 1.4` and updated dependencies
+- Renamed "deprecated" projects to "archived" with a softer visual treatment, and moved active ones first
+- Added duration to career timeline entries
+
 ## [v3.1.1] - 2026-06-01
 
 - A11y: landmarks, `<h1>`, accessible names on icon buttons, and larger touch targets

@@ -16,7 +16,7 @@ export const projectsData: Project[] = [
       "screenshots/grove-4.webp",
       "screenshots/grove-5.webp",
     ],
-    deprecated: true,
+    archived: true,
     skills: [
       SkillName.TypeScript,
       SkillName.Solid,
@@ -36,7 +36,7 @@ export const projectsData: Project[] = [
       "screenshots/click-launch-2.webp",
       "screenshots/click-launch-3.webp",
     ],
-    deprecated: true,
+    archived: true,
     skills: [
       SkillName.TypeScript,
       SkillName.Solid,
@@ -52,7 +52,7 @@ export const projectsData: Project[] = [
     githubUrl: undefined,
     websiteUrl: "https://www.camcamspace.com/",
     screenshots: ["screenshots/camcam-1.webp", "screenshots/camcam-2.webp"],
-    deprecated: false,
+    archived: false,
     skills: [SkillName.TypeScript, SkillName.SolidJS],
   },
   {
@@ -62,7 +62,7 @@ export const projectsData: Project[] = [
     githubUrl: "https://github.com/Jordan-Kowal/pipe-operator",
     websiteUrl: "https://pypi.org/project/pipe-operator/",
     screenshots: [],
-    deprecated: false,
+    archived: true,
     skills: [SkillName.Python],
   },
   {
@@ -73,7 +73,7 @@ export const projectsData: Project[] = [
     githubUrl: "https://github.com/Jordan-Kowal/personal-website",
     websiteUrl: "https://www.jordankowal.com",
     screenshots: ["screenshots/personal-website.webp"],
-    deprecated: false,
+    archived: false,
     skills: [SkillName.TypeScript, SkillName.SolidJS],
   },
   {
@@ -88,7 +88,7 @@ export const projectsData: Project[] = [
       "screenshots/starter-homepage.webp",
       "screenshots/starter-settings.webp",
     ],
-    deprecated: true,
+    archived: true,
     skills: [
       SkillName.Python,
       SkillName.Django,
@@ -105,7 +105,7 @@ export const projectsData: Project[] = [
     githubUrl: "https://github.com/Jordan-Kowal/django-utils-kit",
     websiteUrl: "https://pypi.org/project/django-utils-kit/",
     screenshots: [],
-    deprecated: true,
+    archived: true,
     skills: [SkillName.Python, SkillName.Django],
   },
   {
@@ -115,7 +115,7 @@ export const projectsData: Project[] = [
     githubUrl: "https://github.com/Jordan-Kowal/django-meilisearch-indexer",
     websiteUrl: "https://pypi.org/project/django-meilisearch-indexer/",
     screenshots: [],
-    deprecated: true,
+    archived: true,
     skills: [SkillName.Python, SkillName.Django, SkillName.Meilisearch],
   },
   {
@@ -125,7 +125,7 @@ export const projectsData: Project[] = [
     githubUrl: "https://github.com/Jordan-Kowal/jkscript",
     websiteUrl: "https://www.npmjs.com/package/jcscript",
     screenshots: [],
-    deprecated: true,
+    archived: true,
     skills: [SkillName.TypeScript],
   },
   {
@@ -136,7 +136,7 @@ export const projectsData: Project[] = [
     githubUrl: "https://github.com/Jordan-Kowal/challenges",
     websiteUrl: undefined,
     screenshots: [],
-    deprecated: true,
+    archived: true,
     skills: [SkillName.Python, SkillName.Elixir],
   },
   {
@@ -147,7 +147,7 @@ export const projectsData: Project[] = [
     githubUrl: "https://github.com/Jordan-Kowal/jklib",
     websiteUrl: "https://pypi.org/project/jklib/",
     screenshots: [],
-    deprecated: true,
+    archived: true,
     skills: [SkillName.Python, SkillName.Django],
   },
   {
@@ -162,7 +162,7 @@ export const projectsData: Project[] = [
       "screenshots/enseirb-schedule-notifier-2.webp",
       "screenshots/enseirb-schedule-notifier-3.webp",
     ],
-    deprecated: true,
+    archived: true,
     skills: [
       SkillName.Python,
       SkillName.Django,
@@ -180,7 +180,7 @@ export const projectsData: Project[] = [
     githubUrl: undefined,
     websiteUrl: undefined,
     screenshots: ["screenshots/world-map-1.webp"],
-    deprecated: true,
+    archived: true,
     skills: [
       SkillName.Python,
       SkillName.Django,
@@ -198,7 +198,7 @@ export const projectsData: Project[] = [
     githubUrl: "https://github.com/Jordan-Kowal/discord-dice-roller",
     websiteUrl: "https://jordan-kowal.github.io/discord-dice-roller/",
     screenshots: ["screenshots/discord-dice-roller-1.webp"],
-    deprecated: true,
+    archived: true,
     skills: [SkillName.Python],
   },
   {
@@ -209,7 +209,7 @@ export const projectsData: Project[] = [
     githubUrl: "https://github.com/Jordan-Kowal/django-database-translation",
     websiteUrl: "https://pypi.org/project/django-database-translation/",
     screenshots: [],
-    deprecated: true,
+    archived: true,
     skills: [SkillName.Python, SkillName.Django, SkillName.PostgreSQL],
   },
   {
@@ -220,7 +220,7 @@ export const projectsData: Project[] = [
     githubUrl: "https://github.com/Jordan-Kowal/sudoku-manager",
     websiteUrl: "https://pypi.org/project/sudoku-manager/",
     screenshots: [],
-    deprecated: true,
+    archived: true,
     skills: [SkillName.Python],
   },
 ];

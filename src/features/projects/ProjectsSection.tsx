@@ -6,18 +6,23 @@ import { ScreenshotModal } from "./components/ScreenshotModal";
 import { projectsData } from "./constants";
 
 export const ProjectsSection = () => {
-  const [showDeprecated, setShowDeprecated] = createSignal(true);
+  const [showArchived, setShowArchived] = createSignal(true);
   const [currentIndex, setCurrentIndex] = createSignal(0);
   const [modalScreenshots, setModalScreenshots] = createSignal<string[]>([]);
   const [modalIndex, setModalIndex] = createSignal(0);
 
   const filteredProjects = createMemo(() => {
-    if (showDeprecated()) return projectsData;
-    return projectsData.filter((p) => !p.deprecated);
+    const projects = showArchived()
+      ? projectsData
+      : projectsData.filter((p) => !p.archived);
+    // false sorts before true, so active projects lead the carousel.
+    return [...projects].sort(
+      (a, b) => Number(a.archived) - Number(b.archived),
+    );
   });
 
-  const toggleDeprecated = () => {
-    setShowDeprecated((prev) => !prev);
+  const toggleArchived = () => {
+    setShowArchived((prev) => !prev);
     setCurrentIndex(0);
   };
 
@@ -46,12 +51,12 @@ export const ProjectsSection = () => {
       {/* Filter toggle */}
       <div class="flex justify-center">
         <label class="label cursor-pointer gap-2">
-          <span class="label-text">Show deprecated</span>
+          <span class="label-text">Show archived</span>
           <input
             type="checkbox"
             class="toggle toggle-sm toggle-primary"
-            checked={showDeprecated()}
-            onChange={toggleDeprecated}
+            checked={showArchived()}
+            onChange={toggleArchived}
           />
         </label>
       </div>

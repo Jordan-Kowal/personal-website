@@ -1,4 +1,4 @@
-import { ExternalLink } from "lucide-solid";
+import { Archive, ExternalLink } from "lucide-solid";
 import type { Component } from "solid-js";
 import { For, Show } from "solid-js";
 import { GithubIcon } from "@/components/ui/icons";
@@ -17,17 +17,22 @@ type ProjectCardProps = {
 export const ProjectCard: Component<ProjectCardProps> = (props) => {
   return (
     <div
-      class={`card card-border h-full bg-white text-black transition-all duration-300 ${
+      class={`card card-border h-full text-black transition-all duration-300 ${
+        props.project.archived ? "bg-base-200" : "bg-white"
+      } ${
         props.isActive
-          ? `shadow-xl border ${props.project.deprecated ? "border-error" : "border-primary"}`
+          ? `shadow-xl border ${props.project.archived ? "border-base-300" : "border-primary"}`
           : ""
       }`}
     >
       <div class="card-body gap-1">
         {/* Title */}
         <h3 class="card-title text-base my-0!">{props.project.name}</h3>
-        <Show when={props.project.deprecated}>
-          <span class="badge badge-error badge-sm">Deprecated</span>
+        <Show when={props.project.archived}>
+          <span class="badge badge-neutral badge-sm gap-1">
+            <Archive size={11} />
+            Archived
+          </span>
         </Show>
 
         {/* Links */}
@@ -81,7 +86,11 @@ export const ProjectCard: Component<ProjectCardProps> = (props) => {
                     width="64"
                     height="48"
                     loading="lazy"
-                    class="m-0! h-full w-full object-cover"
+                    class={`m-0! h-full w-full object-cover transition-[filter] duration-300 ${
+                      props.project.archived
+                        ? "grayscale hover:grayscale-0"
+                        : ""
+                    }`}
                   />
                 </button>
               )}

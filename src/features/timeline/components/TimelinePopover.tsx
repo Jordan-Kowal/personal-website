@@ -2,6 +2,7 @@ import { Briefcase, GraduationCap, MapPin } from "lucide-solid";
 import type { Component } from "solid-js";
 import { Match, Show, Switch } from "solid-js";
 import type { TimelineItem } from "../types";
+import { formatDuration } from "../utils";
 
 type TimelinePopoverProps = {
   item: TimelineItem;
@@ -79,9 +80,12 @@ export const TimelinePopover: Component<TimelinePopoverProps> = (props) => {
             <MapPin size={10} />
             {props.item.location}
           </p>
-          <time class="font-mono text-[10px] text-base-content/40">
+          <time class="block font-mono text-[10px] text-base-content/40">
             {formatDateRange(props.item.startDate, props.item.endDate)}
           </time>
+          <span class="block font-mono text-[10px] text-base-content/40">
+            {formatDuration(props.item.startDate, props.item.endDate)}
+          </span>
         </div>
 
         <p class="m-0! text-xs leading-relaxed text-base-content/70">
