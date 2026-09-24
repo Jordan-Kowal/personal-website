@@ -15,6 +15,8 @@
   const MIN_SPACING_PX = 140;
   const MAX_SPACING_PX = 240;
   const SPACING_SHARE = 0.24;
+  // The second card opens centred, so the first one fills the left of the stage.
+  const START_INDEX = 1;
   // Weight of the newest pointer sample in the release speed, so one jittery event can't fling it.
   const VELOCITY_SMOOTHING = 0.6;
 
@@ -35,7 +37,7 @@
   let isClickSwallowed = false;
 
   // Fractional index of the card at the centre: 2.5 sits half way between the third and fourth.
-  const offset = new Spring(0, { stiffness: 0.1, damping: 0.75 });
+  const offset = new Spring(START_INDEX, { stiffness: 0.1, damping: 0.75 });
 
   let projects = $derived(sortProjects(projectsData, showArchived));
   let spacing = $derived(
@@ -62,7 +64,7 @@
   const toggleArchived = () => {
     showArchived = !showArchived;
     flippedId = null;
-    offset.set(0, { instant: true });
+    offset.set(START_INDEX, { instant: true });
   };
 
   const handlePointerDown = (event: PointerEvent) => {
@@ -141,9 +143,10 @@
 
 <Section
   id="projects"
-  eyebrow="Card binder"
+  eyebrow="Side quests"
+  icon="quest"
   title="Projects"
-  intro="Every side quest, sleeved. Drag through the binder, click the middle card to flip it; retired ones are kept for the collection."
+  intro="Every project is a side quest. The main story can wait."
 >
   <div class="reveal mb-6 flex flex-wrap items-center justify-between gap-4">
     <label class="flex cursor-pointer items-center gap-3 text-sm text-muted">

@@ -4,6 +4,8 @@ import type { SkillIcon } from "../icons";
 export type InventoryItem = {
   icon: SkillIcon;
   color: string;
+  /** One per shape of a multicolour logo, else just `color`. */
+  bodyColors: string[];
   /** Fills the logo's cut-outs, so letters like CSS's read against the page. */
   inlayColor: string;
   x: number;

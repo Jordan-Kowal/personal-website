@@ -8,6 +8,7 @@
     DodecahedronGeometry,
     DoubleSide,
     type Group,
+    IcosahedronGeometry,
     Plane,
     Raycaster,
     TubeGeometry,
@@ -21,6 +22,9 @@
     segmentBetween,
   } from "./islandMath";
   import { SCENE_COLORS } from "./palette";
+  import Campsite from "./props/Campsite.svelte";
+  import Pets from "./props/Pets.svelte";
+  import TrainingZone from "./props/TrainingZone.svelte";
 
   type Props = {
     /** Pointer in normalized device coordinates, [-1, 1] on both axes. */
@@ -45,11 +49,27 @@
     { x: -1.0, z: -2.3, scale: 1.1, color: SCENE_COLORS.foliage[3] },
     { x: 0.15, z: -2.45, scale: 0.8, color: SCENE_COLORS.foliage[1] },
     { x: -2.4, z: 0.6, scale: 0.9, color: SCENE_COLORS.foliage[0] },
-    { x: 1.2, z: 1.8, scale: 0.75, color: SCENE_COLORS.foliage[2] },
+    { x: 2.15, z: 1.65, scale: 0.75, color: SCENE_COLORS.foliage[2] },
+    // The middle of the grove, so the back of the island is not a bare ring.
+    { x: 0.7, z: -0.55, scale: 0.7, color: SCENE_COLORS.foliage[3] },
+    { x: -0.2, z: -1.5, scale: 0.95, color: SCENE_COLORS.foliage[0] },
+    { x: 1.45, z: 0.05, scale: 0.6, color: SCENE_COLORS.foliage[2] },
+    { x: 2.45, z: -1.2, scale: 0.8, color: SCENE_COLORS.foliage[1] },
+    { x: -2.6, z: -0.3, scale: 0.7, color: SCENE_COLORS.foliage[2] },
+    { x: 1.2, z: -2.4, scale: 0.65, color: SCENE_COLORS.foliage[0] },
+  ];
+  const BUSHES = [
+    { x: 0.2, z: -0.7, scale: 0.2 },
+    { x: 1.0, z: -1.2, scale: 0.16 },
+    { x: 1.9, z: -0.3, scale: 0.18 },
+    { x: -0.6, z: -1.0, scale: 0.15 },
+    { x: 2.7, z: 0.9, scale: 0.17 },
+    { x: -1.6, z: -2.2, scale: 0.19 },
+    { x: 1.1, z: 2.55, scale: 0.14 },
   ];
   const ROCKS = [
     { x: 2.5, z: -0.2, scale: 0.28 },
-    { x: -1.2, z: 2.1, scale: 0.34 },
+    { x: 1.7, z: 2.3, scale: 0.34 },
     { x: 0.2, z: -1.2, scale: 0.2 },
   ];
 
@@ -77,7 +97,7 @@
     color: SCENE_COLORS.holds[i % SCENE_COLORS.holds.length],
   }));
 
-  // A stream from a spring by the crag, winding between the cottage and the trees, falling off the front edge.
+  // A stream from a spring by the crag, winding between the campsite and the trees, falling off the front edge.
   const RIVER_PATH: [number, number][] = [
     [-1.3, -0.35],
     [-0.45, 0.1],
@@ -147,6 +167,7 @@
   undersideGeometry.computeVertexNormals();
 
   const rockGeometry = new DodecahedronGeometry(1, 0);
+  const bushGeometry = new IcosahedronGeometry(1, 0);
 
   const cragGeometry = new ConeGeometry(CRAG.radius, CRAG.height, 7, 4);
   // The base ring stays put so the crag sits flush on the grass.
@@ -308,6 +329,21 @@
     </T.Group>
   {/each}
 
+  {#each BUSHES as bush, i (i)}
+    <T.Mesh
+      geometry={bushGeometry}
+      position={[bush.x, bush.scale * 0.6, bush.z]}
+      scale={[bush.scale * 1.3, bush.scale, bush.scale * 1.3]}
+      rotation.y={i}
+      castShadow
+    >
+      <T.MeshStandardMaterial
+        color={SCENE_COLORS.foliage[i % SCENE_COLORS.foliage.length]}
+        flatShading
+      />
+    </T.Mesh>
+  {/each}
+
   {#each ROCKS as rock, i (i)}
     <T.Mesh
       geometry={rockGeometry}
@@ -405,8 +441,8 @@
     />
   </T.Mesh>
 
-  <!-- A bike parked by the cottage door: two wheels and a diamond frame. -->
-  <T.Group position={[-1.55, 0, 1.5]} rotation.y={0.35}>
+  <!-- A bike parked at the campsite: two wheels and a diamond frame. -->
+  <T.Group position={[-2.15, 0, 1.45]} rotation.y={0.35}>
     {#each [BIKE_POINTS.rearHub, BIKE_POINTS.frontHub] as [x, y], i (i)}
       <T.Mesh position={[x, y, 0]} castShadow>
         <T.TorusGeometry args={[WHEEL_RADIUS - 0.012, 0.018, 5, 14]} />
@@ -438,23 +474,7 @@
     </T.Mesh>
   </T.Group>
 
-  <!-- The cottage: a box, a four-sided cone for the roof, and one lit window. -->
-  <T.Group position={[-0.9, 0, 0.7]} rotation.y={0.5}>
-    <T.Mesh position.y={0.35} castShadow receiveShadow>
-      <T.BoxGeometry args={[0.9, 0.7, 0.8]} />
-      <T.MeshStandardMaterial color={SCENE_COLORS.wall} flatShading />
-    </T.Mesh>
-    <T.Mesh position.y={0.95} rotation.y={Math.PI / 4} castShadow>
-      <T.ConeGeometry args={[0.78, 0.55, 4]} />
-      <T.MeshStandardMaterial color={SCENE_COLORS.roof} flatShading />
-    </T.Mesh>
-    <T.Mesh position={[0, 0.38, 0.401]}>
-      <T.PlaneGeometry args={[0.24, 0.24]} />
-      <T.MeshStandardMaterial
-        color={SCENE_COLORS.window}
-        emissive={SCENE_COLORS.window}
-        emissiveIntensity={1.6}
-      />
-    </T.Mesh>
-  </T.Group>
+  <Campsite {isAnimated} />
+  <Pets />
+  <TrainingZone />
 </T.Group>

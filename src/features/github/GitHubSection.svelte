@@ -133,8 +133,9 @@
 <Section
   id="github"
   eyebrow="Stats screen"
+  icon="stats"
   title="GitHub Activity"
-  intro="A year of commits, built as a little city. Taller and brighter means a busier day."
+  intro="Taller and brighter skyscrapers mean a busier day."
 >
   {#if data}
     {#await data}

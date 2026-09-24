@@ -1,7 +1,7 @@
 <script lang="ts">
   import { T, useTask, useThrelte } from "@threlte/core";
   import { untrack } from "svelte";
-  import type { Group, MeshStandardMaterial } from "three";
+  import { type Group, MeshStandardMaterial } from "three";
   import { tiltToward } from "../utils";
   import { buildIconGeometry } from "./iconGeometry";
   import type { InventoryItem } from "./types";
@@ -38,8 +38,22 @@
   const geometries = untrack(() =>
     items.map((item) => buildIconGeometry(item.icon)),
   );
+  const bodyMaterials = untrack(() =>
+    items.map((item) =>
+      item.bodyColors.map(
+        (color) =>
+          new MeshStandardMaterial({
+            color,
+            roughness: 0.4,
+            metalness: 0.15,
+            emissive: color,
+            emissiveIntensity: 0.18,
+            transparent: true,
+          }),
+      ),
+    ),
+  );
   const groups: Group[] = $state([]);
-  const bodyMaterials: MeshStandardMaterial[] = $state([]);
   const inlayMaterials: MeshStandardMaterial[] = $state([]);
   const poses = geometries.map(() => ({
     x: IDLE_TILT.x,
@@ -95,7 +109,7 @@
     const group = groups[index];
     const pose = poses[index];
     if (!group) return;
-    for (const material of [bodyMaterials[index], inlayMaterials[index]]) {
+    for (const material of [...bodyMaterials[index], inlayMaterials[index]]) {
       if (material) material.opacity = pose.opacity;
     }
     group.rotation.set(pose.x, pose.y + pose.spin, 0);
@@ -158,17 +172,13 @@
     rotation={[IDLE_TILT.x, IDLE_TILT.y, 0]}
     scale={item.size / VIEWBOX_SIZE}
   >
-    <T.Mesh geometry={geometries[i].body}>
-      <T.MeshStandardMaterial
-        bind:ref={bodyMaterials[i]}
-        color={item.color}
-        roughness={0.4}
-        metalness={0.15}
-        emissive={item.color}
-        emissiveIntensity={0.18}
-        transparent
-      />
-    </T.Mesh>
+    <!-- A lone material paints the whole body; an array paints each shape's group. -->
+    <T.Mesh
+      geometry={geometries[i].body}
+      material={bodyMaterials[i].length === 1
+        ? bodyMaterials[i][0]
+        : bodyMaterials[i]}
+    />
     {#if geometries[i].inlay}
       <T.Mesh geometry={geometries[i].inlay}>
         <T.MeshStandardMaterial

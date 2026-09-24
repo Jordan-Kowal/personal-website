@@ -35,15 +35,25 @@ const logoShapes = (path: string) =>
     .parse(toSvg(`<path d="${path}"/>`))
     .paths.flatMap((shapePath) => shapePath.toShapes());
 
-const logoGeometry = (shapes: Shape[]) =>
-  new ExtrudeGeometry(shapes, {
-    depth: LOGO_DEPTH,
-    bevelEnabled: true,
-    bevelThickness: 0.5,
-    bevelSize: 0.35,
-    bevelSegments: 2,
-    curveSegments: LOGO_CURVE_SEGMENTS,
-  });
+const LOGO_EXTRUDE = {
+  depth: LOGO_DEPTH,
+  bevelEnabled: true,
+  bevelThickness: 0.5,
+  bevelSize: 0.35,
+  bevelSegments: 2,
+  curveSegments: LOGO_CURVE_SEGMENTS,
+};
+
+// Split into one group per shape, so a multicolour logo can give each its own material.
+const logoGeometry = (shapes: Shape[], isSplit: boolean) => {
+  if (!isSplit) return new ExtrudeGeometry(shapes, LOGO_EXTRUDE);
+  const merged = mergeGeometries(
+    shapes.map((shape) => new ExtrudeGeometry(shape, LOGO_EXTRUDE)),
+    true,
+  );
+  if (!merged) throw new Error("Logo shapes could not be merged");
+  return merged;
+};
 
 // The holed shapes' outlines, filled: what shows through the letters cut out of CSS or HTML5.
 const inlayGeometry = (shapes: Shape[]) => {
@@ -106,8 +116,15 @@ const glyphGeometry = (nodes: GlyphNode[]) => {
  */
 export const buildIconGeometry = (icon: SkillIcon) => {
   const shapes = icon.kind === "logo" ? logoShapes(icon.path) : [];
+  // A hollow logo's rings are drawn as inlay only, so its solid shapes stand out in the brand colour.
+  const bodyShapes =
+    icon.kind === "logo" && icon.isHollow
+      ? shapes.filter((shape) => shape.holes.length === 0)
+      : shapes;
   const body =
-    icon.kind === "logo" ? logoGeometry(shapes) : glyphGeometry(icon.nodes);
+    icon.kind === "logo"
+      ? logoGeometry(bodyShapes, icon.shapeColors !== undefined)
+      : glyphGeometry(icon.nodes);
   const inlay = inlayGeometry(shapes);
   body.computeBoundingBox();
   const depthCentre = body.boundingBox

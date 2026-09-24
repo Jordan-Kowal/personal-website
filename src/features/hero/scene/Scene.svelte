@@ -6,9 +6,13 @@
     type Group,
     IcosahedronGeometry,
     type PerspectiveCamera,
+    Raycaster,
+    Vector3,
   } from "three";
+  import { HOBBIES, type Hotspot } from "./hobbies";
   import Island from "./Island.svelte";
   import {
+    blendAngle,
     cameraDistance,
     visibleHalfWidth,
     WIDE_ASPECT,
@@ -21,6 +25,12 @@
     /** Where the island stands, in normalized device coordinates. */
     anchor: { x: number; y: number };
     isAnimated: boolean;
+    /** 0 on the hero, 1 in the hobbies view, in between while flying from one to the other. */
+    focus: number;
+    /** Extra turn in the hobbies view, in radians, on top of the angle that faces every hobby. */
+    turn: number;
+    /** Receives every hobby's spot on screen, in `HOBBIES` order, on each frame `focus` is above 0. */
+    onHotspots: (hotspots: Hotspot[]) => void;
   };
 
   const FOV_DEGREES = 32;
@@ -32,6 +42,14 @@
   const CAMERA_SWAY = { x: 0.7, y: 0.45 };
   const CAMERA_FOLLOW_RATE = 2.5;
   const IDLE_SPIN_RADIANS_PER_SECOND = 0.05;
+  // The hobbies view: the island centred and grown, turned so every hobby faces the camera.
+  const FOCUS_YAW = 0.3;
+  const FOCUS_Y = -0.9;
+  const FOCUS_MAX_SCALE = 1.3;
+  // Share of the visible half width the island's radius may take up: tall screens have width to spare.
+  const FOCUS_WIDTH_SHARE = { wide: 0.6, tall: 0.95 };
+  // The grass top's radius in Island.svelte.
+  const ISLAND_RADIUS = 3.2;
   const BOB_AMPLITUDE = 0.12;
   const BOB_SPEED = 0.6;
   const CLOUD_SPEED = 0.18;
@@ -55,7 +73,8 @@
     { x: 2.9, y: -0.4, z: 2.4, scale: 0.16, phase: 4 },
   ];
 
-  let { pointer, anchor, isAnimated }: Props = $props();
+  let { pointer, anchor, isAnimated, focus, turn, onHotspots }: Props =
+    $props();
 
   interactivity();
   const { size, invalidate } = useThrelte();
@@ -69,6 +88,13 @@
   let clouds: Group[] = $state([]);
   let floatingRocks: Group[] = $state([]);
   let elapsed = 0;
+  // The idle spin pauses in the hobbies view, so the way back returns to where it left off.
+  let spin = 0;
+  const hotspotPosition = new Vector3();
+  const sightRaycaster = new Raycaster();
+  const sightDirection = new Vector3();
+  // A marker sits just off its prop: hits this close to it are the prop it labels, not a cover.
+  const SIGHT_TOLERANCE = 0.25;
 
   // The island stands under the player card: `anchor` is where the card's bottom sits, projected
   // onto the plane the camera looks at.
@@ -81,6 +107,18 @@
   );
   let islandX = $derived(anchor.x * halfHeight * aspect);
   let islandY = $derived(anchor.y * halfHeight + ISLAND_LIFT);
+  let focusScale = $derived(
+    Math.min(
+      FOCUS_MAX_SCALE,
+      (halfHeight *
+        aspect *
+        (isWide ? FOCUS_WIDTH_SHARE.wide : FOCUS_WIDTH_SHARE.tall)) /
+        ISLAND_RADIUS,
+    ),
+  );
+  let groupX = $derived(islandX * (1 - focus));
+  let groupY = $derived(islandY + (FOCUS_Y - islandY) * focus);
+  let groupScale = $derived(ISLAND_SCALE + (focusScale - ISLAND_SCALE) * focus);
 
   const placeCamera = (follow: number) => {
     if (!camera) return;
@@ -91,16 +129,42 @@
     camera.position.y += (goalY - camera.position.y) * follow;
     camera.position.z = distance;
     camera.lookAt(0, 0, 0);
+    camera.updateMatrixWorld();
+  };
+
+  const turnWorld = () => {
+    if (!world) return;
+    world.rotation.y = blendAngle(spin, FOCUS_YAW + turn, focus);
+  };
+
+  const projectHotspots = () => {
+    const view = camera;
+    const spinning = world;
+    if (!view || !spinning || focus === 0) return;
+    spinning.updateWorldMatrix(true, false);
+    onHotspots(
+      HOBBIES.map((hobby) => {
+        hotspotPosition.fromArray(hobby.anchor);
+        spinning.localToWorld(hotspotPosition);
+        sightDirection.subVectors(hotspotPosition, view.position);
+        const reach = sightDirection.length();
+        sightRaycaster.set(view.position, sightDirection.normalize());
+        sightRaycaster.far = reach - SIGHT_TOLERANCE;
+        const isInSight =
+          sightRaycaster.intersectObject(spinning, true).length === 0;
+        hotspotPosition.project(view);
+        return { x: hotspotPosition.x, y: hotspotPosition.y, isInSight };
+      }),
+    );
   };
 
   const animate = (delta: number) => {
     const step = Math.min(delta, 1 / 30);
     elapsed += step;
     placeCamera(1 - Math.exp(-CAMERA_FOLLOW_RATE * step));
-    if (world) {
-      world.rotation.y += IDLE_SPIN_RADIANS_PER_SECOND * step;
-      world.position.y = Math.sin(elapsed * BOB_SPEED) * BOB_AMPLITUDE;
-    }
+    if (focus === 0) spin += IDLE_SPIN_RADIANS_PER_SECOND * step;
+    turnWorld();
+    if (world) world.position.y = Math.sin(elapsed * BOB_SPEED) * BOB_AMPLITUDE;
     // Each cloud leaves the frame before it wraps, so it slides back in from the other side.
     clouds.forEach((cloud, i) => {
       const base = CLOUDS[i];
@@ -118,6 +182,7 @@
       rock.position.y = base.y + Math.sin(elapsed * 0.9 + base.phase) * 0.18;
       rock.rotation.y = elapsed * 0.3 + base.phase;
     });
+    projectHotspots();
   };
 
   useTask(animate, { running: () => isAnimated });
@@ -125,7 +190,7 @@
   // A directional light aims at its target, which has to follow the island by hand.
   $effect(() => {
     if (!sun) return;
-    sun.target.position.set(islandX, islandY, 0);
+    sun.target.position.set(groupX, groupY, 0);
     sun.target.updateMatrixWorld();
     invalidate();
   });
@@ -136,6 +201,8 @@
     world.position.y = 0;
     distance;
     placeCamera(1);
+    turnWorld();
+    projectHotspots();
     invalidate();
   });
 </script>
@@ -153,7 +220,7 @@
 <!-- The sun and its shadow frustum travel with the island, which moves with the layout. -->
 <T.DirectionalLight
   bind:ref={sun}
-  position={[islandX + 4, islandY + 6, 3]}
+  position={[groupX + 4, groupY + 6, 3]}
   intensity={3}
   color={SCENE_COLORS.sun}
   castShadow
@@ -166,12 +233,12 @@
 />
 <!-- Warm rim light from behind, the low sun catching the island's edge. -->
 <T.DirectionalLight
-  position={[islandX - 5, islandY + 3, -6]}
+  position={[groupX - 5, groupY + 3, -6]}
   intensity={1.6}
   color="#ff9a4d"
 />
 
-<T.Group position={[islandX, islandY, 0]} scale={ISLAND_SCALE}>
+<T.Group position={[groupX, groupY, 0]} scale={groupScale}>
   <T.Group bind:ref={world}>
     <Island {pointer} {isAnimated} />
   </T.Group>

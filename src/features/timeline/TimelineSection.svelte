@@ -58,9 +58,10 @@
 
 <Section
   id="timeline"
-  eyebrow="Level map"
+  eyebrow="Adventure map"
+  icon="map"
   title="Timeline"
-  intro="Quests are jobs, training is school. Scroll down the trail to the current quest."
+  intro="All the adventures I've been through, from school to work."
 >
   <div bind:this={track} class="relative mx-auto max-w-4xl">
     <!-- The trail: a dashed path, and the lit part that follows your scroll. -->

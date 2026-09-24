@@ -158,8 +158,9 @@
 <Section
   id="reviews"
   eyebrow="Player reviews"
+  icon="star"
   title="Reviews"
-  intro="Unfiltered feedback from people who definitely exist. Push the cards around, nobody's keeping score."
+  intro="Unfiltered feedback from people who definitely exist."
 >
   <div class="reveal flex flex-col items-center gap-6">
     <div class="felt">

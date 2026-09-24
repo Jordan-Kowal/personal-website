@@ -1,10 +1,14 @@
 <script lang="ts">
-  import { FileText, Gamepad2 } from "@lucide/svelte";
+  import { FileText, Gamepad2, ScanSearch } from "@lucide/svelte";
   import { onMount } from "svelte";
-  import { prefersReducedMotion } from "svelte/motion";
+  import { cubicInOut } from "svelte/easing";
+  import { prefersReducedMotion, Tween } from "svelte/motion";
   import { ShuffleText } from "@/components/ui";
   import { hasWebGL } from "@/utils";
+  import HobbiesDialog from "./components/HobbiesDialog.svelte";
   import PlayerCard from "./components/PlayerCard.svelte";
+  import type { Hotspot } from "./scene/hobbies";
+  import { ndcToPixels } from "./scene/islandMath";
   // Type-only, so three.js stays out of the main bundle until the dynamic import below.
   import type IslandCanvasComponent from "./scene/IslandCanvas.svelte";
 
@@ -16,6 +20,17 @@
   let isHeroVisible = $state(true);
   let isPageVisible = $state(true);
   const pointer = $state({ x: 0, y: 0, isInside: false });
+  let sceneBox: HTMLElement | undefined = $state();
+  let isExploring = $state(false);
+  // Dragging turns the island in the hobbies view, in radians.
+  let turn = $state(0);
+  let spots: { left: number; top: number; isInSight: boolean }[] = $state([]);
+
+  const FOCUS_DURATION_MS = 1100;
+  // How far the hobbies view has come in: the scene flies on it, the hero hides behind it.
+  const focus = new Tween(0, { easing: cubicInOut });
+  // The hero stays out of the way until the island is back under the card, then fades in over it.
+  let isAside = $derived(isExploring || focus.current > 0);
 
   let isAnimated = $derived(
     isHeroVisible && isPageVisible && !prefersReducedMotion.current,
@@ -38,6 +53,37 @@
     const bottomY = cardRect.bottom - heroRect.top;
     anchor.x = (centreX / heroRect.width) * 2 - 1;
     anchor.y = -(bottomY / heroRect.height) * 2 + 1;
+  };
+
+  const setFocus = (target: number) => {
+    const duration = prefersReducedMotion.current ? 0 : FOCUS_DURATION_MS;
+    focus.set(target, { duration });
+  };
+
+  const explore = () => {
+    // The view takes the whole screen from the top of the page, where the hero is.
+    window.scrollTo({ top: 0, behavior: "instant" });
+    isExploring = true;
+    turn = 0;
+    setFocus(1);
+  };
+
+  const leave = () => {
+    isExploring = false;
+    setFocus(0);
+  };
+
+  const handleHotspots = (hotspots: Hotspot[]) => {
+    if (!sceneBox) return;
+    const box = sceneBox.getBoundingClientRect();
+    spots = hotspots.map((hotspot) => {
+      const { left, top } = ndcToPixels(hotspot, box);
+      return {
+        left: box.left + left,
+        top: box.top + top,
+        isInSight: hotspot.isInSight,
+      };
+    });
   };
 
   const handleVisibilityChange = () => {
@@ -74,20 +120,41 @@
   id="home"
   bind:this={hero}
   class="hero relative flex min-h-svh w-full items-center overflow-hidden"
+  class:is-exploring={isAside}
 >
-  <div class="absolute inset-0" aria-hidden="true">
+  <!-- Pinned to the screen while in the hobbies view, however tall the hero is. -->
+  <div
+    bind:this={sceneBox}
+    class={[focus.current > 0 ? "fixed z-40" : "absolute", "inset-0"]}
+    aria-hidden="true"
+  >
     {#if IslandCanvas}
       <div class="scene-fade-in h-full w-full">
-        <IslandCanvas {pointer} {anchor} {isAnimated} />
+        <IslandCanvas
+          {pointer}
+          {anchor}
+          {isAnimated}
+          focus={focus.current}
+          {turn}
+          onHotspots={handleHotspots}
+        />
       </div>
     {/if}
   </div>
+
+  {#if isExploring}
+    <HobbiesDialog {spots} bind:turn onClose={leave} />
+  {/if}
 
   <div
     class="pointer-events-none relative z-10 mx-auto grid w-full max-w-6xl items-center gap-10 px-5 pt-28 pb-20 sm:px-8 lg:grid-cols-2"
   >
     <div
-      class="pointer-events-auto flex flex-col items-center gap-5 text-center lg:items-start lg:text-left"
+      class={[
+        "pointer-events-auto flex flex-col items-center gap-5 text-center lg:items-start lg:text-left",
+        "step-aside",
+        isAside && "is-aside -translate-x-8",
+      ]}
     >
       <span
         class="arrive font-display text-sm tracking-[0.25em] text-accent uppercase"
@@ -129,18 +196,41 @@
       </div>
     </div>
 
-    <div class="flex justify-center">
+    <div
+      class={[
+        "step-aside flex justify-center",
+        isAside && "is-aside translate-y-8",
+      ]}
+    >
       <!-- Measured untransformed: the arrival animation must not skew the island's spot. -->
-      <div bind:this={cardSlot} class="pointer-events-auto">
-        <div class="arrive" style:--i={2}>
-          <PlayerCard />
+      <!-- Out of the flow under the card: showing up must not move the card the island stands under. -->
+      <div class="pointer-events-auto relative">
+        <div bind:this={cardSlot}>
+          <div class="arrive" style:--i={2}>
+            <PlayerCard />
+          </div>
         </div>
+        {#if IslandCanvas}
+          <button
+            type="button"
+            class={[
+              "scene-fade-in absolute top-full left-1/2 mt-4 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap",
+              "rounded-full border border-accent/60 bg-page/70 px-4 py-2 backdrop-blur-sm",
+              "font-display text-sm text-ink",
+              "transition-[color,border-color] duration-150 hover:border-accent hover:text-accent",
+            ]}
+            onclick={explore}
+          >
+            <ScanSearch size={16} /> View my hobbies
+          </button>
+        {/if}
       </div>
     </div>
   </div>
 
   <a
     href="#skills"
+    class:opacity-0={isAside}
     class="absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 font-display text-xs tracking-[0.3em] text-muted uppercase transition-colors hover:text-accent sm:block"
   >
     Scroll to explore ↓
@@ -182,6 +272,19 @@
     height: 22%;
     pointer-events: none;
     background: linear-gradient(transparent, var(--color-page));
+  }
+  /* The hero's own content makes way for the hobbies view. */
+  :global(html:has(.hero.is-exploring) nav[aria-label="Primary"]) {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .step-aside {
+    transition:
+      opacity var(--t-signature) var(--ease-soft),
+      translate var(--t-signature) var(--ease-soft);
+  }
+  .step-aside.is-aside {
+    opacity: 0;
   }
   .scene-fade-in {
     animation: fade 1.2s var(--ease-soft) both;

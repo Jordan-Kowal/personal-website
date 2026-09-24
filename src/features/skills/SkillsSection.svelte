@@ -26,7 +26,13 @@
         icon.kind === "logo"
           ? liftColor({ hex: icon.color, minLuminance: MIN_ICON_LUMINANCE })
           : CATEGORY_COLORS[skill.category].border;
-      return { skill, icon, color, inlayColor: inlayColor(color) };
+      const bodyColors =
+        icon.kind === "logo" && icon.shapeColors
+          ? icon.shapeColors.map((hex) =>
+              liftColor({ hex, minLuminance: MIN_ICON_LUMINANCE }),
+            )
+          : [color];
+      return { skill, icon, color, bodyColors, inlayColor: inlayColor(color) };
     }),
   );
   const CATEGORIES = Object.values(SkillCategory).sort((a, b) =>
@@ -41,9 +47,13 @@
       title: group.title,
       offset,
       count: group.skills.length,
-      capacity: bagCapacity(group.skills.length, COLUMNS),
     };
   });
+
+  // Every bag gets the fullest one's rows, so they line up as a set.
+  const BAG_CAPACITY = Math.max(
+    ...SKILL_GROUPS.map((group) => bagCapacity(group.skills.length, COLUMNS)),
+  );
 
   let InventoryCanvas: typeof InventoryCanvasComponent | undefined = $state();
   let board: HTMLElement | undefined = $state();
@@ -76,6 +86,7 @@
       return {
         icon: item.icon,
         color: item.color,
+        bodyColors: item.bodyColors,
         inlayColor: item.inlayColor,
         x: offset.x + width / 2,
         y: offset.y + width / 2,
@@ -129,8 +140,9 @@
 <Section
   id="skills"
   eyebrow="Inventory"
+  icon="chest"
   title="Skills"
-  intro="Everything I've picked up along the way, one bag per kind. Hover an item to inspect it, or a category to find its items."
+  intro="Everything I've picked up along the way."
 >
   <div class="reveal mb-6 flex flex-wrap justify-center gap-2">
     {#each CATEGORIES as category (category)}
@@ -175,7 +187,7 @@
             <Backpack size={16} class="text-accent" />
             <h3 class="m-0 flex-1 text-sm font-bold text-ink">{bag.title}</h3>
             <span class="font-display text-xs text-muted">
-              {bag.count}/{bag.capacity}
+              {bag.count}/{BAG_CAPACITY}
             </span>
           </header>
           <ul class="slots m-0 list-none p-0" style:--columns={COLUMNS}>
@@ -215,7 +227,7 @@
                 {/if}
               </li>
             {/each}
-            {#each { length: bag.capacity - bag.count } as _, i (i)}
+            {#each { length: BAG_CAPACITY - bag.count } as _, i (i)}
               <li class="slot empty" aria-hidden="true"></li>
             {/each}
           </ul>

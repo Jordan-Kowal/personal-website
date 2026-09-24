@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ShuffleText } from "@/components/ui";
+  import { PixelIcon, ShuffleText } from "@/components/ui";
   import { SOCIALS } from "@/config/socials";
   import { pointerLight } from "@/utils";
 
@@ -8,18 +8,19 @@
 
 <section
   id="contact"
-  class="contact relative flex min-h-[80svh] scroll-mt-24 flex-col items-center justify-center gap-10 px-5 py-24 text-center"
+  class="contact relative flex min-h-[calc(100svh-4rem)] scroll-mt-24 flex-col items-center justify-center gap-10 px-5 pt-24 pb-14 text-center"
 >
   <div class="reveal flex flex-col items-center gap-3">
-    <span class="font-display text-sm tracking-[0.2em] text-accent uppercase">
+    <span
+      class="flex items-center gap-2 font-display text-sm tracking-[0.2em] text-accent uppercase"
+    >
+      <PixelIcon name="coin" />
       Continue?
     </span>
     <h2 class="m-0 font-display text-4xl font-semibold text-ink md:text-5xl">
       Let's talk
     </h2>
-    <p class="m-0 max-w-md text-balance text-muted">
-      A project, a role, or just a hello. My inbox is open, my LinkedIn too.
-    </p>
+    <p class="m-0 max-w-md text-balance text-muted">Don't be a stranger.</p>
   </div>
 
   <div class="reveal" {@attach pointerLight}>

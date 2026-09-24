@@ -6,7 +6,14 @@
 
   const MAX_PIXEL_RATIO = 1.75;
 
-  let { pointer, anchor, isAnimated }: ComponentProps<typeof Scene> = $props();
+  let {
+    pointer,
+    anchor,
+    isAnimated,
+    focus,
+    turn,
+    onHotspots,
+  }: ComponentProps<typeof Scene> = $props();
 </script>
 
 <!-- On-demand: frames only render while a task runs, so a paused or offscreen scene costs nothing. -->
@@ -15,5 +22,5 @@
   dpr={[1, MAX_PIXEL_RATIO]}
   shadows={PCFShadowMap}
 >
-  <Scene {pointer} {anchor} {isAnimated} />
+  <Scene {pointer} {anchor} {isAnimated} {focus} {turn} {onHotspots} />
 </Canvas>

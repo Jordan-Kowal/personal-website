@@ -126,3 +126,19 @@ export const segmentBetween = (
     rotationZ: Math.atan2(dy, dx) - Math.PI / 2,
   };
 };
+
+/** Turns from `from` to `to` by `progress` in [0, 1], the short way round, in radians. */
+export const blendAngle = (from: number, to: number, progress: number) => {
+  const turn = Math.PI * 2;
+  const gap = ((((to - from + Math.PI) % turn) + turn) % turn) - Math.PI;
+  return from + gap * progress;
+};
+
+/** Normalized device coordinates, [-1, 1] with y up, to pixels from the top left of a box. */
+export const ndcToPixels = (
+  point: { x: number; y: number },
+  box: { width: number; height: number },
+) => ({
+  left: ((point.x + 1) / 2) * box.width,
+  top: ((1 - point.y) / 2) * box.height,
+});

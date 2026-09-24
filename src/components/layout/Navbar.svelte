@@ -82,7 +82,7 @@
 
 <nav
   aria-label="Primary"
-  class="fixed inset-x-0 top-4 z-50 flex justify-center px-3"
+  class="fixed inset-x-0 top-4 z-50 flex justify-center px-3 transition-opacity duration-300"
 >
   <div
     class="pill relative flex items-center rounded-full border p-1 transition-colors duration-300"

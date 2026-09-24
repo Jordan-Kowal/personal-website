@@ -1,9 +1,11 @@
 import { describe, expect, test } from "bun:test";
 import {
+  blendAngle,
   cameraDistance,
   computeLean,
   hashNoise,
   jitterPositions,
+  ndcToPixels,
   pointOnCone,
   segmentBetween,
   visibleHalfWidth,
@@ -216,5 +218,41 @@ describe("segmentBetween", () => {
     expect(segment.center[1]).toBeCloseTo(expected.center[1]);
     expect(segment.length).toBeCloseTo(expected.length);
     expect(segment.rotationZ).toBeCloseTo(expected.rotationZ);
+  });
+});
+
+describe("blendAngle", () => {
+  test.each([
+    { name: "start", from: 1, to: 2, progress: 0, expected: 1 },
+    { name: "end", from: 1, to: 2, progress: 1, expected: 2 },
+    { name: "half way", from: 0, to: 1, progress: 0.5, expected: 0.5 },
+    {
+      name: "past a full turn, takes the short way",
+      from: Math.PI * 4 + 0.2,
+      to: 0,
+      progress: 1,
+      expected: Math.PI * 4,
+    },
+    {
+      name: "across ±π, turns forward",
+      from: Math.PI - 0.1,
+      to: -Math.PI + 0.1,
+      progress: 1,
+      expected: Math.PI + 0.1,
+    },
+  ])("$name", ({ from, to, progress, expected }) => {
+    expect(blendAngle(from, to, progress)).toBeCloseTo(expected);
+  });
+});
+
+describe("ndcToPixels", () => {
+  const box = { width: 800, height: 400 };
+  test.each([
+    { point: { x: -1, y: 1 }, expected: { left: 0, top: 0 } },
+    { point: { x: 1, y: -1 }, expected: { left: 800, top: 400 } },
+    { point: { x: 0, y: 0 }, expected: { left: 400, top: 200 } },
+    { point: { x: 0.5, y: 0.5 }, expected: { left: 600, top: 100 } },
+  ])("$point.x, $point.y", ({ point, expected }) => {
+    expect(ndcToPixels(point, box)).toEqual(expected);
   });
 });
