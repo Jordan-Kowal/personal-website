@@ -1,4 +1,4 @@
-import { MonitorPlay } from "lucide-solid";
+import { MonitorPlay } from "@lucide/svelte";
 import type { TimelineItem } from "./types";
 
 export const experienceData: TimelineItem[] = [

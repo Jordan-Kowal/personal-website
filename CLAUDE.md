@@ -1,93 +1,32 @@
----
-alwaysApply: true
----
-
 # Frontend Personal Website
 
-## Project Overview
+Single-page site: Hero, Skills, Projects, Timeline, GitHub Activity, Reviews, Contact, one folder per section in `src/features/`. Navbar, Section and Footer live in `src/components/layout/`.
 
-Single-page SPA with sections: Hero, Skills, Projects, Timeline, GitHub Activity, Reviews. Each section has its own folder in `features/`. Contact/Footer lives in `components/layout/`.
+Stack: SvelteKit (static adapter, prerendered, no server code), Svelte 5 runes, Threlte + Three.js, Tailwind CSS v4, Lucide Svelte, Day.js, Bun.
 
-Tech stack: SolidJS, Vite, Tailwind CSS v4 + DaisyUI, Lucide Solid, es-toolkit, Day.js, Biome, Bun
+Look: warm near-black, one yellow accent, Pixelify Sans for headings. Tokens live in `src/styles/index.css`; `docs/redesign.md` explains the direction.
 
 ## Commands
 
 ```bash
-bun install          # Install dependencies
-bun start            # Dev server
-bun build            # Production build (rimraf dist && vite build)
-bun quality          # Lint + typecheck (biome:check && tsc)
-bun biome:check:fix  # Auto-fix lint/format issues
+bun start              # Dev server
+bun run build          # vite build, then scripts/cspHash.ts allows the inline boot script in the CSP
+bun quality            # Everything CI runs but the build (also the pre-commit hook)
+bun biome:check:fix    # Lint/format .ts, .json, .css
+bun prettier:check:fix # Format .svelte (Biome cannot parse their templates)
+bun run test           # Unit tests for pure utils
 ```
 
-Pre-commit hook runs `bun quality` automatically.
+## Conventions
 
-## Project Structure
+- Code used by one feature stays in `src/features/{name}/`; promote to `src/{type}/` only on a second consumer.
+- This repo keeps barrels: `index.ts` at every level except `src/components/`, components re-exported as `export { default as X } from "./X.svelte"`.
+- Logic worth testing goes in a plain `.ts` util next to a `.test.ts`, not in the component.
+- DOM behaviour shared across components is an attachment (`{@attach ...}`), see `src/utils/`.
+- Threlte stores (`size`, ...) are read as `$size` in reactive code: `.current` is not tracked.
 
-```txt
-src/
-  assets/        # Static assets
-  components/    # Shared components
-    layout/      # Layout components (Section, Container, etc.)
-    ui/          # UI primitives (Button, Input, Card, etc.)
-  config/        # Configuration files
-  features/      # Feature-specific code (one folder per section)
-  styles/        # Global styles
-  types/         # Shared types
-```
+## Motion and 3D
 
-**Shared** (`src/{type}/`) — used by 2+ features
-**Feature-specific** (`src/features/{name}/{type}/`) — used by single feature only
-
-When in doubt: default to feature-specific (easier to promote later)
-
-## Code Style
-
-### File Naming
-
-- Components: `PascalCase.tsx`
-- Hooks: `useCamelCase.ts`
-- Utilities/Types/Config: `camelCase.ts`
-
-### Barrel Exports
-
-Use `index.ts` at every level **except** `src/components/`:
-
-```txt
-✅ src/components/layout/index.tsx
-✅ src/components/ui/index.tsx
-❌ src/components/index.tsx (no root barrel)
-```
-
-### TypeScript
-
-- Use `type` over `interface`
-- Arrow functions for pure functions
-- Descriptive names: `isLoading`, `hasError`, `canSubmit`
-- Named constants over magic numbers
-- Named exports only (no default exports)
-- No SSR/server components—this is a static frontend
-
-### SolidJS Patterns
-
-**Control Flow (Critical):**
-
-- ✅ Uses `<Show>` instead of ternaries for conditionals
-- ✅ Uses `<For>` instead of `.map()` for lists
-- ✅ Uses `<Switch>`/`<Match>` for multiple conditions
-- ❌ NEVER use ternaries for component rendering
-- ❌ NEVER use `.map()` for rendering lists
-
-**Reactivity:**
-
-- ✅ `createSignal` for primitive local state
-- ✅ `createStore` for complex/nested objects
-- ✅ `createMemo` for derived values (avoid inline computations in JSX)
-- ✅ `createEffect` only for side effects, not derivations
-- ✅ Signals called as functions in JSX: `{count()}` not `{count}`
-
-**Async & Error Handling:**
-
-- ✅ Async boundaries wrapped with `<Suspense>`
-- ✅ Error boundaries with `<ErrorBoundary>`
-- ✅ Proper fallback components
+- Every animation has a `prefers-reduced-motion` path: CSS in `styles/index.css`, JS via `prefersReducedMotion` from `svelte/motion`.
+- Three.js is dynamically imported after mount and only when `hasWebGL()` holds; the HTML is complete without it. Parents import the canvas component as `import type` only, or three.js lands in the main bundle.
+- Canvases use `renderMode="on-demand"` and stop their task when offscreen or when the tab is hidden.

@@ -1,4 +1,4 @@
-import type { LucideIcon } from "lucide-solid";
+import type { LucideIcon } from "@lucide/svelte";
 
 export type TimelineView = "education" | "experience";
 

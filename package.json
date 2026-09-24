@@ -1,49 +1,45 @@
 {
   "name": "personal-website",
-  "version": "3.2.0",
+  "version": "4.0.0",
   "type": "module",
   "private": true,
-  "homepage": "/",
+  "packageManager": "bun@1.4.2",
   "scripts": {
-    "start": "vite",
-    "build": "rimraf dist && vite build",
-    "biome:check": "biome check ./src",
-    "biome:check:fix": "biome check ./src --write --unsafe",
-    "tsc": "tsc",
-    "quality": "bun biome:check && bun tsc"
+    "prepare": "svelte-kit sync || echo \"\"",
+    "start": "vite dev",
+    "build": "vite build && bun scripts/cspHash.ts",
+    "preview": "vite preview",
+    "biome:check": "biome check ./src ./scripts ./vite.config.ts",
+    "biome:check:fix": "biome check ./src ./scripts ./vite.config.ts --write --unsafe",
+    "prettier:check": "prettier --check .",
+    "prettier:check:fix": "prettier --write .",
+    "svelte:check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --fail-on-warnings",
+    "test": "bun test src",
+    "quality": "bun biome:check && bun prettier:check && bun svelte:check && bun run test"
   },
   "dependencies": {
-    "@solidjs/meta": "0.29.4",
+    "@lucide/svelte": "1.46.0",
+    "@threlte/core": "8.6.0",
+    "@threlte/extras": "9.21.1",
     "dayjs": "1.11.23",
-    "es-toolkit": "1.50.0",
-    "lucide-solid": "1.31.0",
-    "solid-js": "1.9.15"
+    "svelte": "5.57.0",
+    "three": "0.186.0"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.8",
-    "@tailwindcss/typography": "0.5.20",
+    "@sveltejs/adapter-static": "3.0.10",
+    "@sveltejs/kit": "2.70.3",
+    "@sveltejs/vite-plugin-svelte": "7.3.0",
     "@tailwindcss/vite": "4.3.3",
+    "@types/bun": "1.4.0",
     "@types/node": "26.2.0",
-    "daisyui": "5.7.22",
-    "postcss": "8.5.26",
-    "rimraf": "6.1.3",
+    "@types/three": "0.186.0",
+    "prettier": "3.9.7",
+    "prettier-plugin-svelte": "4.1.1",
     "rollup-plugin-visualizer": "7.1.1",
-    "solid-devtools": "0.34.5",
+    "svelte-check": "4.7.6",
     "tailwindcss": "4.3.3",
-    "typescript": "7.0.2",
-    "vite": "8.2.2",
-    "vite-plugin-solid": "2.11.14"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "typescript": "6.0.3",
+    "vite": "8.2.2"
   }
 }

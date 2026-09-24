@@ -3,12 +3,20 @@ set -eu
 
 echo "---------- Git hook: pre-commit ----------"
 
-# Biome (lint and format)
-echo ">>> [1/2] Running Biome"
+# Biome (lint and format for .ts/.json)
+echo ">>> [1/4] Running Biome"
 bun biome:check
 
+# Prettier (format for .svelte)
+echo ">>> [2/4] Running Prettier"
+bun prettier:check
+
 # Typescript (type checking)
-echo ">>> [2/2] Running tsc"
-bun tsc
+echo ">>> [3/4] Running svelte-check"
+bun svelte:check
+
+# Unit tests
+echo ">>> [4/4] Running tests"
+bun run test
 
 echo "------------------------------------------"

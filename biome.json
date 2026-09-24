@@ -1,12 +1,17 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.2.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.5.8/schema.json",
   "vcs": {
     "enabled": false,
     "clientKind": "git",
     "useIgnoreFile": false
   },
   "files": {
-    "ignoreUnknown": false
+    "ignoreUnknown": false,
+    "includes": [
+      "**",
+      "!.svelte-kit",
+      "!dist"
+    ]
   },
   "formatter": {
     "enabled": true,
@@ -28,9 +33,6 @@
       "suspicious": {
         "noExplicitAny": "off"
       }
-    },
-    "domains": {
-      "solid": "recommended"
     }
   },
   "javascript": {
@@ -39,14 +41,17 @@
     }
   },
   "css": {
+    "parser": {
+      "tailwindDirectives": true
+    },
     "formatter": {
-      "enabled": false
+      "enabled": true
     },
     "linter": {
-      "enabled": false
+      "enabled": true
     },
     "assist": {
-      "enabled": false
+      "enabled": true
     }
   },
   "assist": {
@@ -56,5 +61,29 @@
         "organizeImports": "on"
       }
     }
-  }
+  },
+  "overrides": [
+    {
+      "includes": [
+        "**/*.svelte"
+      ],
+      "formatter": {
+        "enabled": false
+      },
+      "assist": {
+        "enabled": false
+      },
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noUnusedVariables": "off",
+            "noUnusedImports": "off"
+          },
+          "style": {
+            "useConst": "off"
+          }
+        }
+      }
+    }
+  ]
 }

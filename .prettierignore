@@ -1,0 +1,4 @@
+# Prettier owns .svelte only: Biome formats everything it can parse.
+**
+!**/
+!**/*.svelte
