@@ -23,6 +23,7 @@
   } from "./islandMath";
   import { SCENE_COLORS } from "./palette";
   import Campsite from "./props/Campsite.svelte";
+  import GameTable from "./props/GameTable.svelte";
   import Pets from "./props/Pets.svelte";
   import TrainingZone from "./props/TrainingZone.svelte";
 
@@ -477,4 +478,5 @@
   <Campsite {isAnimated} />
   <Pets />
   <TrainingZone />
+  <GameTable />
 </T.Group>

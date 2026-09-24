@@ -35,4 +35,8 @@ export const SCENE_COLORS = {
   water: "#5cc4e8",
   bike: "#e2513a",
   tyre: "#2a211b",
+  skin: "#e7b48c",
+  hair: ["#4a2e1e", "#b5562c"],
+  shirts: ["#3f7fd6", "#d94f7a"],
+  jeans: "#35425c",
 } as const;

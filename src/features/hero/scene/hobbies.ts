@@ -7,6 +7,11 @@ export const HOBBIES = [
   { id: "coding", title: "Coding", anchor: [-1.7, 0.5, 1.05] },
   { id: "gaming", title: "Gaming", anchor: [-1.75, 0.8, -0.05] },
   { id: "cooking", title: "Cooking", anchor: [-0.8, 0.5, 1.45] },
+  {
+    id: "boardGames",
+    title: "Board games & friends",
+    anchor: [-1.3, 0.55, 2.3],
+  },
 ] as const satisfies readonly {
   id: string;
   title: string;
