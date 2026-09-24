@@ -1,18 +1,19 @@
-export enum SkillCategory {
-  PythonEcosystem = "Python",
-  ErlangEcosystem = "Erlang",
-  WebFrontend = "Web",
-  GoEcosystem = "Go",
-  JvmEcosystem = "JVM",
-  Databases = "Databases",
-  Search = "Search",
-  DevOps = "DevOps",
-  AI = "AI",
-  SoftSkills = "Soft Skills",
-}
+export const SkillCategory = {
+  PythonEcosystem: "Python",
+  ErlangEcosystem: "Erlang",
+  WebFrontend: "Web",
+  GoEcosystem: "Go",
+  JvmEcosystem: "JVM",
+  Databases: "Databases",
+  Search: "Search",
+  DevOps: "DevOps",
+  AI: "AI",
+  SoftSkills: "Soft Skills",
+} as const;
+export type SkillCategory = (typeof SkillCategory)[keyof typeof SkillCategory];
 
 export type Skill = {
-  label: string;
+  label: SkillName;
   category: SkillCategory;
 };
 
@@ -80,44 +81,47 @@ export const CATEGORY_COLORS: Record<SkillCategory, CategoryColor> = {
   },
 };
 
-export enum SkillName {
-  Python = "Python",
-  Flask = "Flask",
-  Django = "Django",
-  Erlang = "Erlang",
-  Elixir = "Elixir",
-  Phoenix = "Phoenix",
-  JavaScript = "JavaScript",
-  TypeScript = "TypeScript",
-  React = "React",
-  Solid = "Solid",
-  SolidJS = "SolidJS",
-  HTML = "HTML",
-  CSS = "CSS",
-  Electron = "Electron",
-  Go = "Go",
-  Wails = "Wails",
-  Scala = "Scala",
-  PostgreSQL = "PostgreSQL",
-  Redis = "Redis",
-  Metabase = "Metabase",
-  Git = "Git",
-  Docker = "Docker",
-  CICD = "CI/CD",
-  DevboxNix = "Devbox/Nix",
-  Meilisearch = "Meilisearch",
-  Algolia = "Algolia",
-  AIEnhanced = "AI-enhanced",
-  PromptEngineering = "Prompt engineering",
-  AIAgents = "AI agents",
-  Communication = "Communication",
-  Ownership = "Ownership",
-  Collaboration = "Collaboration",
-  Mentoring = "Mentoring",
-  ProblemSolving = "Problem solving",
-  SelfTaught = "Self-taught",
-  CriticalThinking = "Critical thinking",
-}
+export const SkillName = {
+  Python: "Python",
+  Flask: "Flask",
+  Django: "Django",
+  Erlang: "Erlang",
+  Elixir: "Elixir",
+  Phoenix: "Phoenix",
+  JavaScript: "JavaScript",
+  TypeScript: "TypeScript",
+  React: "React",
+  Solid: "Solid",
+  SolidJS: "SolidJS",
+  Svelte: "Svelte",
+  ThreeJS: "Three.js",
+  HTML: "HTML",
+  CSS: "CSS",
+  Electron: "Electron",
+  Go: "Go",
+  Wails: "Wails",
+  Scala: "Scala",
+  PostgreSQL: "PostgreSQL",
+  Redis: "Redis",
+  Metabase: "Metabase",
+  Git: "Git",
+  Docker: "Docker",
+  CICD: "CI/CD",
+  DevboxNix: "Devbox/Nix",
+  Meilisearch: "Meilisearch",
+  Algolia: "Algolia",
+  AIEnhanced: "AI-enhanced",
+  PromptEngineering: "Prompt engineering",
+  AIAgents: "AI agents",
+  Communication: "Communication",
+  Ownership: "Ownership",
+  Collaboration: "Collaboration",
+  Mentoring: "Mentoring",
+  ProblemSolving: "Problem solving",
+  SelfTaught: "Self-taught",
+  CriticalThinking: "Critical thinking",
+} as const;
+export type SkillName = (typeof SkillName)[keyof typeof SkillName];
 
 export const SKILLS: Record<SkillName, Skill> = {
   [SkillName.Python]: {
@@ -156,6 +160,11 @@ export const SKILLS: Record<SkillName, Skill> = {
   [SkillName.Solid]: { label: "Solid", category: SkillCategory.WebFrontend },
   [SkillName.SolidJS]: {
     label: "SolidJS",
+    category: SkillCategory.WebFrontend,
+  },
+  [SkillName.Svelte]: { label: "Svelte", category: SkillCategory.WebFrontend },
+  [SkillName.ThreeJS]: {
+    label: "Three.js",
     category: SkillCategory.WebFrontend,
   },
   [SkillName.HTML]: { label: "HTML", category: SkillCategory.WebFrontend },
@@ -241,6 +250,8 @@ export const SKILL_GROUPS: SkillGroup[] = [
       SKILLS[SkillName.TypeScript],
       SKILLS[SkillName.React],
       SKILLS[SkillName.Solid],
+      SKILLS[SkillName.Svelte],
+      SKILLS[SkillName.ThreeJS],
       SKILLS[SkillName.HTML],
       SKILLS[SkillName.CSS],
       SKILLS[SkillName.Electron],

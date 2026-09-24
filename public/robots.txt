@@ -1,7 +1,7 @@
 # Default: allow indexing, block hashed asset bundles
 User-agent: *
 Allow: /
-Disallow: /assets/
+Disallow: /_app/
 
 # --- AI training crawlers (deny) ---
 # These crawlers harvest content to train LLMs without per-user intent.
@@ -91,38 +91,38 @@ Disallow: /
 # These crawlers fetch on behalf of a specific user query; they do not train.
 User-agent: ChatGPT-User
 Allow: /
-Disallow: /assets/
+Disallow: /_app/
 
 User-agent: OAI-SearchBot
 Allow: /
-Disallow: /assets/
+Disallow: /_app/
 
 User-agent: PerplexityBot
 Allow: /
-Disallow: /assets/
+Disallow: /_app/
 
 User-agent: Perplexity-User
 Allow: /
-Disallow: /assets/
+Disallow: /_app/
 
 User-agent: DuckAssistBot
 Allow: /
-Disallow: /assets/
+Disallow: /_app/
 
 User-agent: MistralAI-User
 Allow: /
-Disallow: /assets/
+Disallow: /_app/
 
 User-agent: Meta-ExternalFetcher
 Allow: /
-Disallow: /assets/
+Disallow: /_app/
 
 User-agent: Manus
 Allow: /
-Disallow: /assets/
+Disallow: /_app/
 
 User-agent: Applebot
 Allow: /
-Disallow: /assets/
+Disallow: /_app/
 
 Sitemap: https://www.jordankowal.com/sitemap.xml

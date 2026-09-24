@@ -1,6 +1,6 @@
 # Personal Website
 
-My personal static website made with Vite + SolidJS + Tailwind CSS.
+My personal static website made with SvelteKit + Threlte (Three.js) + Tailwind CSS.
 Single Page Application with the following sections:
 
 - Hero Banner
@@ -33,7 +33,7 @@ git config core.hooksPath .githooks
 
 ## QA and CI/CD
 
-- [QA](.github/workflows/qa.yml): GitHub Action that checks linters/formatters and runs `tsc` on pull requests.
+- [QA](.github/workflows/qa.yml): GitHub Action that checks linters/formatters and runs `svelte-check` on pull requests.
 - **Deploy**: hosted on [Cloudflare Pages](https://www.jordankowal.com), which auto-builds and deploys on every push to `main` (build command `bun install && bun run build`, output `dist/`).
 
 See [docs/](docs/) for the launch/hardening checklist (SEO, security headers, analytics, hosting).

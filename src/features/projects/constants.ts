@@ -69,12 +69,12 @@ export const projectsData: Project[] = [
     id: 5,
     name: "personal-website",
     description:
-      "You are viewing it right now. My personal static website made with Vite, SolidJS, and DaisyUI.",
+      "You are viewing it right now. My personal static website made with SvelteKit and Threlte (Three.js).",
     githubUrl: "https://github.com/Jordan-Kowal/personal-website",
     websiteUrl: "https://www.jordankowal.com",
     screenshots: ["screenshots/personal-website.webp"],
     archived: false,
-    skills: [SkillName.TypeScript, SkillName.SolidJS],
+    skills: [SkillName.TypeScript, SkillName.Svelte, SkillName.ThreeJS],
   },
   {
     id: 3,

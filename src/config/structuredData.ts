@@ -3,9 +3,8 @@ import { SOCIALS } from "@/config/socials";
 /**
  * Schema.org JSON-LD structured data for the site.
  *
- * Injected into <head> at runtime by the StructuredData component (via
- * @solidjs/meta), so it lives in the app bundle and is covered by the CSP
- * `script-src 'self'` — no inline-script hash to maintain.
+ * Prerendered into <head> by the root layout. A JSON-LD block is data, never
+ * executed, so the CSP `script-src` does not apply to it.
  *
  * Uses the `Person` type (this is a personal/resume site). `sameAs` lists the
  * public social profiles so search engines link this page to those identities.

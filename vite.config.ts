@@ -1,31 +1,32 @@
-import { resolve } from "node:path";
+import adapter from "@sveltejs/adapter-static";
+import { sveltekit } from "@sveltejs/kit/vite";
 import tailwindcss from "@tailwindcss/vite";
 import { visualizer } from "rollup-plugin-visualizer";
-import devtools from "solid-devtools/vite";
 import { defineConfig } from "vite";
-import solidPlugin from "vite-plugin-solid";
 
-export default defineConfig(({ mode }) => ({
+const OUTPUT_DIR = "dist";
+
+export default defineConfig({
   plugins: [
-    devtools({
-      autoname: true,
-    }),
-    solidPlugin(),
     tailwindcss(),
+    sveltekit({
+      compilerOptions: {
+        // Force runes mode for the project, except for libraries. Can be removed in svelte 6.
+        runes: ({ filename }) =>
+          filename.split(/[/\\]/).includes("node_modules") ? undefined : true,
+      },
+      adapter: adapter({ pages: OUTPUT_DIR, assets: OUTPUT_DIR }),
+      alias: { "@": "src" },
+      // Keeps the existing `public/` folder instead of SvelteKit's `static/`.
+      files: { assets: "public" },
+    }),
     visualizer({
       filename: "bundle-stats.html",
       title: "Bundle Stats",
       gzipSize: true,
-      open: true,
     }),
   ],
   build: {
     target: "esnext",
   },
-  resolve: {
-    alias: {
-      "@": resolve(import.meta.dirname, "./src"),
-    },
-  },
-  base: "/",
-}));
+});
