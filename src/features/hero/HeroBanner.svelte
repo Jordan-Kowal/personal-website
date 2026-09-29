@@ -1,9 +1,11 @@
 <script lang="ts">
-  import { FileText, Gamepad2, ScanSearch } from "@lucide/svelte";
+  import { Clapperboard, FileText, Gamepad2, ScanSearch } from "@lucide/svelte";
   import { onMount } from "svelte";
   import { cubicInOut } from "svelte/easing";
   import { prefersReducedMotion, Tween } from "svelte/motion";
   import { ShuffleText } from "@/components/ui";
+  // Type-only: the reel loads on the first click on its button.
+  import type { ReelDialog as ReelDialogComponent } from "@/features/reel";
   import { hasWebGL } from "@/utils";
   import HobbiesDialog from "./components/HobbiesDialog.svelte";
   import PlayerCard from "./components/PlayerCard.svelte";
@@ -13,6 +15,8 @@
   import type IslandCanvasComponent from "./scene/IslandCanvas.svelte";
 
   let IslandCanvas: typeof IslandCanvasComponent | undefined = $state();
+  let ReelDialog: typeof ReelDialogComponent | undefined = $state();
+  let isReelOpen = $state(false);
   let hero: HTMLElement | undefined = $state();
   let cardSlot: HTMLElement | undefined = $state();
   // Bottom centre of the player card in the hero's normalized coordinates: the island's spot.
@@ -33,7 +37,10 @@
   let isAside = $derived(isExploring || focus.current > 0);
 
   let isAnimated = $derived(
-    isHeroVisible && isPageVisible && !prefersReducedMotion.current,
+    isHeroVisible &&
+      isPageVisible &&
+      !isReelOpen &&
+      !prefersReducedMotion.current,
   );
 
   // Listened on the window so the scene still hears the pointer over the text and the card.
@@ -71,6 +78,13 @@
   const leave = () => {
     isExploring = false;
     setFocus(0);
+  };
+
+  const watchReel = () => {
+    import("@/features/reel").then((module) => {
+      ReelDialog = module.ReelDialog;
+      isReelOpen = true;
+    });
   };
 
   const handleHotspots = (hotspots: Hotspot[]) => {
@@ -145,6 +159,9 @@
   {#if isExploring}
     <HobbiesDialog {spots} bind:turn onClose={leave} />
   {/if}
+  {#if ReelDialog}
+    <ReelDialog bind:open={isReelOpen} />
+  {/if}
 
   <div
     class="pointer-events-none relative z-10 mx-auto grid w-full max-w-6xl items-center gap-10 px-5 pt-28 pb-20 sm:px-8 lg:grid-cols-2"
@@ -185,11 +202,18 @@
         >
           <Gamepad2 size={20} /> Press start
         </a>
+        <button
+          type="button"
+          class="flex items-center gap-2 rounded-full border border-line px-4 py-3 font-semibold whitespace-nowrap text-ink transition-colors duration-150 hover:border-accent hover:text-accent"
+          onclick={watchReel}
+        >
+          <Clapperboard size={18} /> Watch reel · 20s
+        </button>
         <a
           href="/files/resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          class="flex items-center gap-2 rounded-full border border-line px-5 py-3 font-semibold text-ink transition-colors duration-150 hover:border-accent hover:text-accent"
+          class="flex items-center gap-2 rounded-full border border-line px-4 py-3 font-semibold whitespace-nowrap text-ink transition-colors duration-150 hover:border-accent hover:text-accent"
         >
           <FileText size={18} /> Resume
         </a>
@@ -211,17 +235,16 @@
           </div>
         </div>
         {#if IslandCanvas}
+          <!-- A marker on the island, like the ones in the hobbies view it opens. -->
           <button
             type="button"
-            class={[
-              "scene-fade-in absolute top-full left-1/2 mt-4 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap",
-              "rounded-full border border-accent/60 bg-page/70 px-4 py-2 backdrop-blur-sm",
-              "font-display text-sm text-ink",
-              "transition-[color,border-color] duration-150 hover:border-accent hover:text-accent",
-            ]}
+            class="island-marker scene-fade-in absolute top-full left-1/2 mt-5 -translate-x-1/2"
+            aria-label="View my hobbies"
             onclick={explore}
           >
-            <ScanSearch size={16} /> View my hobbies
+            <span class="label" aria-hidden="true">
+              <ScanSearch size={14} /> Hobbies
+            </span>
           </button>
         {/if}
       </div>
@@ -285,6 +308,77 @@
   }
   .step-aside.is-aside {
     opacity: 0;
+  }
+  .island-marker {
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 999px;
+    cursor: pointer;
+  }
+  .island-marker::before {
+    content: "";
+    width: 0.6rem;
+    height: 0.6rem;
+    rotate: 45deg;
+    background: var(--color-accent);
+    box-shadow:
+      0 0 0 3px color-mix(in oklab, var(--color-page) 60%, transparent),
+      0 0 14px var(--color-accent);
+  }
+  .island-marker::after {
+    content: "";
+    position: absolute;
+    inset: 0.35rem;
+    border: 1.5px solid var(--color-accent);
+    border-radius: 999px;
+    animation: pulse 1.8s var(--ease-soft) infinite;
+  }
+  @keyframes pulse {
+    from {
+      opacity: 0.9;
+      scale: 0.6;
+    }
+    to {
+      opacity: 0;
+      scale: 1.6;
+    }
+  }
+  /* Shown long enough to be read on arrival, then tucked away until the marker is pointed at. */
+  .island-marker .label {
+    position: absolute;
+    left: calc(100% + 0.25rem);
+    top: 50%;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.75rem;
+    border: 1px solid var(--color-accent);
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--color-page) 80%, transparent);
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    color: var(--color-ink);
+    white-space: nowrap;
+    translate: 0 -50%;
+    pointer-events: none;
+    animation: tuck 400ms var(--ease-soft) 4s forwards;
+  }
+  .island-marker:is(:hover, :focus-visible) .label {
+    animation: none;
+  }
+  /* The global rule would tuck it at once: without the pulse, the label is what says what the marker is. */
+  @media (prefers-reduced-motion: reduce) {
+    .island-marker .label {
+      animation: none;
+    }
+  }
+  @keyframes tuck {
+    to {
+      opacity: 0;
+      translate: -0.5rem -50%;
+    }
   }
   .scene-fade-in {
     animation: fade 1.2s var(--ease-soft) both;
