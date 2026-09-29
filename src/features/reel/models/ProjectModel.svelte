@@ -12,11 +12,9 @@
     kind: ProjectModelKind;
     t: number;
     seed: number;
-    /** Width over height of the box the canvas fills, before any CSS transform. */
-    aspect: number;
   };
 
-  let { kind, t, seed, aspect }: Props = $props();
+  let { kind, t, seed }: Props = $props();
 
   const SPIN_PER_S = 0.7;
   const TILE = 0.55;
@@ -28,22 +26,6 @@
   // The data block sliding through the pipe, looping every 1.5s.
   const flow = $derived(wrap(t + seed, 1.5) / 1.5);
 </script>
-
-<!-- Manual: Threlte derives the aspect from the transformed on-screen box, which a rotated polaroid skews. -->
-<T.PerspectiveCamera
-  makeDefault
-  manual
-  fov={30}
-  {aspect}
-  position={[2.7, 2.1, 3]}
-  oncreate={(ref) => {
-    ref.lookAt(0, 0.1, 0);
-    ref.updateProjectionMatrix();
-  }}
-/>
-<T.HemisphereLight args={["#ffe2b8", "#2a1f16", 1.2]} />
-<T.DirectionalLight position={[4, 6, 5]} intensity={2.4} color="#ffd08a" />
-<T.DirectionalLight position={[-5, 2, -3]} intensity={0.9} color="#ff9a4d" />
 
 <T.Group rotation.y={spin} position.y={bob}>
   {#if kind === "sudoku"}

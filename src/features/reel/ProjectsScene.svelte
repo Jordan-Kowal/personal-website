@@ -80,8 +80,30 @@
     seed: 3,
   };
 
+  const PHOTO = {
+    width: POLAROID.width - 2 * POLAROID.padding,
+    height: POLAROID.photoHeight,
+  };
+
   let ProjectModelCanvas: typeof ProjectModelCanvasComponent | undefined =
     $state();
+  // 2D canvases, by project id: one WebGL context draws every model, Android Chrome allows only 8 per page.
+  const modelTargets: Record<number, HTMLCanvasElement | undefined> = $state(
+    {},
+  );
+  const models = $derived(
+    polaroids.flatMap((polaroid) =>
+      !polaroid.screenshot && polaroid.model
+        ? [
+            {
+              kind: polaroid.model,
+              seed: polaroid.project.id,
+              target: modelTargets[polaroid.project.id],
+            },
+          ]
+        : [],
+    ),
+  );
 
   onMount(() => {
     if (!hasWebGL()) return;
@@ -126,7 +148,7 @@
     />
   </div>
 
-  <!-- Hidden rather than unmounted before its pin time, so a 3D polaroid keeps its one WebGL context. -->
+  <!-- Hidden rather than unmounted before its pin time, so a 3D polaroid's model is already drawn when it drops in. -->
   {#each polaroids as polaroid (polaroid.project.id)}
     {@const drop = easeOutBack(
       progress(t, polaroid.pinAt, polaroid.pinAt + DROP_IN_S),
@@ -157,19 +179,11 @@
             class="size-full object-cover object-top"
           />
         {:else if polaroid.model && ProjectModelCanvas}
-          <!-- Canvas forced to the photo box: Threlte sizes it from the transformed on-screen box otherwise. -->
-          <div
-            class="size-full [&_canvas]:size-full!"
+          <canvas
+            bind:this={modelTargets[polaroid.project.id]}
+            class="size-full"
             style:background={"radial-gradient(circle at 50% 40%, #4a3a2c, var(--color-surface) 75%)"}
-          >
-            <ProjectModelCanvas
-              kind={polaroid.model}
-              {t}
-              seed={polaroid.project.id}
-              aspect={(POLAROID.width - 2 * POLAROID.padding) /
-                POLAROID.photoHeight}
-            />
-          </div>
+          ></canvas>
         {:else if polaroid.icon}
           <div
             class="flex size-full items-center justify-center"
@@ -209,3 +223,14 @@
   {/each}
   <Confetti {burst} {t} />
 </div>
+
+{#if ProjectModelCanvas}
+  <!-- Never shown: each 3D polaroid copies its frame from this canvas. -->
+  <div
+    class="invisible absolute top-0 left-0"
+    style:width="{PHOTO.width}px"
+    style:height="{PHOTO.height}px"
+  >
+    <ProjectModelCanvas {models} {t} aspect={PHOTO.width / PHOTO.height} />
+  </div>
+{/if}

@@ -73,7 +73,7 @@
     playing = false;
   };
 
-  // Stays mounted once opened: remounting would spin up its 3D polaroids' WebGL contexts again.
+  // Stays mounted once opened: remounting would spin up its 3D polaroids' WebGL context again.
   $effect(() => {
     if (!dialog) return;
     if (open) {

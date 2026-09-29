@@ -2,18 +2,19 @@
   import { Canvas } from "@threlte/core";
   import type { ComponentProps } from "svelte";
   import { NoToneMapping } from "three";
-  import ProjectModel from "./ProjectModel.svelte";
+  import ProjectModels from "./ProjectModels.svelte";
 
   const MAX_PIXEL_RATIO = 2;
 
-  let { kind, t, seed, aspect }: ComponentProps<typeof ProjectModel> = $props();
+  let { models, t, aspect }: ComponentProps<typeof ProjectModels> = $props();
 </script>
 
-<!-- No tone mapping: the default AgX greys out the flat token colours. -->
+<!-- No auto render: ProjectModels renders each model itself. No tone mapping: the default AgX greys out the flat token colours. -->
 <Canvas
   renderMode="on-demand"
+  autoRender={false}
   dpr={[1, MAX_PIXEL_RATIO]}
   toneMapping={NoToneMapping}
 >
-  <ProjectModel {kind} {t} {seed} {aspect} />
+  <ProjectModels {models} {t} {aspect} />
 </Canvas>
