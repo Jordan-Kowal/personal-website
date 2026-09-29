@@ -1,21 +1,28 @@
-// Post-build step. SvelteKit boots the prerendered page from an inline <script>, which the CSP in
-// `_headers` (`script-src 'self'`) would block. This allows exactly that script by its hash,
+// Post-build step. SvelteKit boots each prerendered page from an inline <script>, which the CSP in
+// `_headers` (`script-src 'self'`) would block. This allows exactly those scripts by their hash,
 // recomputed on every build, so there is never a stale hash nor an 'unsafe-inline'.
+// The CSP is shared by every page, so it carries the hashes of all of them.
 import { createHash } from "node:crypto";
-import { readFileSync, writeFileSync } from "node:fs";
+import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 
 const OUTPUT_DIR = "dist";
 const INLINE_SCRIPT = /<script>([\s\S]*?)<\/script>/g;
 const SCRIPT_SRC = "script-src 'self'";
 
-const html = readFileSync(`${OUTPUT_DIR}/index.html`, "utf8");
-const hashes = [...html.matchAll(INLINE_SCRIPT)].map(
-  ([, body]) =>
-    `'sha256-${createHash("sha256").update(body).digest("base64")}'`,
+const pages = readdirSync(OUTPUT_DIR, { recursive: true, encoding: "utf8" })
+  .filter((file) => file.endsWith(".html"))
+  .map((file) => readFileSync(`${OUTPUT_DIR}/${file}`, "utf8"));
+const hashes = new Set(
+  pages.flatMap((html) =>
+    [...html.matchAll(INLINE_SCRIPT)].map(
+      ([, body]) =>
+        `'sha256-${createHash("sha256").update(body).digest("base64")}'`,
+    ),
+  ),
 );
-if (hashes.length === 0) {
+if (hashes.size === 0) {
   throw new Error(
-    "No inline script found in index.html: the CSP step is out of date.",
+    "No inline script found in the built pages: the CSP step is out of date.",
   );
 }
 
@@ -28,6 +35,8 @@ if (!headers.includes(SCRIPT_SRC)) {
 }
 writeFileSync(
   headersPath,
-  headers.replace(SCRIPT_SRC, `${SCRIPT_SRC} ${hashes.join(" ")}`),
+  headers.replace(SCRIPT_SRC, `${SCRIPT_SRC} ${[...hashes].join(" ")}`),
 );
-console.log(`CSP: allowed ${hashes.length} inline script(s) by hash.`);
+console.log(
+  `CSP: allowed ${hashes.size} inline script(s) by hash across ${pages.length} page(s).`,
+);

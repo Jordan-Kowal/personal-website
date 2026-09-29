@@ -15,7 +15,12 @@ export default defineConfig({
         runes: ({ filename }) =>
           filename.split(/[/\\]/).includes("node_modules") ? undefined : true,
       },
-      adapter: adapter({ pages: OUTPUT_DIR, assets: OUTPUT_DIR }),
+      // Without a top-level 404.html, Cloudflare Pages serves index.html for every unknown path.
+      adapter: adapter({
+        pages: OUTPUT_DIR,
+        assets: OUTPUT_DIR,
+        fallback: "404.html",
+      }),
       alias: { "@": "src" },
       // Keeps the existing `public/` folder instead of SvelteKit's `static/`.
       files: { assets: "public" },
