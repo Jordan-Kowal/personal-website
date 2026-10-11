@@ -149,3 +149,7 @@ bundle-stats.html
 
 # Playwright MCP output
 .playwright-mcp/
+
+# GitHub profile generator: cache and output (the SVGs are copied to the profile repo)
+docs/github-profile/raw/
+docs/github-profile/assets/
