@@ -107,7 +107,7 @@
 <dialog
   bind:this={dialog}
   class="reel-view"
-  aria-label="Showreel"
+  aria-label="Trailer"
   onclose={handleClose}
   onkeydown={handleKeydown}
 >

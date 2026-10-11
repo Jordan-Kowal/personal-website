@@ -100,7 +100,7 @@
   <div
     class="absolute top-8 right-20 left-20 flex justify-between font-display text-lg tracking-[0.3em] text-muted"
   >
-    <span>JORDAN KOWAL · SHOWREEL</span>
+    <span>JORDAN KOWAL · TRAILER</span>
     <span class="text-accent">
       {String(SCENE_ORDER.indexOf(scene) + 1).padStart(2, "0")} / {HUD_LABELS[
         scene

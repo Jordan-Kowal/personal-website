@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Clapperboard, FileText, Gamepad2, ScanSearch } from "@lucide/svelte";
   import { onMount } from "svelte";
+  import { afterNavigate, replaceState } from "$app/navigation";
   import { cubicInOut } from "svelte/easing";
   import { prefersReducedMotion, Tween } from "svelte/motion";
   import { ShuffleText } from "@/components/ui";
@@ -11,6 +12,7 @@
   import PlayerCard from "./components/PlayerCard.svelte";
   import type { Hotspot } from "./scene/hobbies";
   import { ndcToPixels } from "./scene/islandMath";
+  import { HeroView, parseOpenParam } from "./utils";
   // Type-only, so three.js stays out of the main bundle until the dynamic import below.
   import type IslandCanvasComponent from "./scene/IslandCanvas.svelte";
 
@@ -104,11 +106,24 @@
     isPageVisible = document.visibilityState === "visible";
   };
 
+  // Dropped from the URL so a reload or a shared link lands on the page, not the view.
+  // Waits for the first navigation to complete: replaceState throws until the router has started.
+  afterNavigate(({ type, to, complete }) => {
+    if (type !== "enter" || !to?.url.searchParams.has("open")) return;
+    const url = new URL(to.url);
+    url.searchParams.delete("open");
+    complete.then(() => replaceState(url, {}));
+  });
+
   onMount(() => {
+    const openView = parseOpenParam(window.location.search);
+    if (openView === HeroView.Trailer) watchReel();
     // three.js only loads on devices that can draw it, after the HTML is already on screen.
     if (hasWebGL()) {
       import("./scene/IslandCanvas.svelte").then((module) => {
         IslandCanvas = module.default;
+        // The hobbies view flies over the island, so it waits for the scene.
+        if (openView === HeroView.Hobbies) explore();
       });
     }
     const observer = new IntersectionObserver(([entry]) => {
@@ -207,7 +222,7 @@
           class="flex items-center gap-2 rounded-full border border-line px-4 py-3 font-semibold whitespace-nowrap text-ink transition-colors duration-150 hover:border-accent hover:text-accent"
           onclick={watchReel}
         >
-          <Clapperboard size={18} /> Watch reel · 20s
+          <Clapperboard size={18} /> Watch trailer · 20s
         </button>
         <a
           href="/files/resume.pdf"
