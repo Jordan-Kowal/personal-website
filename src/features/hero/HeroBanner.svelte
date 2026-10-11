@@ -5,6 +5,8 @@
   import { cubicInOut } from "svelte/easing";
   import { prefersReducedMotion, Tween } from "svelte/motion";
   import { ShuffleText } from "@/components/ui";
+  import { GithubIcon } from "@/components/ui/icons";
+  import { SOCIALS } from "@/config/socials";
   // Type-only: the reel loads on the first click on its button.
   import type { ReelDialog as ReelDialogComponent } from "@/features/reel";
   import { hasWebGL } from "@/utils";
@@ -231,6 +233,14 @@
           class="flex items-center gap-2 rounded-full border border-line px-4 py-3 font-semibold whitespace-nowrap text-ink transition-colors duration-150 hover:border-accent hover:text-accent"
         >
           <FileText size={18} /> Resume
+        </a>
+        <a
+          href={SOCIALS.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-2 rounded-full border border-line px-4 py-3 font-semibold whitespace-nowrap text-ink transition-colors duration-150 hover:border-accent hover:text-accent"
+        >
+          <GithubIcon size={18} /> GitHub
         </a>
       </div>
     </div>
