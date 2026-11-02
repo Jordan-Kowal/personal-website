@@ -22,7 +22,7 @@
     "@threlte/core": "8.6.1",
     "@threlte/extras": "9.22.3",
     "dayjs": "1.11.23",
-    "svelte": "5.57.2",
+    "svelte": "5.57.3",
     "three": "0.186.1"
   },
   "devDependencies": {
