@@ -8,6 +8,11 @@ updates:
     groups:
       all:
         patterns: ["*"]
+    ignore:
+      # TS 7 ships no JavaScript API yet, which `svelte-kit sync` and svelte-check need:
+      # https://github.com/sveltejs/kit/issues/17537
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
     commit-message:
       prefix: "[Deps] "
   - package-ecosystem: "github-actions"

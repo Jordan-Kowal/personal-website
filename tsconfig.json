@@ -1,8 +1,14 @@
 {
-  // Extends the config `svelte-kit sync` generates, so the module and path setup is not repeated
-  // here. `@/*` comes from the `alias` option in vite.config.ts.
+  // Extends the config `svelte-kit sync` generates, so the module setup is not repeated here.
   "extends": "./.svelte-kit/tsconfig.json",
   "compilerOptions": {
+    // Replaces the generated `paths` wholesale, so `$app/types` is restated. `@/*` mirrors
+    // `resolve.alias` in vite.config.ts: Kit's `alias` option is deprecated, and subpath imports
+    // (`#/*`) resolve neither extensionless files nor folder barrels.
+    "paths": {
+      "@/*": ["./src/*"],
+      "$app/types": ["./.svelte-kit/types/index.d.ts"]
+    },
     "allowJs": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,

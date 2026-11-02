@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url";
 import adapter from "@sveltejs/adapter-static";
 import { sveltekit } from "@sveltejs/kit/vite";
 import tailwindcss from "@tailwindcss/vite";
@@ -21,7 +22,6 @@ export default defineConfig({
         assets: OUTPUT_DIR,
         fallback: "404.html",
       }),
-      alias: { "@": "src" },
       // Keeps the existing `public/` folder instead of SvelteKit's `static/`.
       files: { assets: "public" },
     }),
@@ -31,6 +31,10 @@ export default defineConfig({
       gzipSize: true,
     }),
   ],
+  // Paired with `paths` in tsconfig.json.
+  resolve: {
+    alias: { "@": fileURLToPath(new URL("./src", import.meta.url)) },
+  },
   build: {
     target: "esnext",
   },
