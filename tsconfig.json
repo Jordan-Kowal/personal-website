@@ -1,15 +1,17 @@
 {
   // Extends the config `svelte-kit sync` generates, so the module setup is not repeated here.
-  "extends": "./.svelte-kit/tsconfig.json",
+  "extends": "$app/tsconfig",
+  "include": ["src", "test", "*"],
+  "exclude": ["src/service-worker"],
   "compilerOptions": {
-    // Replaces the generated `paths` wholesale, so `$app/types` is restated. `@/*` mirrors
-    // `resolve.alias` in vite.config.ts: Kit's `alias` option is deprecated, and subpath imports
-    // (`#/*`) resolve neither extensionless files nor folder barrels.
+    // `@/*` mirrors `resolve.alias` in vite.config.ts: Kit's `alias` option is deprecated, and
+    // subpath imports (`#/*`) resolve neither extensionless files nor folder barrels.
     "paths": {
-      "@/*": ["./src/*"],
-      "$app/types": ["./.svelte-kit/types/index.d.ts"]
+      "@/*": ["./src/*"]
     },
     "allowJs": false,
+    // The generated config turns it on, and TypeScript rejects it without `allowJs`.
+    "checkJs": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
@@ -24,7 +26,8 @@
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "erasableSyntaxOnly": true,
-    // bun:test needs its ambient types; the util tests live next to the code under src/.
-    "types": ["@types/bun"]
+    // Replaces the generated `types` wholesale, so `$app/types` is restated. bun:test needs its
+    // ambient types; the util tests live next to the code under src/.
+    "types": ["$app/types", "@types/bun"]
   }
 }
